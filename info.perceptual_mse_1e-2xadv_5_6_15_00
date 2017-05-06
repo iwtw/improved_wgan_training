@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "gan_perceptual.py", line 17, in <module>
+    import tflib.read
+ImportError: No module named read
