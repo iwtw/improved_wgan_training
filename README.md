@@ -1,26 +1,17 @@
-Improved Training of Wasserstein GANs
-=====================================
+# Face images super-resolution using improved_wgan_training
 
-Code for reproducing experiments in ["Improved Training of Wasserstein GANs"](https://arxiv.org/abs/1704.00028).
-
-
+forked from igul222/improved_wgan_training 
+["Improved Training of Wasserstein GANs"](https://arxiv.org/abs/1704.00028)
 ## Prerequisites
-
-- Python, NumPy, TensorFlow, SciPy, Matplotlib
-- A recent NVIDIA GPU
-
+- Python, NumPy, TensorFlow >= r1.0, SciPy, Matplotlib
 ## Models
+discriminator receive inputs of size [112,96,3] face images (e.g. webface dataset) and generator receive [ 28 , 24 , 3 ]
 
-Configuration for all models is specified in a list of constants at the top of
-the file. Two models should work "out of the box":
+using residualblock for both discriminator and generator
 
-- `python gan_toy.py`: Toy datasets (8 Gaussians, 25 Gaussians, Swiss Roll). 
-- `python gan_mnist.py`: MNIST
+using a generator from SRGAN generator
 
-For the other models, edit the file to specify the path to the dataset in
-`DATA_DIR` before running. Each model's dataset is publicly available; the
-download URL is in the file.
+using WGAN cost
 
-- `python gan_64x64.py`: 64x64 architectures (this code trains on ImageNet instead of LSUN bedrooms in the paper)
-- `python gan_language.py`: Character-level language model
-- `python gan_cifar.py`: CIFAR-10
+replace deconv layer with pixelshuffle layer for performance
+

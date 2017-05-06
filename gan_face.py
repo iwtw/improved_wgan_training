@@ -14,28 +14,56 @@ import tflib.ops.conv2d
 import tflib.ops.batchnorm
 import tflib.ops.deconv2d
 import tflib.save_images
-import tflib.read.
+import tflib.read
 import tflib.ops.layernorm
 import tflib.plot
+import os
+import sys
 
+TEST_SPEED = False
+TENSORFLOW_READ = False
+
+if not os.path.exists("checkpoint"):
+    os.mkdir("checkpoint")
+if not os.path.exists("output"):
+    os.mkdir("output")
 # Download 64x64 ImageNet at http://image-net.org/small/download.php and
 # fill in the path to the extracted files here!
 DATA_DIR = '~/asian-webface-align'
 if len(DATA_DIR) == 0:
     raise Exception('Please specify path to data directory in gan_64x64.py!')
 
+
 MODE = 'wgan-gp' # dcgan, wgan, wgan-gp, lsgan
 DIM = 32
-CRITIC_ITERS = 5 # How many iterations to train the critic for
+CRITIC_ITERS = 5 # How many its to train the critic for
 N_GPUS = 2 # Number of GPUs
-BATCH_SIZE = 64 # Batch size. Must be a multiple of N_GPUS
-ITERS = 200000 # How many iterations to train for
+BATCH_SIZE = 32 # Batch size. Must be a multiple of N_GPUS
+ITERS = 200000 # How many its to train for
 LAMBDA = 10 # Gradient penalty lambda hyperparameter
 OUTPUT_DIM = 112*96*3 # Number of pixels in each iamge
 DATA_TRAIN = "data.train"
 DATA_VAL = "data.val"
+data_train = open(DATA_TRAIN ).read().split('\n')
+data_train.pop(len(data_train) -1 )
+data_train = np.array( data_train )
+data_val = open(DATA_VAL).read().split('\n')
+data_val.pop(len(data_val)-1)
+data_val = np.array( data_val )
 H = 28
 W = 24
+NAME = ""
+if ( len(sys.argv) > 1  ):
+    NAME  = sys.argv[1]
+    OUTPUT_PATH = "output/" + NAME 
+    CHECKPOINT_PATH = "checkpoint/" + NAME
+else:
+    OUTPUT_PATH = "output/default"
+    CHECKPOINT_PATH= "checkpoint/default"
+if not os.path.exists(OUTPUT_PATH):
+    os.mkdir(OUTPUT_PATH)
+if not os.path.exists(CHECKPOINT_PATH):
+    os.mkdir(CHECKPOINT_PATH)
 
 lib.print_model_settings(locals().copy())
 
@@ -220,11 +248,8 @@ def WGANPaper_CrippledDCGANGenerator(n_samples, noise=None, dim=DIM):
 def ResnetGenerator(n_samples, inputs, dim=DIM):
 
    # output = lib.ops.linear.Linear('Generator.Input', 128, 2*H*W*dim, inputs)
-    #print(inputs)
-    #assert 1==2
     #output = lib.ops.linear.Linear('Generator.Input' , 3 , 2*H*W*dim , inputs )
     output = lib.ops.conv2d.Conv2D('Generator.Input' , 3 , 2*dim ,1, inputs , stride  = 1   )
-    print(output.shape)
     output = tf.reshape( output , [-1, 2*dim, H, W ])
 
     for i in xrange(6):
@@ -302,26 +327,26 @@ def MultiplicativeDCGANDiscriminator(inputs, dim=DIM, bn=True):
 
 
 def ResnetDiscriminator(inputs, dim=DIM):
-    output = tf.reshape(inputs, [-1, 3, 64, 64])
+    output = tf.reshape(inputs, [-1, 3, 112, 96])
     output = lib.ops.conv2d.Conv2D('Discriminator.In', 3, dim/2, 1, output, he_init=False)
 
     for i in xrange(5):
-        output = ResidualBlock('Discriminator.64x64_{}'.format(i), dim/2, dim/2, 3, output, resample=None)
+        output = ResidualBlock('Discriminator.112x96_{}'.format(i), dim/2, dim/2, 3, output, resample=None)
     output = ResidualBlock('Discriminator.Down1', dim/2, dim*1, 3, output, resample='down')
     for i in xrange(6):
-        output = ResidualBlock('Discriminator.32x32_{}'.format(i), dim*1, dim*1, 3, output, resample=None)
+        output = ResidualBlock('Discriminator.56x48_{}'.format(i), dim*1, dim*1, 3, output, resample=None)
     output = ResidualBlock('Discriminator.Down2', dim*1, dim*2, 3, output, resample='down')
     for i in xrange(6):
-        output = ResidualBlock('Discriminator.16x16_{}'.format(i), dim*2, dim*2, 3, output, resample=None)
+        output = ResidualBlock('Discriminator.28x24_{}'.format(i), dim*2, dim*2, 3, output, resample=None)
     output = ResidualBlock('Discriminator.Down3', dim*2, dim*4, 3, output, resample='down')
     for i in xrange(6):
-        output = ResidualBlock('Discriminator.8x8_{}'.format(i), dim*4, dim*4, 3, output, resample=None)
+        output = ResidualBlock('Discriminator.14x12_{}'.format(i), dim*4, dim*4, 3, output, resample=None)
     output = ResidualBlock('Discriminator.Down4', dim*4, dim*8, 3, output, resample='down')
     for i in xrange(6):
-        output = ResidualBlock('Discriminator.4x4_{}'.format(i), dim*8, dim*8, 3, output, resample=None)
+        output = ResidualBlock('Discriminator.7x6_{}'.format(i), dim*8, dim*8, 3, output, resample=None)
 
-    output = tf.reshape(output, [-1, 4*4*8*dim])
-    output = lib.ops.linear.Linear('Discriminator.Output', 4*4*8*dim, 1, output)
+    output = tf.reshape(output, [-1, 7*6*8*dim])
+    output = lib.ops.linear.Linear('Discriminator.Output', 7*6*8*dim, 1, output)
 
     return tf.reshape(output / 5., [-1])
 
@@ -385,100 +410,174 @@ def myGenerator( inputs , nonlinearity = tf.nn.relu   ):
 
 Generator, Discriminator = GeneratorAndDiscriminator()
 
+
+
+DEVICES = ['/gpu:{}'.format(i) for i in xrange(N_GPUS)]
+
 config = tf.ConfigProto(allow_soft_placement=True , log_device_placement=False )
 config.gpu_options.allow_growth=True
 with tf.Session(config=config) as session:
+    
 
-    #flipped = tf.image.random_flip_left_right( cropped )
-    #minibatch =  tf.cast( tf.train.batch([flipped] , BATCH_SIZE  , capacity = BATCH_SIZE * 30  ) , tf.float32 )
-    minibatch = tf.placeholder( tf.uint8 , shape =(BATCH_SIZE , H*4 , W * 4 , 3 )  )
-    minibatch_lr = tf.image.resize_bicubic( minibatch , [ H,W ]  )
-    x_lr = tf.transpose( minibatch_lr , [0,3,1,2] )
-    x = tf.transpose( minibatch , [0,3,1,2])
+    if TENSORFLOW_READ:
+        with tf.device('/cpu:0'):
+            file_names=open(DATA_TRAIN,'r').read().split('\n')
+            file_names.pop( len(file_names) -1 )
+            steps_per_epoch = len(file_names) / BATCH_SIZE
+            #random.shuffle(file_names)
+            filename_queue=tf.train.string_input_producer(file_names)
+            reader=tf.WholeFileReader()
+            _,value=reader.read(filename_queue)
+            image=tf.image.decode_jpeg(value)
+            cropped=tf.random_crop(image,[ H *4, W*4,3])
+            flipped = tf.image.random_flip_left_right( cropped )
+            minibatch =   tf.train.batch([flipped] , BATCH_SIZE  , capacity = BATCH_SIZE * 30  ) 
+    else:
+        minibatch = tf.placeholder( tf.uint8 , shape =(BATCH_SIZE , H*4 , W * 4 , 3 )  )
 
-    #split_real_data_conv  = tf.split( x ,  )
-    gen_costs, disc_costs = [],[]
 
-    real_data = tf.reshape(2*((tf.cast( x , tf.float32)/255.)-.5), [BATCH_SIZE, OUTPUT_DIM])
-    fake_data = Generator(BATCH_SIZE , inputs = x_lr )
+    gen_costs  , disc_costs , fake_datas , real_datas = []  , [] , [] , []
+    split_minibatch  = tf.split( minibatch , len(DEVICES) , axis = 0  )
+    for device_index , device in enumerate(DEVICES):
+        with tf.device(device):
+            minibatch_idx = split_minibatch[device_index]
+            minibatch_lr = tf.image.resize_bicubic( minibatch_idx , [ H,W ]  )
+            x_lr = tf.transpose( minibatch_lr , [0,3,1,2] )
+            x = tf.transpose( minibatch_idx , [0,3,1,2])
 
-    disc_real = Discriminator(real_data)
-    disc_fake = Discriminator(fake_data)
 
-    gen_cost = -tf.reduce_mean(disc_fake)
-    disc_cost = tf.reduce_mean(disc_fake) - tf.reduce_mean(disc_real)
+            real_data = tf.reshape(2*((tf.cast( x , tf.float32)/255.)-.5), [BATCH_SIZE/len(DEVICES), OUTPUT_DIM])
+            fake_data = Generator(BATCH_SIZE/len(DEVICES) , inputs = x_lr )
 
-    alpha = tf.random_uniform(
-        shape=[BATCH_SIZE,1], 
-        minval=0.,
-        maxval=1.
-    )
-    differences = fake_data - real_data
-    interpolates = real_data + (alpha*differences)
-    gradients = tf.gradients(Discriminator(interpolates), [interpolates])[0]
-    slopes = tf.sqrt(tf.reduce_sum(tf.square(gradients), reduction_indices=[1]))
-    gradient_penalty = tf.reduce_mean((slopes-1.)**2)
-    disc_cost += LAMBDA*gradient_penalty
 
-    gen_costs.append(gen_cost)
-    disc_costs.append(disc_cost)
+            disc_real = Discriminator(real_data)
+            disc_fake = Discriminator(fake_data)
 
-    gen_cost = tf.add_n(gen_costs)  
-    disc_cost = tf.add_n(disc_costs)  
+            gen_cost = -tf.reduce_mean(disc_fake)
+            disc_cost = tf.reduce_mean(disc_fake) - tf.reduce_mean(disc_real)
+
+            alpha = tf.random_uniform(
+                shape=[BATCH_SIZE/len(DEVICES),1], 
+                minval=0.,
+                maxval=1.
+            )
+            differences = fake_data - real_data
+            interpolates = real_data + (alpha*differences)
+            gradients = tf.gradients(Discriminator(interpolates), [interpolates])[0]
+            slopes = tf.sqrt(tf.reduce_sum(tf.square(gradients), reduction_indices=[1]))
+            gradient_penalty = tf.reduce_mean((slopes-1.)**2)
+            disc_cost += LAMBDA*gradient_penalty
+
+            gen_costs.append(gen_cost)
+            disc_costs.append(disc_cost)
+            real_datas.append(real_data) 
+            fake_datas.append(fake_data)
+
+    gen_cost = tf.add_n(gen_costs)/len(DEVICES)  
+    disc_cost = tf.add_n(disc_costs)/len(DEVICES)  
+    real_data = tf.concat( real_datas , axis = 0  )
+    fake_data = tf.concat( fake_datas , axis = 0  ) 
+
+
+
+    global_step = tf.Variable( initial_value = 0 , dtype = tf.int32 , trainable=0 ,name = 'global_step')
 
     gen_train_op = tf.train.AdamOptimizer(learning_rate=1e-4, beta1=0.5, beta2=0.9).minimize(gen_cost,
-                                      var_list=lib.params_with_name('Generator'), colocate_gradients_with_ops=True)
+                                      var_list=lib.params_with_name('Generator'), colocate_gradients_with_ops=True , global_step = global_step)
     disc_train_op = tf.train.AdamOptimizer(learning_rate=1e-4, beta1=0.5, beta2=0.9).minimize(disc_cost,
                                        var_list=lib.params_with_name('Discriminator.'), colocate_gradients_with_ops=True)
 
     
     # For generating samples
-    def generate_image(iteration):
-        samples = session.run( fake_data )
-        samples = ((samples+1.)*(255.99/2)).astype('int32')
-        lib.save_images.save_images(samples.reshape((BATCH_SIZE, 3, H*4, W*4)), 'samples_{}.png'.format(iteration))
+    def generate_image(it):
+
+        _get_batch = lib.read.get_batch( data_train , BATCH_SIZE )
+        real_samples , samples = session.run( [real_data , fake_data ] , feed_dict = { minibatch:_get_batch }) 
+
+        samples = ((samples+1.)*(255.99/2)).astype('uint8')
+        samples = samples.reshape((BATCH_SIZE, 3, H*4, W*4))
+        real_samples = ((real_samples+1.)*(255.99/2)).astype('uint8')
+        real_samples = real_samples.reshape((BATCH_SIZE, 3, H*4, W*4))
+        
+        with tf.device('/cpu:0'):
+            lib.save_images.save_images( samples , OUTPUT_PATH+'/samples_{}_gen.png'.format(it))
+            lib.save_images.save_images( real_samples , OUTPUT_PATH+'/samples_{}_real.png'.format(it))
 
 
-    #save groud truth images
-    #print(  _x.shape )
-    session.run(tf.initialize_all_variables())
+
+    if TEST_SPEED:
+        x_time = np.zeros(10)
+        whole_time = np.zeros(10)
+        
+    
+        for j in xrange(10):
+            if TENSORFLOW_READ:
+                session.run(tf.global_variables_initializer())
+                session.run(tf.local_variables_initializer())
+                tf.train.start_queue_runners()
+                st = time.time()
+                session.run( x  )
+                ed = time.time()
+                x_time[j] =  ed - st
+                st = time.time()
+                for i in xrange(CRITIC_ITERS):
+                    session.run ( disc_train_op )
+                session.run( gen_train_op  )
+                ed = time.time()
+                whole_time[j]= ed - st
+            else:
+                session.run(tf.global_variables_initializer())
+                st = time.time()
+                a = lib.read.get_batch( data_train ,BATCH_SIZE)
+                session.run( x , feed_dict={minibatch:a}  )
+                ed = time.time()
+                x_time[j] = ed - st 
+
+                st = time.time()
+                a = lib.read.get_batch( data_train ,BATCH_SIZE)
+                for i in xrange(CRITIC_ITERS):
+                    session.run ( disc_train_op ,  feed_dict={minibatch:a})
+                session.run( gen_train_op , feed_dict = {minibatch:a} )
+                ed = time.time()
+                whole_time[j] = ed - st 
+        print("x:time {} , whole time {}".format(np.mean(x_time), np.mean(whole_time)))
+
+        assert 1==2
+
+
+    session.run(tf.global_variables_initializer())
+    session.run(tf.local_variables_initializer())
     tf.train.start_queue_runners()
-    print("before real_data saving")
-    _x_r = x.eval( {minibatch:get_batch(DATA_TRAIN)} )
-    print("real_data saved")
-    _x_r = ((_x_r+1.)*(255.99/2)).astype('int32')
-    lib.save_images.save_images(_x_r.reshape((BATCH_SIZE, 3, H*4, W*4)), 'samples_groundtruth.png')
-
-
     # Train loop
     #gen = inf_train_gen()
-    for iteration in xrange(ITERS):
-        train_batch = get_batch(DATA_TRAIN , BATCH_SIZE)
+    saver = tf.train.Saver(var_list= tf.get_collection( tf.GraphKeys.GLOBAL_VARIABLES) )
+    if os.path.exists( CHECKPOINT_PATH+"/srwgan.meta" ):
+        saver.restore( session , CHECKPOINT_PATH+"/srwgan" )
+    else:
+        session.run(tf.global_variables_initializer())
+        
 
-        start_time = time.time()
 
-        # Train generator
-        if iteration > 0:
-            _ = session.run(gen_train_op,feed_dict={minibatch:train_batch})
+    it = global_step.eval
+    
+    while it() < ITERS :
+        train_batch = lib.read.get_batch( data_train , BATCH_SIZE)
 
-        # Train critic
+        if (it() < 50) or it() % 100 == 99  :
+            val_batch = lib.read.get_batch( data_val , BATCH_SIZE )
+            train_gen_cost ,train_disc_cost = session.run( [gen_cost , disc_cost] , feed_dict = { minibatch:train_batch } ) 
+            val_gen_cost , val_disc_cost = session.run( [gen_cost , disc_cost ] , feed_dict = { minibatch:val_batch } ) 
+            s = time.strftime("%Y-%m-%d %H:%M:%S ",time.localtime(time.time())) + "iter "+str(it()) + ' train disc cost {} gen cost {}'.format( train_disc_cost, train_gen_cost)
+            s += "            val disc cost {} gen cost {}".format( val_disc_cost , val_gen_cost )  
+            print(s)
+            saver.save( session , CHECKPOINT_PATH+'/srwgan')
+            generate_image(it())
+            
         disc_iters = CRITIC_ITERS
         for i in xrange(disc_iters):
-            _disc_cost,_ = session.run([disc_cost , disc_train_op],feed_dict={minibatch:train_batch})
+            _ = session.run( disc_train_op,feed_dict={minibatch:train_batch})
+        _ = session.run(gen_train_op,feed_dict={minibatch:train_batch})
 
 
-        if (iteration < 50) or iteration % 100 == 99  :
-            val_batch = get_batch(DATA_VAL , BATCH_SIZE )
-            train_disc_cost = _disc_cost 
-            train_gen_cost = gen_cost.eval({minibatch:train_batch})
-            val_disc_cost = disc_cost.eval({minibatch:val_batch})
-            val_gen_cost = gen_cost.eval({minibatch:val_batch})
-            
-            s = time.strftime("%Y-%m-%d %H:%M:%S ",time.localtime(time.time())) + "iter "+str(iteration) + ' train disc cost {} gen cost {}'.format( train_disc_cost, train_gen_cost.eval())
-            print(s)
-            s = "            val disc cost {} gen cost {}".format( val_disc_cost , val_gen_cost )  
-            print(s)
-            
-            generate_image(iteration)
 
       #  lib.plot.tick()

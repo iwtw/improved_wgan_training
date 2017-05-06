@@ -5,3 +5,8 @@ push
 *.pkl
 *.jpg
 *.png
+*.swp
+checkpoint/
+output/
+data*
+LICENSE

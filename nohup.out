@@ -1,0 +1,1321 @@
+Uppercase local vars:
+	BATCH_SIZE: 64
+	CRITIC_ITERS: 5
+	DATA_DIR: ~/asian-webface-align
+	DATA_TRAIN: data.train
+	DATA_VAL: data.val
+	DIM: 32
+	H: 28
+	ITERS: 200000
+	LAMBDA: 10
+	MODE: wgan-gp
+	N_GPUS: 2
+	OUTPUT_DIM: 32256
+	W: 24
+2017-05-02 17:33:22.454288: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 17:33:22.454324: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 17:33:22.454333: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 17:33:22.454340: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 17:33:22.454347: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 17:33:22.884714: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:82:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-02 17:33:22.885307: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x38cce00
+2017-05-02 17:33:23.278600: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:83:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-02 17:33:23.279634: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 
+2017-05-02 17:33:23.279661: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y 
+2017-05-02 17:33:23.279673: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y 
+2017-05-02 17:33:23.279720: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:82:00.0)
+2017-05-02 17:33:23.279740: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX TITAN X, pci bus id: 0000:83:00.0)
+WARNING:tensorflow:From gan_face.py:448: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+before real_data saving
+real_data saved
+2017-05-02 17:33:43 iter 0 train disc cost 9.48937320709 gen cost 0.338602125645            val disc cost 3.51572966576 gen cost 0.321856677532
+2017-05-02 17:33:53 iter 1 train disc cost 0.258833885193 gen cost 1.26481389999            val disc cost -0.75817155838 gen cost 1.30863595009
+2017-05-02 17:34:02 iter 2 train disc cost -2.5237736702 gen cost 2.60350203514            val disc cost -2.21808981895 gen cost 2.60965967178
+2017-05-02 17:34:09 iter 3 train disc cost -4.09049606323 gen cost 4.09060955048            val disc cost -4.76795864105 gen cost 4.1615858078
+2017-05-02 17:34:17 iter 4 train disc cost -6.43315410614 gen cost 6.36352396011            val disc cost -5.63312625885 gen cost 6.39015007019
+2017-05-02 17:34:23 iter 5 train disc cost -9.38280582428 gen cost 8.43941497803            val disc cost -9.5682592392 gen cost 8.55534934998
+2017-05-02 17:34:30 iter 6 train disc cost -11.1684780121 gen cost 10.5406656265            val disc cost -12.0944461823 gen cost 10.5332489014
+2017-05-02 17:34:36 iter 7 train disc cost -14.1150541306 gen cost 12.2786302567            val disc cost -13.8578186035 gen cost 12.2824201584
+2017-05-02 17:34:41 iter 8 train disc cost -16.5730323792 gen cost 13.7142839432            val disc cost -17.2880516052 gen cost 13.7487564087
+2017-05-02 17:34:48 iter 9 train disc cost -18.5179595947 gen cost 15.1543159485            val disc cost -18.0265617371 gen cost 15.2564401627
+2017-05-02 17:34:54 iter 10 train disc cost -21.4554634094 gen cost 17.9106693268            val disc cost -20.4912929535 gen cost 17.6639919281
+2017-05-02 17:35:01 iter 11 train disc cost -21.0697154999 gen cost 17.4654808044            val disc cost -22.7757167816 gen cost 17.5236473083
+2017-05-02 17:35:06 iter 12 train disc cost -24.2150058746 gen cost 19.0579471588            val disc cost -23.5438842773 gen cost 18.878194809
+2017-05-02 17:35:11 iter 13 train disc cost -24.2279815674 gen cost 20.3060398102            val disc cost -26.1630058289 gen cost 20.3006134033
+2017-05-02 17:35:18 iter 14 train disc cost -27.5509815216 gen cost 23.7447338104            val disc cost -26.6798229218 gen cost 23.9409217834
+2017-05-02 17:35:23 iter 15 train disc cost -27.0547981262 gen cost 21.7677135468            val disc cost -29.9477005005 gen cost 22.0796089172
+2017-05-02 17:35:29 iter 16 train disc cost -29.6873836517 gen cost 23.8698444366            val disc cost -30.6358718872 gen cost 23.8770389557
+2017-05-02 17:35:34 iter 17 train disc cost -34.1675338745 gen cost 26.9378147125            val disc cost -30.7315711975 gen cost 26.6152839661
+2017-05-02 17:35:40 iter 18 train disc cost -29.3133850098 gen cost 18.9575462341            val disc cost -31.5366611481 gen cost 18.9522762299
+2017-05-02 17:35:45 iter 19 train disc cost -32.2310218811 gen cost 24.4987792969            val disc cost -34.2821159363 gen cost 24.360496521
+2017-05-02 17:35:52 iter 20 train disc cost -35.6401863098 gen cost 29.8840408325            val disc cost -33.6115379333 gen cost 30.2724895477
+2017-05-02 17:35:58 iter 21 train disc cost -34.8197746277 gen cost 25.1116428375            val disc cost -35.7109527588 gen cost 25.0764484406
+2017-05-02 17:36:03 iter 22 train disc cost -34.3868484497 gen cost 24.2222232819            val disc cost -35.6707839966 gen cost 23.6539382935
+2017-05-02 17:36:08 iter 23 train disc cost -35.6083106995 gen cost 29.4916858673            val disc cost -36.3499259949 gen cost 28.45154953
+2017-05-02 17:36:13 iter 24 train disc cost -35.4862747192 gen cost 31.5207366943            val disc cost -35.9903793335 gen cost 31.6265525818
+2017-05-02 17:36:19 iter 25 train disc cost -36.1969146729 gen cost 25.5005149841            val disc cost -35.9316749573 gen cost 25.1423549652
+2017-05-02 17:36:24 iter 26 train disc cost -39.9264030457 gen cost 35.9839248657            val disc cost -37.3457794189 gen cost 36.143447876
+2017-05-02 17:36:31 iter 27 train disc cost -36.5756950378 gen cost 26.951965332            val disc cost -38.963394165 gen cost 27.9791488647
+2017-05-02 17:36:38 iter 28 train disc cost -37.8685379028 gen cost 24.7753562927            val disc cost -39.0339584351 gen cost 24.5871372223
+2017-05-02 17:36:45 iter 29 train disc cost -39.4104309082 gen cost 30.931180954            val disc cost -39.8026351929 gen cost 30.7206478119
+2017-05-02 17:36:52 iter 30 train disc cost -40.4506568909 gen cost 29.1974430084            val disc cost -41.1099777222 gen cost 29.7838573456
+2017-05-02 17:37:02 iter 31 train disc cost -41.4937477112 gen cost 35.9702301025            val disc cost -37.6651153564 gen cost 35.5203666687
+2017-05-02 17:37:10 iter 32 train disc cost -38.2711029053 gen cost 25.1179580688            val disc cost -40.7565040588 gen cost 25.5420265198
+2017-05-02 17:37:19 iter 33 train disc cost -42.2782287598 gen cost 34.1970443726            val disc cost -42.8644142151 gen cost 34.0255432129
+2017-05-02 17:37:29 iter 34 train disc cost -41.8889465332 gen cost 33.8797531128            val disc cost -42.8652877808 gen cost 32.5606765747
+2017-05-02 17:37:37 iter 35 train disc cost -43.489730835 gen cost 35.1978607178            val disc cost -44.9958648682 gen cost 35.2326202393
+2017-05-02 17:37:44 iter 36 train disc cost -40.5811729431 gen cost 28.1973190308            val disc cost -43.4487533569 gen cost 29.236700058
+2017-05-02 17:37:52 iter 37 train disc cost -44.1137886047 gen cost 34.2912368774            val disc cost -44.2187309265 gen cost 33.8848190308
+2017-05-02 17:37:58 iter 38 train disc cost -42.8123474121 gen cost 30.4350509644            val disc cost -45.246547699 gen cost 31.072303772
+2017-05-02 17:38:08 iter 39 train disc cost -43.5217208862 gen cost 33.3689422607            val disc cost -45.0393676758 gen cost 33.9616546631
+2017-05-02 17:38:17 iter 40 train disc cost -42.8429489136 gen cost 34.9984741211            val disc cost -44.6246910095 gen cost 34.4763145447
+2017-05-02 17:38:25 iter 41 train disc cost -43.0470466614 gen cost 34.588973999            val disc cost -44.3259735107 gen cost 35.3065032959
+2017-05-02 17:38:31 iter 42 train disc cost -44.8989181519 gen cost 32.6985740662            val disc cost -42.0802230835 gen cost 31.815032959
+2017-05-02 17:38:39 iter 43 train disc cost -43.4829940796 gen cost 41.7292747498            val disc cost -44.6054840088 gen cost 41.8960342407
+2017-05-02 17:38:49 iter 44 train disc cost -45.2950363159 gen cost 34.4345169067            val disc cost -44.0226554871 gen cost 34.3371429443
+2017-05-02 17:38:59 iter 45 train disc cost -45.053188324 gen cost 38.6756820679            val disc cost -43.0520629883 gen cost 39.3083267212
+2017-05-02 17:39:08 iter 46 train disc cost -47.9908370972 gen cost 37.1512107849            val disc cost -46.3322753906 gen cost 37.5352897644
+2017-05-02 17:39:20 iter 47 train disc cost -42.5137557983 gen cost 25.6564102173            val disc cost -44.1322898865 gen cost 25.4021720886
+2017-05-02 17:39:29 iter 48 train disc cost -48.0812950134 gen cost 38.3108062744            val disc cost -44.9201774597 gen cost 38.4937324524
+2017-05-02 17:39:36 iter 49 train disc cost -45.9855613708 gen cost 37.8872756958            val disc cost -44.6599731445 gen cost 36.4668579102
+2017-05-02 17:42:08 iter 99 train disc cost -50.9362068176 gen cost 35.6436691284            val disc cost -51.5278396606 gen cost 35.2814865112
+2017-05-02 17:46:41 iter 199 train disc cost -32.8810348511 gen cost 19.2123317719            val disc cost -33.1966400146 gen cost 18.9218616486
+2017-05-02 17:51:31 iter 299 train disc cost -26.9607658386 gen cost 10.117401123            val disc cost -26.7544975281 gen cost 9.61254405975
+2017-05-02 17:56:14 iter 399 train disc cost -23.6196136475 gen cost -7.9013967514            val disc cost -24.0140647888 gen cost -7.50923681259
+2017-05-02 18:01:00 iter 499 train disc cost -18.577041626 gen cost -19.3476524353            val disc cost -18.6725845337 gen cost -19.3882904053
+2017-05-02 18:05:11 iter 599 train disc cost -17.9437561035 gen cost -27.8027839661            val disc cost -17.513633728 gen cost -27.6261329651
+2017-05-02 18:09:51 iter 699 train disc cost -17.6864395142 gen cost -33.4185066223            val disc cost -16.7268104553 gen cost -33.5633354187
+2017-05-02 18:14:23 iter 799 train disc cost -14.1700201035 gen cost -39.675994873            val disc cost -14.0257453918 gen cost -40.1386566162
+2017-05-02 18:18:16 iter 899 train disc cost -6.48525428772 gen cost -55.4638366699            val disc cost -6.3047246933 gen cost -55.465007782
+2017-05-02 18:22:42 iter 999 train disc cost -4.77945232391 gen cost -58.0141830444            val disc cost -4.75972366333 gen cost -57.9527053833
+2017-05-02 18:27:16 iter 1099 train disc cost -4.03161096573 gen cost -58.8157920837            val disc cost -4.72261667252 gen cost -57.7510070801
+2017-05-02 18:32:09 iter 1199 train disc cost -3.4909529686 gen cost -56.0062599182            val disc cost -1.93027710915 gen cost -57.1513404846
+2017-05-02 18:37:06 iter 1299 train disc cost -2.61396217346 gen cost -56.3425331116            val disc cost -2.43749976158 gen cost -56.8710861206
+2017-05-02 18:41:58 iter 1399 train disc cost -3.08737373352 gen cost -55.0851173401            val disc cost -2.27268362045 gen cost -54.6419487
+2017-05-02 18:46:48 iter 1499 train disc cost -2.43214869499 gen cost -53.1423454285            val disc cost -2.31574225426 gen cost -52.9298324585
+2017-05-02 18:51:22 iter 1599 train disc cost -2.35092306137 gen cost -53.3856277466            val disc cost -2.72893309593 gen cost -53.2307624817
+2017-05-02 18:55:53 iter 1699 train disc cost -2.52772402763 gen cost -52.5427780151            val disc cost -2.46279335022 gen cost -52.671043396
+2017-05-02 19:00:28 iter 1799 train disc cost -2.02321124077 gen cost -46.648727417            val disc cost -2.46037554741 gen cost -46.701713562
+2017-05-02 19:05:18 iter 1899 train disc cost -2.16328430176 gen cost -47.6207809448            val disc cost -2.29014635086 gen cost -47.9223518372
+2017-05-02 19:10:18 iter 1999 train disc cost -1.87616682053 gen cost -51.374332428            val disc cost -1.94046282768 gen cost -51.2779884338
+2017-05-02 19:15:34 iter 2099 train disc cost -3.33515739441 gen cost -45.5530357361            val disc cost -1.95608413219 gen cost -46.1509895325
+2017-05-02 19:23:22 iter 2199 train disc cost -5.64184474945 gen cost -48.4169998169            val disc cost -3.87873840332 gen cost -48.7231674194
+2017-05-02 19:34:13 iter 2299 train disc cost -1.05435085297 gen cost -49.3173713684            val disc cost -1.34171843529 gen cost -49.2055244446
+2017-05-02 19:43:18 iter 2399 train disc cost -1.9628443718 gen cost -50.6189689636            val disc cost -1.28261017799 gen cost -50.2432632446
+2017-05-02 19:51:51 iter 2499 train disc cost -2.85904383659 gen cost -46.2612228394            val disc cost -0.398556530476 gen cost -45.8567237854
+2017-05-02 20:00:11 iter 2599 train disc cost -4.08543491364 gen cost -45.6035652161            val disc cost -1.42921376228 gen cost -45.7099952698
+2017-05-02 20:05:21 iter 2699 train disc cost -5.41624832153 gen cost -48.9259109497            val disc cost -3.63313937187 gen cost -48.6463775635
+2017-05-02 20:10:13 iter 2799 train disc cost -1.67812895775 gen cost -52.2017555237            val disc cost -1.57713413239 gen cost -52.1603622437
+2017-05-02 20:15:08 iter 2899 train disc cost -1.81787693501 gen cost -45.3447303772            val disc cost -0.906346201897 gen cost -46.4588470459
+2017-05-02 20:19:47 iter 2999 train disc cost -4.28025102615 gen cost -46.3756942749            val disc cost -2.7535264492 gen cost -47.1891708374
+2017-05-02 20:27:21 iter 3099 train disc cost -0.956110715866 gen cost -49.5185890198            val disc cost -1.60008656979 gen cost -49.4187088013
+2017-05-02 20:35:43 iter 3199 train disc cost -1.60877156258 gen cost -49.4557151794            val disc cost -1.7034457922 gen cost -49.3719406128
+2017-05-02 20:40:39 iter 3299 train disc cost -4.08350229263 gen cost -43.6567687988            val disc cost -3.05322313309 gen cost -44.0769767761
+2017-05-02 20:45:09 iter 3399 train disc cost -1.35827422142 gen cost -50.7109451294            val disc cost -1.56746017933 gen cost -50.9072685242
+Traceback (most recent call last):
+  File "gan_face.py", line 58, in <module>
+    OUTPUT_PATH = "output/" + name 
+NameError: name 'name' is not defined
+Uppercase local vars:
+	BATCH_SIZE: 32
+	CHECKPOINT_PATH: output/1
+	CRITIC_ITERS: 5
+	DATA_DIR: ~/asian-webface-align
+	DATA_TRAIN: data.train
+	DATA_VAL: data.val
+	DIM: 32
+	H: 28
+	ITERS: 200000
+	LAMBDA: 10
+	MODE: wgan-gp
+	NAME: 1
+	N_GPUS: 2
+	OUTPUT_DIM: 32256
+	OUTPUT_PATH: output/1
+	TENSORFLOW_READ: False
+	TEST_SPEED: False
+	W: 24
+2017-05-02 22:29:33.112108: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 22:29:33.112140: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 22:29:33.112147: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 22:29:33.112153: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 22:29:33.112166: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 22:29:33.634014: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:82:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-02 22:29:33.634136: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x482cb80
+2017-05-02 22:29:34.077651: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:83:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-02 22:29:34.080594: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 
+2017-05-02 22:29:34.080632: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y 
+2017-05-02 22:29:34.080645: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y 
+2017-05-02 22:29:34.080721: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:82:00.0)
+2017-05-02 22:29:34.080750: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX TITAN X, pci bus id: 0000:83:00.0)
+2017-05-02 22:29:46 iter 0 train disc cost 74.0815353394 gen cost -0.1587895751            val disc cost 56.6128883362 gen cost -0.143237411976
+Traceback (most recent call last):
+  File "gan_face.py", line 558, in <module>
+    generate_image(it())
+  File "gan_face.py", line 476, in generate_image
+    samples =  fake_data.eval({minibatch:lib.read.get_batch(DATA_TRAIN,BATCH_SIZE)} ) 
+  File "/home/wtw/improved_wgan_training/tflib/read.py", line 16, in get_batch
+    for i , j  in enumerate(path_array[mask]):
+TypeError: only integer arrays with one element can be converted to an index
+Uppercase local vars:
+	BATCH_SIZE: 32
+	CHECKPOINT_PATH: output/1
+	CRITIC_ITERS: 5
+	DATA_DIR: ~/asian-webface-align
+	DATA_TRAIN: data.train
+	DATA_VAL: data.val
+	DIM: 32
+	H: 28
+	ITERS: 200000
+	LAMBDA: 10
+	MODE: wgan-gp
+	NAME: 1
+	N_GPUS: 2
+	OUTPUT_DIM: 32256
+	OUTPUT_PATH: output/1
+	TENSORFLOW_READ: False
+	TEST_SPEED: False
+	W: 24
+2017-05-02 22:31:29.001517: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 22:31:29.001550: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 22:31:29.001557: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 22:31:29.001562: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 22:31:29.001567: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 22:31:29.518234: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:82:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-02 22:31:29.518392: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x45a44c0
+2017-05-02 22:31:29.959300: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:83:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-02 22:31:29.960002: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 
+2017-05-02 22:31:29.960018: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y 
+2017-05-02 22:31:29.960025: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y 
+2017-05-02 22:31:29.960050: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:82:00.0)
+2017-05-02 22:31:29.960061: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX TITAN X, pci bus id: 0000:83:00.0)
+Traceback (most recent call last):
+  File "gan_face.py", line 535, in <module>
+    saver.restsore( session , CHECKPOINT_PATH+"/srwgan" )
+AttributeError: 'Saver' object has no attribute 'restsore'
+Uppercase local vars:
+	BATCH_SIZE: 32
+	CHECKPOINT_PATH: output/1
+	CRITIC_ITERS: 5
+	DATA_DIR: ~/asian-webface-align
+	DATA_TRAIN: data.train
+	DATA_VAL: data.val
+	DIM: 32
+	H: 28
+	ITERS: 200000
+	LAMBDA: 10
+	MODE: wgan-gp
+	NAME: 1
+	N_GPUS: 2
+	OUTPUT_DIM: 32256
+	OUTPUT_PATH: output/1
+	TENSORFLOW_READ: False
+	TEST_SPEED: False
+	W: 24
+2017-05-02 22:32:55.029358: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 22:32:55.029397: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 22:32:55.029405: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 22:32:55.029411: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 22:32:55.029416: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 22:32:55.627639: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:82:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-02 22:32:55.627782: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x5030a20
+2017-05-02 22:32:56.065197: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:83:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-02 22:32:56.065964: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 
+2017-05-02 22:32:56.065982: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y 
+2017-05-02 22:32:56.065990: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y 
+2017-05-02 22:32:56.066014: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:82:00.0)
+2017-05-02 22:32:56.066025: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX TITAN X, pci bus id: 0000:83:00.0)
+2017-05-02 22:33:11 iter 0 train disc cost 48.9259681702 gen cost -0.131122082472            val disc cost 46.3369178772 gen cost -0.131479814649
+2017-05-02 22:33:19 iter 1 train disc cost 4.02346801758 gen cost 0.979512751102            val disc cost 5.91420888901 gen cost 1.02137804031
+2017-05-02 22:33:24 iter 2 train disc cost -1.62612891197 gen cost 1.87342047691            val disc cost -1.54196023941 gen cost 1.89694237709
+2017-05-02 22:33:29 iter 3 train disc cost -3.28157114983 gen cost 3.21701955795            val disc cost -2.64675068855 gen cost 3.20454525948
+2017-05-02 22:33:43 iter 4 train disc cost -6.06641101837 gen cost 4.90686416626            val disc cost -6.70831537247 gen cost 4.96716547012
+2017-05-02 22:33:49 iter 5 train disc cost -8.92811584473 gen cost 6.91068792343            val disc cost -8.03593063354 gen cost 6.78090143204
+2017-05-02 22:33:54 iter 6 train disc cost -12.8657503128 gen cost 8.85454368591            val disc cost -10.8568477631 gen cost 8.79264736176
+2017-05-02 22:34:00 iter 7 train disc cost -15.2479019165 gen cost 11.2174835205            val disc cost -12.8551130295 gen cost 11.5049495697
+2017-05-02 22:34:06 iter 8 train disc cost -17.4710788727 gen cost 11.1780872345            val disc cost -18.8344287872 gen cost 11.5499277115
+2017-05-02 22:34:11 iter 9 train disc cost -18.4279346466 gen cost 14.9614362717            val disc cost -20.5085811615 gen cost 14.8023376465
+2017-05-02 22:34:17 iter 10 train disc cost -22.4246082306 gen cost 14.6162376404            val disc cost -20.9759063721 gen cost 14.4898147583
+2017-05-02 22:34:22 iter 11 train disc cost -24.1651363373 gen cost 13.8363819122            val disc cost -24.9847946167 gen cost 14.1725788116
+2017-05-02 22:34:27 iter 12 train disc cost -25.0700130463 gen cost 15.607416153            val disc cost -24.7682266235 gen cost 15.6604614258
+2017-05-02 22:34:33 iter 13 train disc cost -28.6584873199 gen cost 18.2658691406            val disc cost -27.1917247772 gen cost 18.0261993408
+2017-05-02 22:34:39 iter 14 train disc cost -26.383852005 gen cost 17.0565261841            val disc cost -27.2187690735 gen cost 16.9247436523
+2017-05-02 22:34:45 iter 15 train disc cost -32.1930923462 gen cost 18.9838104248            val disc cost -31.8106746674 gen cost 18.7683372498
+2017-05-02 22:34:50 iter 16 train disc cost -32.37449646 gen cost 24.2535858154            val disc cost -30.8541965485 gen cost 24.380115509
+2017-05-02 22:34:55 iter 17 train disc cost -27.6388339996 gen cost 24.3816661835            val disc cost -33.4593505859 gen cost 24.4253292084
+2017-05-02 22:35:01 iter 18 train disc cost -33.4811859131 gen cost 21.4914360046            val disc cost -33.3676757812 gen cost 20.9941291809
+2017-05-02 22:35:07 iter 19 train disc cost -35.615070343 gen cost 23.3308830261            val disc cost -30.461227417 gen cost 23.6648921967
+2017-05-02 22:35:12 iter 20 train disc cost -35.5246963501 gen cost 22.3398971558            val disc cost -35.221622467 gen cost 22.1834945679
+2017-05-02 22:35:18 iter 21 train disc cost -35.9635505676 gen cost 24.3179969788            val disc cost -34.922492981 gen cost 24.0351791382
+2017-05-02 22:35:23 iter 22 train disc cost -37.3340835571 gen cost 27.0618438721            val disc cost -40.1884651184 gen cost 26.2507324219
+2017-05-02 22:35:28 iter 23 train disc cost -36.345954895 gen cost 22.5933265686            val disc cost -38.9697227478 gen cost 22.5373687744
+2017-05-02 22:35:34 iter 24 train disc cost -38.2373657227 gen cost 25.9834938049            val disc cost -40.2088241577 gen cost 27.4433441162
+2017-05-02 22:35:39 iter 25 train disc cost -38.7675514221 gen cost 27.5197563171            val disc cost -37.8147125244 gen cost 27.4383125305
+2017-05-02 22:35:44 iter 26 train disc cost -36.7494392395 gen cost 27.3839263916            val disc cost -37.1221504211 gen cost 26.4614830017
+2017-05-02 22:35:49 iter 27 train disc cost -39.8677062988 gen cost 25.8666725159            val disc cost -39.8154678345 gen cost 25.516626358
+2017-05-02 22:35:55 iter 28 train disc cost -36.0509033203 gen cost 20.23005867            val disc cost -37.5147247314 gen cost 20.7959098816
+2017-05-02 22:36:00 iter 29 train disc cost -39.0154495239 gen cost 23.5193691254            val disc cost -37.5776252747 gen cost 23.79529953
+2017-05-02 22:36:06 iter 30 train disc cost -39.2496414185 gen cost 24.968711853            val disc cost -37.0366592407 gen cost 23.113325119
+2017-05-02 22:36:11 iter 31 train disc cost -43.6672744751 gen cost 31.2238521576            val disc cost -39.7870635986 gen cost 31.3920173645
+2017-05-02 22:36:16 iter 32 train disc cost -40.6611633301 gen cost 23.3218708038            val disc cost -41.3532714844 gen cost 22.2541046143
+2017-05-02 22:36:21 iter 33 train disc cost -41.2142715454 gen cost 25.7314071655            val disc cost -40.2263374329 gen cost 25.760887146
+2017-05-02 22:36:26 iter 34 train disc cost -43.252040863 gen cost 34.8753356934            val disc cost -40.8415489197 gen cost 33.6469078064
+2017-05-02 22:36:31 iter 35 train disc cost -43.9571037292 gen cost 23.6483573914            val disc cost -44.399597168 gen cost 23.8226451874
+2017-05-02 22:36:37 iter 36 train disc cost -45.9167556763 gen cost 29.2038536072            val disc cost -45.0149993896 gen cost 29.0419216156
+2017-05-02 22:36:47 iter 37 train disc cost -45.0462036133 gen cost 32.872089386            val disc cost -45.2044296265 gen cost 34.0825309753
+2017-05-02 22:36:53 iter 38 train disc cost -43.0498046875 gen cost 25.0694236755            val disc cost -41.6293296814 gen cost 24.7585296631
+2017-05-02 22:36:58 iter 39 train disc cost -44.6230926514 gen cost 32.0133972168            val disc cost -41.523223877 gen cost 32.0858840942
+2017-05-02 22:37:02 iter 40 train disc cost -42.8452453613 gen cost 24.9236946106            val disc cost -45.5938453674 gen cost 26.2906913757
+2017-05-02 22:37:08 iter 41 train disc cost -43.5908355713 gen cost 26.85064888            val disc cost -43.5231704712 gen cost 25.985294342
+2017-05-02 22:37:13 iter 42 train disc cost -44.607837677 gen cost 28.6254806519            val disc cost -44.8779525757 gen cost 30.1309432983
+2017-05-02 22:37:18 iter 43 train disc cost -43.9396324158 gen cost 27.8640823364            val disc cost -42.7307357788 gen cost 27.5613384247
+2017-05-02 22:37:23 iter 44 train disc cost -45.3533248901 gen cost 35.8311920166            val disc cost -45.2551574707 gen cost 35.2235488892
+2017-05-02 22:37:28 iter 45 train disc cost -45.1910362244 gen cost 23.2549743652            val disc cost -43.2426528931 gen cost 23.7354888916
+2017-05-02 22:37:34 iter 46 train disc cost -45.9037666321 gen cost 28.4202613831            val disc cost -44.3833465576 gen cost 28.9940719604
+2017-05-02 22:37:39 iter 47 train disc cost -42.7269363403 gen cost 34.7815208435            val disc cost -47.5920219421 gen cost 35.7583770752
+2017-05-02 22:37:50 iter 48 train disc cost -45.8636703491 gen cost 29.9696502686            val disc cost -47.1471405029 gen cost 30.1490306854
+2017-05-02 22:37:55 iter 49 train disc cost -45.3921966553 gen cost 33.2481460571            val disc cost -47.6862030029 gen cost 34.6712913513
+2017-05-02 22:39:09 iter 99 train disc cost -46.2744255066 gen cost 30.7818546295            val disc cost -44.2064971924 gen cost 29.3154163361
+2017-05-02 22:41:35 iter 199 train disc cost -33.7355384827 gen cost 4.33744239807            val disc cost -34.7218322754 gen cost 5.50897169113
+2017-05-02 22:43:52 iter 299 train disc cost -20.2338352203 gen cost -5.09019470215            val disc cost -20.4409809113 gen cost -5.70069074631
+2017-05-02 22:46:15 iter 399 train disc cost -15.5242786407 gen cost -7.68521118164            val disc cost -14.5566749573 gen cost -7.63514089584
+2017-05-02 22:48:40 iter 499 train disc cost -12.4003696442 gen cost -10.9826507568            val disc cost -11.7285480499 gen cost -12.3770065308
+2017-05-02 22:50:58 iter 599 train disc cost -9.50585746765 gen cost -13.7537002563            val disc cost -11.8605918884 gen cost -13.3587055206
+2017-05-02 22:53:10 iter 699 train disc cost -10.3367214203 gen cost -15.0814609528            val disc cost -10.0151224136 gen cost -14.4414157867
+2017-05-02 22:55:26 iter 799 train disc cost -7.8423833847 gen cost -18.2422370911            val disc cost -7.57221460342 gen cost -17.8387489319
+2017-05-02 22:57:43 iter 899 train disc cost -7.9853515625 gen cost -18.598690033            val disc cost -8.39931297302 gen cost -18.4923820496
+2017-05-02 22:59:58 iter 999 train disc cost -7.440305233 gen cost -17.9527359009            val disc cost -7.40963935852 gen cost -17.8097991943
+2017-05-02 23:02:09 iter 1099 train disc cost -7.32673835754 gen cost -16.3795089722            val disc cost -7.29650783539 gen cost -16.175037384
+2017-05-02 23:04:28 iter 1199 train disc cost -6.93288803101 gen cost -13.785243988            val disc cost -6.83014011383 gen cost -13.5553541183
+2017-05-02 23:06:43 iter 1299 train disc cost -6.28606843948 gen cost -14.7906351089            val disc cost -8.16100025177 gen cost -14.1965970993
+2017-05-02 23:09:00 iter 1399 train disc cost -7.45168447495 gen cost -10.1257419586            val disc cost -7.003282547 gen cost -10.9498567581
+Traceback (most recent call last):
+  File "gan_face.py", line 544, in <module>
+    train_batch = lib.read.get_batch( data_train , BATCH_SIZE)
+  File "/home/wtw/improved_wgan_training/tflib/read.py", line 17, in get_batch
+    images[ i ] = scipy.misc.imread(j)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/scipy/misc/pilutil.py", line 154, in imread
+    im = Image.open(name)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/PIL/Image.py", line 2319, in open
+    prefix = fp.read(16)
+KeyboardInterrupt
+Uppercase local vars:
+	BATCH_SIZE: 32
+	CHECKPOINT_PATH: checkpoint/1
+	CRITIC_ITERS: 5
+	DATA_DIR: ~/asian-webface-align
+	DATA_TRAIN: data.train
+	DATA_VAL: data.val
+	DIM: 32
+	H: 28
+	ITERS: 200000
+	LAMBDA: 10
+	MODE: wgan-gp
+	NAME: 1
+	N_GPUS: 2
+	OUTPUT_DIM: 32256
+	OUTPUT_PATH: output/1
+	TENSORFLOW_READ: False
+	TEST_SPEED: False
+	W: 24
+2017-05-02 23:12:17.524498: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 23:12:17.526692: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 23:12:17.526710: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 23:12:17.526723: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 23:12:17.526734: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-02 23:12:24.470611: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:82:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-02 23:12:24.470744: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x321c4a0
+2017-05-02 23:12:24.927308: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:83:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-02 23:12:24.961357: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 
+2017-05-02 23:12:24.961427: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y 
+2017-05-02 23:12:24.961440: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y 
+2017-05-02 23:12:24.977586: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:82:00.0)
+2017-05-02 23:12:24.977616: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX TITAN X, pci bus id: 0000:83:00.0)
+2017-05-02 23:13:08 iter 1399 train disc cost -8.68581104279 gen cost -10.2609558105            val disc cost -8.29539012909 gen cost -10.5433311462
+2017-05-02 23:15:29 iter 1499 train disc cost -6.47465896606 gen cost -11.707868576            val disc cost -7.26665019989 gen cost -11.4766387939
+2017-05-02 23:17:45 iter 1599 train disc cost -8.43273735046 gen cost -11.6654472351            val disc cost -7.47695875168 gen cost -11.9759559631
+2017-05-02 23:20:02 iter 1699 train disc cost -3.79253077507 gen cost -12.5663223267            val disc cost -4.01089048386 gen cost -12.9424362183
+2017-05-02 23:22:19 iter 1799 train disc cost -2.58114290237 gen cost -22.1688022614            val disc cost -2.20128059387 gen cost -21.9113636017
+2017-05-02 23:24:31 iter 1899 train disc cost -1.83898389339 gen cost -21.3797798157            val disc cost -1.99827671051 gen cost -21.6874313354
+2017-05-02 23:26:42 iter 1999 train disc cost -1.46520638466 gen cost -27.2181854248            val disc cost -1.09022903442 gen cost -27.8970012665
+2017-05-02 23:28:54 iter 2099 train disc cost -1.49439036846 gen cost -28.731924057            val disc cost -2.16467881203 gen cost -28.0788326263
+2017-05-02 23:31:05 iter 2199 train disc cost -3.57809400558 gen cost -27.4142570496            val disc cost -2.51315283775 gen cost -28.1235275269
+2017-05-02 23:33:36 iter 2299 train disc cost 0.196281164885 gen cost -25.4900741577            val disc cost -1.79099214077 gen cost -25.0368022919
+2017-05-02 23:36:10 iter 2399 train disc cost -0.799078226089 gen cost -25.7132530212            val disc cost -1.68064153194 gen cost -25.5574226379
+2017-05-02 23:38:29 iter 2499 train disc cost -1.82240390778 gen cost -26.2069778442            val disc cost -2.04885530472 gen cost -26.0644340515
+2017-05-02 23:40:45 iter 2599 train disc cost -1.41894340515 gen cost -29.5992259979            val disc cost -0.700607776642 gen cost -29.9576053619
+2017-05-02 23:43:09 iter 2699 train disc cost -1.79636538029 gen cost -26.6842880249            val disc cost -1.80271625519 gen cost -26.5081214905
+2017-05-02 23:45:33 iter 2799 train disc cost -1.08886992931 gen cost -26.0671539307            val disc cost -1.0504976511 gen cost -26.4241313934
+2017-05-02 23:47:59 iter 2899 train disc cost -1.87456011772 gen cost -25.543592453            val disc cost -2.13128948212 gen cost -26.0101776123
+2017-05-02 23:50:21 iter 2999 train disc cost -2.21358394623 gen cost -27.8454036713            val disc cost -2.33236026764 gen cost -27.8808670044
+2017-05-02 23:53:11 iter 3099 train disc cost -1.27772212029 gen cost -26.1452407837            val disc cost -1.5088442564 gen cost -25.5977897644
+2017-05-02 23:55:34 iter 3199 train disc cost -1.78232705593 gen cost -28.4289054871            val disc cost -1.85089278221 gen cost -27.8847084045
+2017-05-02 23:58:06 iter 3299 train disc cost -1.39512753487 gen cost -30.1027431488            val disc cost -1.68834125996 gen cost -30.0129680634
+2017-05-03 00:01:20 iter 3399 train disc cost 1.12155866623 gen cost -32.0527420044            val disc cost -0.184088051319 gen cost -32.8268699646
+2017-05-03 00:04:03 iter 3499 train disc cost -2.06581735611 gen cost -30.0148048401            val disc cost 0.739654839039 gen cost -30.5037841797
+2017-05-03 00:06:19 iter 3599 train disc cost -0.677876472473 gen cost -30.1533737183            val disc cost -2.22587203979 gen cost -30.2077407837
+2017-05-03 00:08:49 iter 3699 train disc cost -0.606420397758 gen cost -28.7474060059            val disc cost -2.63219499588 gen cost -28.6417007446
+2017-05-03 00:11:18 iter 3799 train disc cost 2.05544281006 gen cost -32.368309021            val disc cost 1.62736713886 gen cost -31.7101020813
+2017-05-03 00:13:48 iter 3899 train disc cost -1.37799429893 gen cost -29.0620498657            val disc cost -2.08157205582 gen cost -29.8245372772
+2017-05-03 00:16:08 iter 3999 train disc cost -1.54650580883 gen cost -31.5219688416            val disc cost -1.78413414955 gen cost -31.3734931946
+2017-05-03 00:18:31 iter 4099 train disc cost -1.08625531197 gen cost -32.5427932739            val disc cost -1.45484876633 gen cost -32.3156051636
+2017-05-03 00:20:44 iter 4199 train disc cost -0.606710374355 gen cost -32.9562301636            val disc cost -1.48517370224 gen cost -33.4573287964
+2017-05-03 00:22:51 iter 4299 train disc cost 2.80029535294 gen cost -33.190788269            val disc cost 3.41872382164 gen cost -32.653175354
+2017-05-03 00:24:55 iter 4399 train disc cost -1.52909326553 gen cost -33.8468093872            val disc cost -1.1623686552 gen cost -33.6442947388
+2017-05-03 00:26:59 iter 4499 train disc cost 0.282913416624 gen cost -34.4678382874            val disc cost 0.0877768397331 gen cost -34.1344070435
+2017-05-03 00:29:05 iter 4599 train disc cost -1.33953201771 gen cost -33.4176445007            val disc cost 0.0156629681587 gen cost -33.7622642517
+2017-05-03 00:31:10 iter 4699 train disc cost 1.09341859818 gen cost -37.6677932739            val disc cost -0.871470212936 gen cost -37.0786361694
+2017-05-03 00:33:14 iter 4799 train disc cost -0.886642158031 gen cost -38.3305130005            val disc cost -1.17335724831 gen cost -37.8402633667
+2017-05-03 00:35:30 iter 4899 train disc cost -0.859455823898 gen cost -32.2778511047            val disc cost -1.32535970211 gen cost -31.8649368286
+2017-05-03 00:39:17 iter 4999 train disc cost -1.13006234169 gen cost -36.7432365417            val disc cost -1.2982326746 gen cost -36.9128799438
+2017-05-03 00:42:32 iter 5099 train disc cost -0.907982945442 gen cost -40.4287071228            val disc cost -0.260798335075 gen cost -39.6595115662
+2017-05-03 00:45:06 iter 5199 train disc cost -1.41573786736 gen cost -34.9194793701            val disc cost -1.72955012321 gen cost -35.1009063721
+2017-05-03 00:47:27 iter 5299 train disc cost -1.41788578033 gen cost -36.4689941406            val disc cost -1.6851606369 gen cost -36.3744735718
+2017-05-03 00:49:47 iter 5399 train disc cost -0.50350946188 gen cost -39.2314529419            val disc cost 0.237556442618 gen cost -39.0963516235
+2017-05-03 00:52:08 iter 5499 train disc cost -1.15146946907 gen cost -39.0557365417            val disc cost -0.210474908352 gen cost -39.201423645
+2017-05-03 00:54:25 iter 5599 train disc cost -2.27925372124 gen cost -35.8978118896            val disc cost -0.757619261742 gen cost -35.8132781982
+2017-05-03 00:56:38 iter 5699 train disc cost -1.50973749161 gen cost -40.1170272827            val disc cost -0.214237496257 gen cost -40.7219696045
+2017-05-03 00:58:48 iter 5799 train disc cost -1.35998785496 gen cost -38.3461608887            val disc cost -0.0325940996408 gen cost -38.6825866699
+2017-05-03 01:00:57 iter 5899 train disc cost -1.64723062515 gen cost -41.1935653687            val disc cost -0.93272459507 gen cost -41.1039047241
+2017-05-03 01:03:04 iter 5999 train disc cost -1.21259868145 gen cost -38.1738853455            val disc cost -1.39557242393 gen cost -37.9903182983
+2017-05-03 01:05:31 iter 6099 train disc cost -2.24482655525 gen cost -36.8223953247            val disc cost -1.80759084225 gen cost -36.6354446411
+2017-05-03 01:09:10 iter 6199 train disc cost -0.474091231823 gen cost -40.0072784424            val disc cost -3.99135756493 gen cost -39.7164001465
+2017-05-03 01:12:04 iter 6299 train disc cost -1.03175735474 gen cost -41.424495697            val disc cost -0.750688552856 gen cost -41.9699478149
+2017-05-03 01:14:39 iter 6399 train disc cost -0.668479144573 gen cost -42.4592056274            val disc cost -0.682639122009 gen cost -42.2927780151
+2017-05-03 01:17:04 iter 6499 train disc cost -1.65936112404 gen cost -40.5031204224            val disc cost -1.65344429016 gen cost -40.879737854
+2017-05-03 01:19:28 iter 6599 train disc cost 0.136055707932 gen cost -40.3478088379            val disc cost -0.293412059546 gen cost -40.6360168457
+2017-05-03 01:21:57 iter 6699 train disc cost -1.31917822361 gen cost -42.1024971008            val disc cost -1.11663806438 gen cost -41.9019317627
+2017-05-03 01:24:19 iter 6799 train disc cost -1.52477049828 gen cost -44.2467651367            val disc cost -1.49827349186 gen cost -43.9237365723
+2017-05-03 01:26:34 iter 6899 train disc cost -2.67613911629 gen cost -44.775478363            val disc cost -1.74502015114 gen cost -44.4306106567
+2017-05-03 01:28:43 iter 6999 train disc cost -3.12669110298 gen cost -37.2318878174            val disc cost -1.22577250004 gen cost -37.1798782349
+2017-05-03 01:30:49 iter 7099 train disc cost -2.19974255562 gen cost -42.9944839478            val disc cost -1.40291595459 gen cost -42.945476532
+2017-05-03 01:32:57 iter 7199 train disc cost 0.160332679749 gen cost -45.1610946655            val disc cost -2.15648198128 gen cost -46.2099685669
+2017-05-03 01:35:10 iter 7299 train disc cost -2.05935764313 gen cost -46.2944107056            val disc cost -1.34357869625 gen cost -46.196975708
+2017-05-03 01:37:28 iter 7399 train disc cost -1.28968858719 gen cost -40.9233169556            val disc cost -2.43136429787 gen cost -42.3349838257
+2017-05-03 01:40:09 iter 7499 train disc cost -0.95197147131 gen cost -41.2277412415            val disc cost -1.06890618801 gen cost -41.0508804321
+2017-05-03 01:42:44 iter 7599 train disc cost -2.42526674271 gen cost -45.9864044189            val disc cost -2.5415391922 gen cost -44.8685722351
+2017-05-03 01:45:10 iter 7699 train disc cost -1.77022576332 gen cost -46.7844696045            val disc cost -3.07558608055 gen cost -46.7459869385
+2017-05-03 01:47:51 iter 7799 train disc cost 0.423504441977 gen cost -59.2439193726            val disc cost 0.779821515083 gen cost -59.1881065369
+2017-05-03 01:50:14 iter 7899 train disc cost -0.17449182272 gen cost -50.5634231567            val disc cost 0.180621504784 gen cost -49.7483139038
+2017-05-03 01:52:39 iter 7999 train disc cost -1.0652359724 gen cost -53.1340522766            val disc cost -0.993630170822 gen cost -52.8436889648
+2017-05-03 01:54:57 iter 8099 train disc cost -1.00596511364 gen cost -53.3558959961            val disc cost -1.10875725746 gen cost -53.4019470215
+2017-05-03 01:57:10 iter 8199 train disc cost -1.297565341 gen cost -52.843082428            val disc cost -0.560743510723 gen cost -52.3291511536
+2017-05-03 01:59:18 iter 8299 train disc cost -0.921169579029 gen cost -54.9385948181            val disc cost -1.01851546764 gen cost -55.0293273926
+2017-05-03 02:01:29 iter 8399 train disc cost -2.12636494637 gen cost -56.9554481506            val disc cost -3.17832064629 gen cost -57.4942398071
+2017-05-03 02:03:48 iter 8499 train disc cost -1.7490067482 gen cost -55.1795425415            val disc cost -2.60649371147 gen cost -55.1363563538
+2017-05-03 02:06:07 iter 8599 train disc cost 0.00325015559793 gen cost -59.491809845            val disc cost -0.928195178509 gen cost -59.7153701782
+2017-05-03 02:08:26 iter 8699 train disc cost -1.18448019028 gen cost -62.372467041            val disc cost -1.13672995567 gen cost -62.6563873291
+2017-05-03 02:10:45 iter 8799 train disc cost -2.66907072067 gen cost -62.311706543            val disc cost -2.43197488785 gen cost -61.7613945007
+2017-05-03 02:13:03 iter 8899 train disc cost -1.9836679697 gen cost -64.3429794312            val disc cost -1.04884302616 gen cost -64.2007064819
+2017-05-03 02:15:23 iter 8999 train disc cost 0.375164210796 gen cost -62.1530265808            val disc cost -0.611278772354 gen cost -62.2167358398
+2017-05-03 02:17:44 iter 9099 train disc cost -1.57458257675 gen cost -73.0864868164            val disc cost -3.06254029274 gen cost -72.2492523193
+2017-05-03 02:20:02 iter 9199 train disc cost -0.359627604485 gen cost -63.5446739197            val disc cost 0.547931730747 gen cost -63.5966110229
+2017-05-03 02:22:15 iter 9299 train disc cost 1.20282864571 gen cost -63.2989730835            val disc cost -0.658949434757 gen cost -62.659942627
+2017-05-03 02:24:28 iter 9399 train disc cost -1.63463079929 gen cost -63.3305435181            val disc cost -1.41262066364 gen cost -63.3611717224
+2017-05-03 02:26:37 iter 9499 train disc cost 1.01402342319 gen cost -65.6112670898            val disc cost 2.17335557938 gen cost -66.1281738281
+2017-05-03 02:28:44 iter 9599 train disc cost 0.518543958664 gen cost -66.763092041            val disc cost -0.801522910595 gen cost -66.1905441284
+2017-05-03 02:30:47 iter 9699 train disc cost -1.22308170795 gen cost -68.315032959            val disc cost -0.965593099594 gen cost -68.1748428345
+2017-05-03 02:32:59 iter 9799 train disc cost -1.2232862711 gen cost -60.8426589966            val disc cost -1.33800423145 gen cost -60.7920036316
+2017-05-03 02:35:18 iter 9899 train disc cost 0.965371131897 gen cost -66.9505081177            val disc cost -1.48741173744 gen cost -67.3154754639
+2017-05-03 02:37:36 iter 9999 train disc cost -0.940995693207 gen cost -65.6955413818            val disc cost -0.965261220932 gen cost -65.5293121338
+2017-05-03 02:39:50 iter 10099 train disc cost -0.858326017857 gen cost -61.8207054138            val disc cost -0.920744538307 gen cost -61.2138900757
+2017-05-03 02:41:59 iter 10199 train disc cost -2.90931034088 gen cost -63.4343566895            val disc cost -1.39901399612 gen cost -62.9093437195
+2017-05-03 02:44:09 iter 10299 train disc cost -0.891015410423 gen cost -68.9898681641            val disc cost -1.10249459743 gen cost -69.0508575439
+2017-05-03 02:46:17 iter 10399 train disc cost -1.29753255844 gen cost -67.5799484253            val disc cost -1.33455836773 gen cost -67.6550445557
+2017-05-03 02:48:23 iter 10499 train disc cost -0.778878688812 gen cost -70.5501861572            val disc cost -0.0486290156841 gen cost -70.1373596191
+2017-05-03 02:50:40 iter 10599 train disc cost -0.801946520805 gen cost -74.2234573364            val disc cost -0.66126614809 gen cost -74.2433242798
+2017-05-03 02:52:52 iter 10699 train disc cost -0.835942327976 gen cost -71.3260040283            val disc cost -0.647791922092 gen cost -71.5309448242
+2017-05-03 02:55:02 iter 10799 train disc cost -1.80254459381 gen cost -68.350112915            val disc cost -3.12122249603 gen cost -68.6260986328
+2017-05-03 02:57:08 iter 10899 train disc cost -1.73467111588 gen cost -72.6855773926            val disc cost -1.60150182247 gen cost -73.397857666
+2017-05-03 02:59:11 iter 10999 train disc cost -1.12630653381 gen cost -73.4402618408            val disc cost -1.05859875679 gen cost -73.2366485596
+2017-05-03 03:01:16 iter 11099 train disc cost -0.923511266708 gen cost -67.3191146851            val disc cost -1.32983183861 gen cost -67.2904586792
+2017-05-03 03:03:53 iter 11199 train disc cost -1.50660192966 gen cost -74.1882095337            val disc cost -1.12118005753 gen cost -74.2692565918
+2017-05-03 03:06:54 iter 11299 train disc cost -2.1600291729 gen cost -71.0527496338            val disc cost -0.701386451721 gen cost -71.3460006714
+2017-05-03 03:09:36 iter 11399 train disc cost -1.57921969891 gen cost -76.3320770264            val disc cost -1.81741881371 gen cost -75.4877853394
+2017-05-03 03:11:53 iter 11499 train disc cost 0.0486312806606 gen cost -73.8685684204            val disc cost 0.197829544544 gen cost -73.0420532227
+2017-05-03 03:14:04 iter 11599 train disc cost -0.411633193493 gen cost -71.8991241455            val disc cost -0.351613134146 gen cost -72.0963592529
+2017-05-03 03:16:12 iter 11699 train disc cost -0.190916091204 gen cost -79.8913803101            val disc cost 1.09505820274 gen cost -80.4173583984
+2017-05-03 03:18:18 iter 11799 train disc cost -0.844564974308 gen cost -76.9172592163            val disc cost 0.692781090736 gen cost -76.8329467773
+2017-05-03 03:20:24 iter 11899 train disc cost -2.51758146286 gen cost -76.7947006226            val disc cost -1.42013180256 gen cost -76.6925048828
+2017-05-03 03:22:28 iter 11999 train disc cost -0.325212538242 gen cost -77.0773544312            val disc cost -0.718016505241 gen cost -77.0254364014
+2017-05-03 03:24:33 iter 12099 train disc cost -0.335698843002 gen cost -76.1808776855            val disc cost -0.0497168302536 gen cost -76.4544372559
+2017-05-03 03:26:35 iter 12199 train disc cost -3.23364067078 gen cost -81.9884567261            val disc cost -1.39329218864 gen cost -81.2751464844
+2017-05-03 03:28:35 iter 12299 train disc cost -1.66345131397 gen cost -80.1431350708            val disc cost -0.663373231888 gen cost -79.3528747559
+2017-05-03 03:30:37 iter 12399 train disc cost -1.38688635826 gen cost -76.3573074341            val disc cost 0.00227123498917 gen cost -77.202911377
+2017-05-03 03:32:40 iter 12499 train disc cost 0.0412504225969 gen cost -81.4309082031            val disc cost -2.80692863464 gen cost -82.0029602051
+2017-05-03 03:34:47 iter 12599 train disc cost -0.98405277729 gen cost -85.2999572754            val disc cost -1.50769615173 gen cost -85.2512817383
+2017-05-03 03:36:57 iter 12699 train disc cost -1.39907681942 gen cost -83.2933883667            val disc cost -1.6570328474 gen cost -82.8791885376
+2017-05-03 03:39:06 iter 12799 train disc cost -0.264048218727 gen cost -83.6460418701            val disc cost -0.396111696959 gen cost -83.6289901733
+2017-05-03 03:41:13 iter 12899 train disc cost 0.0200498402119 gen cost -82.1406860352            val disc cost -0.64541041851 gen cost -82.4837875366
+2017-05-03 03:43:20 iter 12999 train disc cost -1.37915420532 gen cost -85.3542861938            val disc cost -0.338978290558 gen cost -85.2550354004
+2017-05-03 03:45:29 iter 13099 train disc cost -2.88923859596 gen cost -86.5746307373            val disc cost -2.91464161873 gen cost -86.0383071899
+2017-05-03 03:47:38 iter 13199 train disc cost -0.327012658119 gen cost -81.2067565918            val disc cost -1.54488480091 gen cost -81.4268035889
+2017-05-03 03:49:45 iter 13299 train disc cost -0.271565675735 gen cost -81.5579910278            val disc cost -0.514319300652 gen cost -81.2852020264
+2017-05-03 03:51:53 iter 13399 train disc cost -1.63120257854 gen cost -81.1438140869            val disc cost -1.76755690575 gen cost -81.2810058594
+2017-05-03 03:54:00 iter 13499 train disc cost -0.921305954456 gen cost -86.1917495728            val disc cost -0.0822900012136 gen cost -86.1866073608
+2017-05-03 03:56:09 iter 13599 train disc cost -1.08479082584 gen cost -84.6089630127            val disc cost -1.19780147076 gen cost -84.8630218506
+2017-05-03 03:58:18 iter 13699 train disc cost 0.316426634789 gen cost -90.3226928711            val disc cost 0.0129652917385 gen cost -90.5871276855
+2017-05-03 04:00:27 iter 13799 train disc cost -0.929069161415 gen cost -86.3665237427            val disc cost -0.968716800213 gen cost -86.55027771
+2017-05-03 04:02:35 iter 13899 train disc cost -0.429188966751 gen cost -88.6705169678            val disc cost -1.95032012463 gen cost -88.7867889404
+2017-05-03 04:04:42 iter 13999 train disc cost -1.31733644009 gen cost -95.896697998            val disc cost -1.17155504227 gen cost -95.6342544556
+2017-05-03 04:06:53 iter 14099 train disc cost -1.30186140537 gen cost -89.1914138794            val disc cost -1.46333730221 gen cost -89.1097717285
+2017-05-03 04:09:08 iter 14199 train disc cost -0.727383673191 gen cost -90.6234436035            val disc cost -0.552419483662 gen cost -90.6784362793
+2017-05-03 04:11:23 iter 14299 train disc cost -1.55794727802 gen cost -89.1748199463            val disc cost -2.32070112228 gen cost -89.9766387939
+2017-05-03 04:13:45 iter 14399 train disc cost -1.3995745182 gen cost -91.7695846558            val disc cost -1.21851336956 gen cost -91.9857330322
+2017-05-03 04:16:06 iter 14499 train disc cost -0.80239623785 gen cost -94.107093811            val disc cost -0.709062576294 gen cost -94.0586624146
+2017-05-03 04:18:27 iter 14599 train disc cost -1.63276100159 gen cost -95.7312469482            val disc cost 0.420819342136 gen cost -96.3416900635
+2017-05-03 04:21:02 iter 14699 train disc cost -1.93489813805 gen cost -89.0142440796            val disc cost -2.32307815552 gen cost -88.3096237183
+2017-05-03 04:23:52 iter 14799 train disc cost -1.89534652233 gen cost -91.3737487793            val disc cost -0.977469325066 gen cost -91.1945648193
+2017-05-03 04:26:20 iter 14899 train disc cost -1.01550137997 gen cost -91.2209777832            val disc cost -1.32107591629 gen cost -91.2808303833
+2017-05-03 04:28:38 iter 14999 train disc cost -1.07849216461 gen cost -92.2012863159            val disc cost -0.629321277142 gen cost -92.600402832
+2017-05-03 04:30:44 iter 15099 train disc cost -0.602729320526 gen cost -96.6024780273            val disc cost 0.353670835495 gen cost -96.1856384277
+2017-05-03 04:32:49 iter 15199 train disc cost -0.888064563274 gen cost -97.9906311035            val disc cost -0.703964173794 gen cost -98.0796585083
+2017-05-03 04:34:53 iter 15299 train disc cost -0.901368141174 gen cost -103.298095703            val disc cost -0.306687474251 gen cost -103.286964417
+2017-05-03 04:37:07 iter 15399 train disc cost -0.54218930006 gen cost -105.60357666            val disc cost -0.280814319849 gen cost -105.988769531
+2017-05-03 04:39:36 iter 15499 train disc cost -0.805156648159 gen cost -105.498222351            val disc cost -1.03450262547 gen cost -105.991744995
+2017-05-03 04:42:36 iter 15599 train disc cost -0.150075480342 gen cost -103.239120483            val disc cost -0.745711624622 gen cost -103.678398132
+2017-05-03 04:45:15 iter 15699 train disc cost -1.06396484375 gen cost -104.515441895            val disc cost -1.70640575886 gen cost -104.911819458
+2017-05-03 04:48:10 iter 15799 train disc cost -0.1698281914 gen cost -107.527458191            val disc cost -0.433595746756 gen cost -107.832046509
+2017-05-03 04:50:46 iter 15899 train disc cost -0.318634748459 gen cost -108.719070435            val disc cost 1.25806629658 gen cost -108.986724854
+2017-05-03 04:53:12 iter 15999 train disc cost -1.52714979649 gen cost -107.232498169            val disc cost -3.05636668205 gen cost -106.912200928
+2017-05-03 04:55:35 iter 16099 train disc cost -1.82050466537 gen cost -111.703643799            val disc cost -0.529161214828 gen cost -112.308197021
+2017-05-03 04:57:47 iter 16199 train disc cost -0.371502190828 gen cost -115.995330811            val disc cost -0.466507345438 gen cost -115.55229187
+2017-05-03 04:59:57 iter 16299 train disc cost -1.11846065521 gen cost -114.223907471            val disc cost 1.23195648193 gen cost -112.776885986
+2017-05-03 05:02:05 iter 16399 train disc cost -0.432247310877 gen cost -119.325515747            val disc cost -1.26700401306 gen cost -120.18421936
+2017-05-03 05:04:24 iter 16499 train disc cost 0.0797161087394 gen cost -111.828125            val disc cost -0.482651174068 gen cost -112.151786804
+2017-05-03 05:06:38 iter 16599 train disc cost -2.17853021622 gen cost -117.181793213            val disc cost -0.931931376457 gen cost -117.226135254
+2017-05-03 05:08:46 iter 16699 train disc cost -1.8169413805 gen cost -116.039009094            val disc cost -1.05306839943 gen cost -115.333496094
+2017-05-03 05:10:50 iter 16799 train disc cost -1.08464026451 gen cost -116.469573975            val disc cost -1.00796985626 gen cost -116.164352417
+2017-05-03 05:12:52 iter 16899 train disc cost -0.680015623569 gen cost -116.344680786            val disc cost -0.736246824265 gen cost -116.281784058
+2017-05-03 05:14:53 iter 16999 train disc cost -0.364388406277 gen cost -119.237457275            val disc cost -0.335720121861 gen cost -119.887039185
+2017-05-03 05:17:00 iter 17099 train disc cost 1.47000098228 gen cost -126.365402222            val disc cost -0.132520347834 gen cost -125.991256714
+2017-05-03 05:19:17 iter 17199 train disc cost -1.12902629375 gen cost -123.108795166            val disc cost -1.02152967453 gen cost -122.919235229
+2017-05-03 05:21:42 iter 17299 train disc cost -1.10307216644 gen cost -127.225791931            val disc cost -1.06488835812 gen cost -127.045669556
+2017-05-03 05:24:11 iter 17399 train disc cost -1.8456441164 gen cost -128.293212891            val disc cost -1.63658773899 gen cost -128.65687561
+2017-05-03 05:26:37 iter 17499 train disc cost 0.738288760185 gen cost -131.762542725            val disc cost -1.72408509254 gen cost -131.838500977
+2017-05-03 05:29:02 iter 17599 train disc cost -2.87193822861 gen cost -133.075134277            val disc cost -0.427947223186 gen cost -131.941848755
+2017-05-03 05:31:26 iter 17699 train disc cost -0.303607016802 gen cost -127.553329468            val disc cost -1.5060325861 gen cost -126.88433075
+2017-05-03 05:34:23 iter 17799 train disc cost -1.02547800541 gen cost -130.90864563            val disc cost -0.64257723093 gen cost -131.052093506
+2017-05-03 05:37:19 iter 17899 train disc cost -1.7424390316 gen cost -134.790664673            val disc cost -1.34479427338 gen cost -134.863952637
+2017-05-03 05:39:40 iter 17999 train disc cost -0.713578462601 gen cost -134.321899414            val disc cost -0.733445048332 gen cost -134.554260254
+2017-05-03 05:41:54 iter 18099 train disc cost -1.46676313877 gen cost -134.376205444            val disc cost -1.94028055668 gen cost -134.872848511
+2017-05-03 05:44:08 iter 18199 train disc cost 0.684479415417 gen cost -137.6355896            val disc cost 0.30980476737 gen cost -136.944152832
+2017-05-03 05:46:17 iter 18299 train disc cost 1.08392572403 gen cost -135.505844116            val disc cost -0.157840430737 gen cost -135.523849487
+2017-05-03 05:48:25 iter 18399 train disc cost 0.856322586536 gen cost -129.6353302            val disc cost -0.222797930241 gen cost -129.6847229
+2017-05-03 05:50:30 iter 18499 train disc cost -0.759770035744 gen cost -132.743896484            val disc cost 0.0271116644144 gen cost -132.659820557
+2017-05-03 05:52:32 iter 18599 train disc cost 0.431145012379 gen cost -136.310668945            val disc cost 0.35287925601 gen cost -136.391235352
+2017-05-03 05:54:32 iter 18699 train disc cost -1.15337872505 gen cost -134.86416626            val disc cost -0.61841827631 gen cost -134.601593018
+2017-05-03 05:56:32 iter 18799 train disc cost -1.4754127264 gen cost -135.462493896            val disc cost -1.37657642365 gen cost -135.786102295
+2017-05-03 05:58:33 iter 18899 train disc cost -1.40241491795 gen cost -135.176483154            val disc cost -3.03275632858 gen cost -134.396759033
+2017-05-03 06:00:32 iter 18999 train disc cost -0.854444146156 gen cost -139.490722656            val disc cost -1.33162939548 gen cost -139.713500977
+2017-05-03 06:02:30 iter 19099 train disc cost -1.29062819481 gen cost -139.151351929            val disc cost -0.687329828739 gen cost -139.443664551
+2017-05-03 06:04:28 iter 19199 train disc cost -0.675924658775 gen cost -142.165725708            val disc cost -0.685624837875 gen cost -142.734375
+2017-05-03 06:06:39 iter 19299 train disc cost -0.492210000753 gen cost -143.04838562            val disc cost -0.568081557751 gen cost -142.956344604
+2017-05-03 06:09:01 iter 19399 train disc cost 0.497185260057 gen cost -147.332366943            val disc cost -0.460021138191 gen cost -147.288513184
+2017-05-03 06:11:29 iter 19499 train disc cost -3.01199293137 gen cost -146.706085205            val disc cost -0.48473906517 gen cost -145.618682861
+2017-05-03 06:13:52 iter 19599 train disc cost -0.707465708256 gen cost -146.951416016            val disc cost -0.405254781246 gen cost -146.651031494
+2017-05-03 06:16:15 iter 19699 train disc cost -0.659774541855 gen cost -146.762786865            val disc cost -0.584932506084 gen cost -146.731567383
+2017-05-03 06:18:39 iter 19799 train disc cost -1.28912210464 gen cost -147.23651123            val disc cost -1.62121748924 gen cost -147.253845215
+2017-05-03 06:20:53 iter 19899 train disc cost -0.812376022339 gen cost -150.456512451            val disc cost -0.711927175522 gen cost -150.296325684
+2017-05-03 06:23:03 iter 19999 train disc cost -1.28145325184 gen cost -152.533584595            val disc cost -1.29463994503 gen cost -151.948867798
+2017-05-03 06:25:18 iter 20099 train disc cost -1.09175395966 gen cost -149.009979248            val disc cost -0.418674856424 gen cost -149.012573242
+2017-05-03 06:27:26 iter 20199 train disc cost 0.013585396111 gen cost -149.81338501            val disc cost 0.319073319435 gen cost -150.091567993
+2017-05-03 06:29:32 iter 20299 train disc cost -1.32522463799 gen cost -148.032806396            val disc cost -1.31798410416 gen cost -148.148269653
+2017-05-03 06:31:33 iter 20399 train disc cost 1.59977030754 gen cost -152.660354614            val disc cost -1.17882239819 gen cost -152.734222412
+2017-05-03 06:33:32 iter 20499 train disc cost -1.24955964088 gen cost -151.351837158            val disc cost -0.407892078161 gen cost -150.748931885
+2017-05-03 06:35:34 iter 20599 train disc cost -0.702454507351 gen cost -149.909698486            val disc cost -0.679715037346 gen cost -149.913284302
+2017-05-03 06:37:36 iter 20699 train disc cost -1.07315969467 gen cost -149.982406616            val disc cost -0.20137424767 gen cost -149.566894531
+2017-05-03 06:39:39 iter 20799 train disc cost -0.918500185013 gen cost -154.204055786            val disc cost -0.250612854958 gen cost -154.341812134
+2017-05-03 06:41:44 iter 20899 train disc cost -2.42743968964 gen cost -154.04196167            val disc cost -1.36608600616 gen cost -153.995285034
+2017-05-03 06:43:54 iter 20999 train disc cost -2.14092373848 gen cost -151.383560181            val disc cost -1.57848918438 gen cost -150.768005371
+2017-05-03 06:46:01 iter 21099 train disc cost 0.631165206432 gen cost -156.754211426            val disc cost 0.305232405663 gen cost -156.897949219
+2017-05-03 06:48:06 iter 21199 train disc cost -0.34568798542 gen cost -156.287628174            val disc cost -1.59742259979 gen cost -156.230773926
+2017-05-03 06:50:13 iter 21299 train disc cost -1.40717339516 gen cost -156.655197144            val disc cost 0.00180771946907 gen cost -156.188415527
+2017-05-03 06:52:26 iter 21399 train disc cost -0.572892606258 gen cost -155.14906311            val disc cost -0.682381749153 gen cost -155.409454346
+2017-05-03 06:54:43 iter 21499 train disc cost 0.0269989222288 gen cost -162.352813721            val disc cost -0.41974774003 gen cost -162.371704102
+2017-05-03 06:56:57 iter 21599 train disc cost -0.656534850597 gen cost -157.527236938            val disc cost -0.265023320913 gen cost -157.47467041
+2017-05-03 06:59:13 iter 21699 train disc cost -1.79021036625 gen cost -160.118911743            val disc cost -2.19214200974 gen cost -160.420135498
+2017-05-03 07:01:57 iter 21799 train disc cost -1.10362112522 gen cost -163.063064575            val disc cost -1.08433949947 gen cost -162.966415405
+2017-05-03 07:05:07 iter 21899 train disc cost -0.0649700090289 gen cost -167.234924316            val disc cost -0.608304798603 gen cost -167.184692383
+2017-05-03 07:07:26 iter 21999 train disc cost -0.694333314896 gen cost -165.994522095            val disc cost -0.768335938454 gen cost -165.726287842
+2017-05-03 07:09:50 iter 22099 train disc cost -1.03269553185 gen cost -166.497467041            val disc cost -0.787984311581 gen cost -166.544311523
+2017-05-03 07:12:07 iter 22199 train disc cost -1.01226472855 gen cost -167.380981445            val disc cost -0.83791333437 gen cost -167.553726196
+2017-05-03 07:14:17 iter 22299 train disc cost 1.08360481262 gen cost -168.945373535            val disc cost 0.294045984745 gen cost -168.996612549
+2017-05-03 07:16:27 iter 22399 train disc cost -1.36212825775 gen cost -172.47769165            val disc cost -0.897744417191 gen cost -172.641952515
+2017-05-03 07:18:34 iter 22499 train disc cost 1.38818454742 gen cost -172.775360107            val disc cost -0.697660923004 gen cost -173.808929443
+2017-05-03 07:20:43 iter 22599 train disc cost -0.686584055424 gen cost -173.708511353            val disc cost -0.776169776917 gen cost -173.545623779
+2017-05-03 07:22:49 iter 22699 train disc cost -0.756877779961 gen cost -171.00869751            val disc cost -0.776022732258 gen cost -171.074234009
+2017-05-03 07:24:56 iter 22799 train disc cost -0.165291160345 gen cost -175.750732422            val disc cost -0.375783383846 gen cost -175.385574341
+2017-05-03 07:26:59 iter 22899 train disc cost -1.05896890163 gen cost -173.265960693            val disc cost -0.986283898354 gen cost -172.86932373
+2017-05-03 07:29:02 iter 22999 train disc cost -0.662694096565 gen cost -174.435058594            val disc cost -0.483168542385 gen cost -174.291793823
+2017-05-03 07:31:01 iter 23099 train disc cost -0.928613483906 gen cost -177.168563843            val disc cost -1.11050963402 gen cost -177.038513184
+2017-05-03 07:33:00 iter 23199 train disc cost -0.83655166626 gen cost -173.735015869            val disc cost -0.86686372757 gen cost -173.937011719
+2017-05-03 07:35:02 iter 23299 train disc cost -0.985553205013 gen cost -176.657226562            val disc cost -2.16265559196 gen cost -176.549026489
+2017-05-03 07:37:01 iter 23399 train disc cost -0.87552267313 gen cost -178.020294189            val disc cost -0.266021519899 gen cost -177.668640137
+2017-05-03 07:39:08 iter 23499 train disc cost -0.2181404531 gen cost -180.838623047            val disc cost 0.0655962079763 gen cost -181.158782959
+2017-05-03 07:41:21 iter 23599 train disc cost -1.10152852535 gen cost -177.203689575            val disc cost -1.26433432102 gen cost -177.439086914
+2017-05-03 07:43:34 iter 23699 train disc cost -0.823546111584 gen cost -179.148254395            val disc cost -0.898211658001 gen cost -178.915588379
+2017-05-03 07:45:47 iter 23799 train disc cost -0.347694337368 gen cost -175.413864136            val disc cost -0.876016497612 gen cost -176.373687744
+2017-05-03 07:47:56 iter 23899 train disc cost 0.756557583809 gen cost -178.251586914            val disc cost 0.244778692722 gen cost -178.633972168
+2017-05-03 07:50:06 iter 23999 train disc cost -1.09300935268 gen cost -176.852813721            val disc cost -1.39881658554 gen cost -177.033599854
+2017-05-03 07:52:16 iter 24099 train disc cost 0.567005574703 gen cost -181.486968994            val disc cost -0.0601919069886 gen cost -181.684799194
+2017-05-03 07:54:28 iter 24199 train disc cost -0.147197812796 gen cost -178.304107666            val disc cost -0.381215453148 gen cost -178.541107178
+2017-05-03 07:56:49 iter 24299 train disc cost -0.581525564194 gen cost -183.070098877            val disc cost 0.377560734749 gen cost -183.273742676
+2017-05-03 07:59:06 iter 24399 train disc cost -0.598183453083 gen cost -181.660827637            val disc cost -0.204491361976 gen cost -181.72744751
+2017-05-03 08:01:22 iter 24499 train disc cost -1.61680340767 gen cost -183.509902954            val disc cost -0.773521959782 gen cost -182.901229858
+2017-05-03 08:03:53 iter 24599 train disc cost 0.651296675205 gen cost -184.136672974            val disc cost -1.86696791649 gen cost -184.263824463
+2017-05-03 08:06:20 iter 24699 train disc cost -0.797985672951 gen cost -183.67489624            val disc cost -0.889303982258 gen cost -183.882171631
+2017-05-03 08:08:48 iter 24799 train disc cost -1.27009248734 gen cost -186.494766235            val disc cost -1.57521748543 gen cost -185.269943237
+2017-05-03 08:11:43 iter 24899 train disc cost -1.10206389427 gen cost -182.567321777            val disc cost -1.04939079285 gen cost -182.973480225
+2017-05-03 08:14:30 iter 24999 train disc cost -2.10506391525 gen cost -185.751220703            val disc cost -0.380800068378 gen cost -185.196258545
+2017-05-03 08:17:03 iter 25099 train disc cost -1.50166594982 gen cost -183.938873291            val disc cost -1.84075450897 gen cost -184.24017334
+2017-05-03 08:19:30 iter 25199 train disc cost -0.733753025532 gen cost -186.305114746            val disc cost -0.631990730762 gen cost -185.848205566
+2017-05-03 08:22:06 iter 25299 train disc cost -0.246401235461 gen cost -187.863815308            val disc cost 2.62416982651 gen cost -186.936248779
+2017-05-03 08:25:17 iter 25399 train disc cost -0.108367532492 gen cost -189.836975098            val disc cost -0.0789836347103 gen cost -189.505828857
+2017-05-03 08:28:10 iter 25499 train disc cost -0.674873769283 gen cost -185.165115356            val disc cost -0.00499986112118 gen cost -185.750137329
+2017-05-03 08:30:57 iter 25599 train disc cost 1.34687197208 gen cost -189.489624023            val disc cost -2.18938493729 gen cost -190.231536865
+2017-05-03 08:34:15 iter 25699 train disc cost -0.493602991104 gen cost -190.157653809            val disc cost -1.12433230877 gen cost -190.651290894
+2017-05-03 08:37:22 iter 25799 train disc cost -0.250552356243 gen cost -193.217102051            val disc cost -0.36259791255 gen cost -193.042633057
+2017-05-03 08:40:11 iter 25899 train disc cost -0.522289693356 gen cost -195.396820068            val disc cost -0.269846081734 gen cost -195.309341431
+2017-05-03 08:42:51 iter 25999 train disc cost -0.984294235706 gen cost -190.544799805            val disc cost 1.06029975414 gen cost -191.030776978
+2017-05-03 08:46:20 iter 26099 train disc cost 0.250711143017 gen cost -191.716552734            val disc cost -0.572189807892 gen cost -191.59387207
+2017-05-03 08:50:16 iter 26199 train disc cost -0.768371284008 gen cost -194.140289307            val disc cost -0.520692408085 gen cost -194.057891846
+2017-05-03 08:53:32 iter 26299 train disc cost -0.519963562489 gen cost -191.814331055            val disc cost -1.26067984104 gen cost -191.861740112
+2017-05-03 08:56:20 iter 26399 train disc cost -0.0295417308807 gen cost -196.896759033            val disc cost 1.38652431965 gen cost -197.141021729
+2017-05-03 08:58:58 iter 26499 train disc cost -1.00893568993 gen cost -194.574783325            val disc cost -1.13486778736 gen cost -194.547393799
+2017-05-03 09:01:31 iter 26599 train disc cost -0.208766743541 gen cost -194.801834106            val disc cost -0.529417872429 gen cost -194.915496826
+2017-05-03 09:03:56 iter 26699 train disc cost -0.350736528635 gen cost -195.664962769            val disc cost 1.00197136402 gen cost -196.4347229
+2017-05-03 09:06:20 iter 26799 train disc cost -1.0755392313 gen cost -193.981292725            val disc cost -1.05707895756 gen cost -193.758178711
+2017-05-03 09:08:42 iter 26899 train disc cost -1.34234046936 gen cost -191.866119385            val disc cost -0.135788053274 gen cost -191.775039673
+2017-05-03 09:11:01 iter 26999 train disc cost -0.672890126705 gen cost -191.89831543            val disc cost 0.0139081329107 gen cost -192.132873535
+2017-05-03 09:13:25 iter 27099 train disc cost -0.855486750603 gen cost -192.648895264            val disc cost -2.5008327961 gen cost -192.506561279
+2017-05-03 09:16:14 iter 27199 train disc cost -1.32741641998 gen cost -197.62550354            val disc cost -0.979424417019 gen cost -197.470046997
+2017-05-03 09:19:26 iter 27299 train disc cost -1.59585237503 gen cost -199.910949707            val disc cost -0.720171153545 gen cost -199.579559326
+2017-05-03 09:22:45 iter 27399 train disc cost -0.542890608311 gen cost -196.628158569            val disc cost -0.382129639387 gen cost -196.837463379
+2017-05-03 09:26:10 iter 27499 train disc cost 0.674785971642 gen cost -200.578536987            val disc cost -2.21871566772 gen cost -200.283630371
+2017-05-03 09:29:38 iter 27599 train disc cost -0.387198239565 gen cost -198.753875732            val disc cost -0.501816630363 gen cost -199.149749756
+2017-05-03 09:32:44 iter 27699 train disc cost -0.667444705963 gen cost -197.38873291            val disc cost -0.614615917206 gen cost -197.506835938
+2017-05-03 09:35:34 iter 27799 train disc cost -0.370674461126 gen cost -202.284088135            val disc cost 0.0145325399935 gen cost -202.060791016
+2017-05-03 09:38:41 iter 27899 train disc cost -0.651805639267 gen cost -196.895233154            val disc cost -0.535591244698 gen cost -197.609924316
+2017-05-03 09:41:48 iter 27999 train disc cost -0.787393331528 gen cost -197.487030029            val disc cost 0.210518121719 gen cost -196.870056152
+2017-05-03 09:44:40 iter 28099 train disc cost -0.711988329887 gen cost -200.218933105            val disc cost -0.805869102478 gen cost -200.01373291
+2017-05-03 09:47:27 iter 28199 train disc cost -1.48208665848 gen cost -197.383880615            val disc cost -1.58952260017 gen cost -198.313873291
+2017-05-03 09:50:01 iter 28299 train disc cost -0.181485414505 gen cost -202.863616943            val disc cost -1.03138661385 gen cost -203.3230896
+2017-05-03 09:52:28 iter 28399 train disc cost -0.604063272476 gen cost -200.878417969            val disc cost -0.934449374676 gen cost -201.238388062
+2017-05-03 09:54:51 iter 28499 train disc cost -0.548227369785 gen cost -200.370941162            val disc cost -0.182612657547 gen cost -200.656478882
+2017-05-03 09:57:15 iter 28599 train disc cost -1.55326986313 gen cost -196.733978271            val disc cost -2.06150603294 gen cost -196.973251343
+2017-05-03 09:59:34 iter 28699 train disc cost -1.01485538483 gen cost -201.025177002            val disc cost -0.366142988205 gen cost -200.961608887
+2017-05-03 10:01:54 iter 28799 train disc cost -0.872114658356 gen cost -200.920959473            val disc cost -0.913189470768 gen cost -200.552505493
+2017-05-03 10:04:11 iter 28899 train disc cost -1.35106909275 gen cost -205.155548096            val disc cost -1.11361837387 gen cost -205.359954834
+2017-05-03 10:06:27 iter 28999 train disc cost -0.604941546917 gen cost -202.072052002            val disc cost -0.690852940083 gen cost -201.395355225
+2017-05-03 10:08:42 iter 29099 train disc cost -1.8913589716 gen cost -204.940155029            val disc cost -0.963223814964 gen cost -204.532653809
+2017-05-03 10:10:55 iter 29199 train disc cost 0.247985005379 gen cost -212.329162598            val disc cost 0.0500251948833 gen cost -211.489730835
+2017-05-03 10:13:08 iter 29299 train disc cost -1.17694365978 gen cost -206.696655273            val disc cost -0.928104817867 gen cost -206.674499512
+2017-05-03 10:15:21 iter 29399 train disc cost -1.27409136295 gen cost -205.897888184            val disc cost 0.231513530016 gen cost -206.145019531
+2017-05-03 10:17:33 iter 29499 train disc cost -0.723709821701 gen cost -203.939056396            val disc cost -1.22876238823 gen cost -204.754135132
+2017-05-03 10:19:45 iter 29599 train disc cost -1.07839107513 gen cost -207.955673218            val disc cost -0.835622131824 gen cost -208.247314453
+2017-05-03 10:21:56 iter 29699 train disc cost -0.295673757792 gen cost -208.075439453            val disc cost -0.254830539227 gen cost -208.072372437
+2017-05-03 10:24:07 iter 29799 train disc cost -0.524087548256 gen cost -208.877319336            val disc cost 0.204707831144 gen cost -208.566268921
+2017-05-03 10:26:19 iter 29899 train disc cost -0.685959279537 gen cost -211.31237793            val disc cost -0.794369935989 gen cost -211.098236084
+2017-05-03 10:28:29 iter 29999 train disc cost -0.863075971603 gen cost -209.384307861            val disc cost -0.176560148597 gen cost -208.91192627
+2017-05-03 10:30:38 iter 30099 train disc cost -0.300549834967 gen cost -211.896118164            val disc cost -0.352389842272 gen cost -211.744949341
+2017-05-03 10:32:47 iter 30199 train disc cost -0.468206733465 gen cost -211.450561523            val disc cost -0.687718808651 gen cost -211.749572754
+2017-05-03 10:34:54 iter 30299 train disc cost -0.646090269089 gen cost -212.791564941            val disc cost -0.658669292927 gen cost -212.785797119
+2017-05-03 10:37:01 iter 30399 train disc cost -0.54094594717 gen cost -216.351089478            val disc cost -1.38108742237 gen cost -216.470062256
+2017-05-03 10:39:10 iter 30499 train disc cost -0.428142547607 gen cost -215.933135986            val disc cost -0.424712538719 gen cost -215.763580322
+2017-05-03 10:41:17 iter 30599 train disc cost -0.412113636732 gen cost -215.383300781            val disc cost -0.361823767424 gen cost -215.401672363
+2017-05-03 10:43:25 iter 30699 train disc cost -0.728872001171 gen cost -214.615692139            val disc cost -0.725725591183 gen cost -214.556930542
+2017-05-03 10:45:33 iter 30799 train disc cost -0.505135715008 gen cost -213.963623047            val disc cost -0.599244058132 gen cost -213.714935303
+2017-05-03 10:47:40 iter 30899 train disc cost -0.411221116781 gen cost -218.515823364            val disc cost -1.3997092247 gen cost -218.516906738
+Traceback (most recent call last):
+  File "gan_face.py", line 544, in <module>
+    saver = tf.train.Saver(var_list= tf.get_collection( tf.GraphKeys.GLOBAL_VARIABLES) )
+  File "/home/wtw/improved_wgan_training/tflib/read.py", line 17, in get_batch
+    images[ i ] = scipy.misc.imread(j)
+TypeError: long() argument must be a string or a number, not 'JpegImageFile'
+  File "gan_face.py", line 563
+    s = time.strftime("%Y-%m-%d %H:%M:%S ",time.localtime(time.time())) + "iter "+str(it()) + ' train disc cost {} gen cost {}'.format( train_disc_cost, train_gen_cost)
+                                                                                                                                                                       ^
+IndentationError: unindent does not match any outer indentation level
+Uppercase local vars:
+	BATCH_SIZE: 32
+	CHECKPOINT_PATH: checkpoint/1
+	CRITIC_ITERS: 5
+	DATA_DIR: ~/asian-webface-align
+	DATA_TRAIN: data.train
+	DATA_VAL: data.val
+	DIM: 32
+	H: 28
+	ITERS: 200000
+	LAMBDA: 10
+	MODE: wgan-gp
+	NAME: 1
+	N_GPUS: 2
+	OUTPUT_DIM: 32256
+	OUTPUT_PATH: output/1
+	TENSORFLOW_READ: False
+	TEST_SPEED: False
+	W: 24
+2017-05-03 10:52:22.658988: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 10:52:22.659082: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 10:52:22.659098: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 10:52:22.659111: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 10:52:22.659128: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 10:52:23.219601: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:82:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-03 10:52:23.219718: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x485c3a0
+2017-05-03 10:52:23.669858: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:83:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-03 10:52:23.670900: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 
+2017-05-03 10:52:23.670926: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y 
+2017-05-03 10:52:23.670938: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y 
+2017-05-03 10:52:23.670992: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:82:00.0)
+2017-05-03 10:52:23.671012: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX TITAN X, pci bus id: 0000:83:00.0)
+Traceback (most recent call last):
+  File "gan_face.py", line 560, in <module>
+    val_gen_cost , val_disc_cost = sessrion.run( [gen_cost , disc_cost ] , feed_dict = { minibatch:val_batch } ) 
+NameError: name 'sessrion' is not defined
+Uppercase local vars:
+	BATCH_SIZE: 32
+	CHECKPOINT_PATH: checkpoint/1
+	CRITIC_ITERS: 5
+	DATA_DIR: ~/asian-webface-align
+	DATA_TRAIN: data.train
+	DATA_VAL: data.val
+	DIM: 32
+	H: 28
+	ITERS: 200000
+	LAMBDA: 10
+	MODE: wgan-gp
+	NAME: 1
+	N_GPUS: 2
+	OUTPUT_DIM: 32256
+	OUTPUT_PATH: output/1
+	TENSORFLOW_READ: False
+	TEST_SPEED: False
+	W: 24
+2017-05-03 10:53:26.661036: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 10:53:26.661076: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 10:53:26.661083: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 10:53:26.661098: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 10:53:26.661104: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 10:53:27.296066: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:82:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-03 10:53:27.296217: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x498f980
+2017-05-03 10:53:27.732592: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:83:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-03 10:53:27.733639: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 
+2017-05-03 10:53:27.733668: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y 
+2017-05-03 10:53:27.733680: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y 
+2017-05-03 10:53:27.733720: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:82:00.0)
+2017-05-03 10:53:27.733737: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX TITAN X, pci bus id: 0000:83:00.0)
+2017-05-03 10:53:47 iter 30899 train disc cost -2.10720348358 gen cost -437.119506836            val disc cost -1.32921028137 gen cost -436.943664551
+Traceback (most recent call last):
+  File "gan_face.py", line 565, in <module>
+    generate_image(it())
+  File "gan_face.py", line 489, in generate_image
+    lib.save_images.save_images(samples.reshape((BATCH_SIZE, 3, H*4, W*4)), OUTPUT_PATH+'/samples_gen_{}.png'.format(it))
+ValueError: total size of new array must be unchanged
+Uppercase local vars:
+	BATCH_SIZE: 32
+	CHECKPOINT_PATH: checkpoint/1
+	CRITIC_ITERS: 5
+	DATA_DIR: ~/asian-webface-align
+	DATA_TRAIN: data.train
+	DATA_VAL: data.val
+	DIM: 32
+	H: 28
+	ITERS: 200000
+	LAMBDA: 10
+	MODE: wgan-gp
+	NAME: 1
+	N_GPUS: 2
+	OUTPUT_DIM: 32256
+	OUTPUT_PATH: output/1
+	TENSORFLOW_READ: False
+	TEST_SPEED: False
+	W: 24
+2017-05-03 11:08:16.168368: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:08:16.168398: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:08:16.168405: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:08:16.168410: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:08:16.168416: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:08:16.765585: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:82:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-03 11:08:16.765757: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x4c94490
+2017-05-03 11:08:17.195483: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:83:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-03 11:08:17.196243: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 
+2017-05-03 11:08:17.196260: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y 
+2017-05-03 11:08:17.196268: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y 
+2017-05-03 11:08:17.196293: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:82:00.0)
+2017-05-03 11:08:17.196304: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX TITAN X, pci bus id: 0000:83:00.0)
+2017-05-03 11:08:39 iter 30899 train disc cost -0.781390190125 gen cost -218.510406494            val disc cost -1.17185771465 gen cost -218.525238037
+Traceback (most recent call last):
+  File "gan_face.py", line 573, in <module>
+    generate_image(it())
+  File "gan_face.py", line 494, in generate_image
+    _get_batch = get_batch( data_train , BATCH_SIZE )
+NameError: global name 'get_batch' is not defined
+Uppercase local vars:
+	BATCH_SIZE: 32
+	CHECKPOINT_PATH: checkpoint/1
+	CRITIC_ITERS: 5
+	DATA_DIR: ~/asian-webface-align
+	DATA_TRAIN: data.train
+	DATA_VAL: data.val
+	DIM: 32
+	H: 28
+	ITERS: 200000
+	LAMBDA: 10
+	MODE: wgan-gp
+	NAME: 1
+	N_GPUS: 2
+	OUTPUT_DIM: 32256
+	OUTPUT_PATH: output/1
+	TENSORFLOW_READ: False
+	TEST_SPEED: False
+	W: 24
+2017-05-03 11:10:08.383845: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:10:08.383884: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:10:08.383890: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:10:08.383896: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:10:08.383901: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:10:09.068626: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:82:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-03 11:10:09.068857: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x3c2ca80
+2017-05-03 11:10:09.538602: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:83:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-03 11:10:09.539635: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 
+2017-05-03 11:10:09.539660: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y 
+2017-05-03 11:10:09.539673: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y 
+2017-05-03 11:10:09.539708: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:82:00.0)
+2017-05-03 11:10:09.539725: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX TITAN X, pci bus id: 0000:83:00.0)
+2017-05-03 11:10:30 iter 30899 train disc cost -1.11107456684 gen cost -218.573974609            val disc cost -1.12048220634 gen cost -218.525939941
+Traceback (most recent call last):
+  File "gan_face.py", line 573, in <module>
+    generate_image(it())
+  File "gan_face.py", line 501, in generate_image
+    lib.save_images.save_images(_x_r.reshape((BATCH_SIZE, 3, H*4, W*4)), OUTPUT_PATH+'/samples_{}_real.png'.format(it))
+ValueError: total size of new array must be unchanged
+Uppercase local vars:
+	BATCH_SIZE: 32
+	CHECKPOINT_PATH: checkpoint/1
+	CRITIC_ITERS: 5
+	DATA_DIR: ~/asian-webface-align
+	DATA_TRAIN: data.train
+	DATA_VAL: data.val
+	DIM: 32
+	H: 28
+	ITERS: 200000
+	LAMBDA: 10
+	MODE: wgan-gp
+	NAME: 1
+	N_GPUS: 2
+	OUTPUT_DIM: 32256
+	OUTPUT_PATH: output/1
+	TENSORFLOW_READ: False
+	TEST_SPEED: False
+	W: 24
+2017-05-03 11:16:09.511407: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:16:09.511435: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:16:09.511441: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:16:09.511446: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:16:09.511451: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:16:10.034277: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:82:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-03 11:16:10.034454: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x3d99970
+2017-05-03 11:16:10.468448: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:83:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-03 11:16:10.469558: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 
+2017-05-03 11:16:10.469591: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y 
+2017-05-03 11:16:10.469603: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y 
+2017-05-03 11:16:10.469652: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:82:00.0)
+2017-05-03 11:16:10.469671: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX TITAN X, pci bus id: 0000:83:00.0)
+2017-05-03 11:16:30 iter 30899 train disc cost -0.897965252399 gen cost -218.335403442            val disc cost -0.870685875416 gen cost -218.509124756
+2017-05-03 11:16:42.047841: I tensorflow/core/common_runtime/gpu/pool_allocator.cc:247] PoolAllocator: After 5192 get requests, put_count=5174 evicted_count=1000 eviction_rate=0.193274 and unsatisfied allocation rate=0.215331
+2017-05-03 11:16:42.047908: I tensorflow/core/common_runtime/gpu/pool_allocator.cc:259] Raising pool_size_limit_ from 100 to 110
+2017-05-03 11:18:14 iter 30999 train disc cost 0.081812620163 gen cost -220.968688965            val disc cost -0.020609587431 gen cost -221.188568115
+2017-05-03 11:19:49 iter 31099 train disc cost -0.67439520359 gen cost -216.364471436            val disc cost -0.516824007034 gen cost -216.110153198
+2017-05-03 11:21:21 iter 31199 train disc cost -0.534300982952 gen cost -220.766143799            val disc cost -1.42461919785 gen cost -221.013839722
+2017-05-03 11:22:50 iter 31299 train disc cost -0.587257623672 gen cost -218.987579346            val disc cost -0.516900718212 gen cost -218.82043457
+Traceback (most recent call last):
+  File "gan_face.py", line 577, in <module>
+    for i in xrange(disc_iters):
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 778, in run
+    run_metadata_ptr)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 982, in _run
+    feed_dict_string, options, run_metadata)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1032, in _do_run
+    target_list, options, run_metadata)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1039, in _do_call
+    return fn(*args)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1021, in _run_fn
+    status, run_metadata)
+KeyboardInterrupt
+  File "gan_face.py", line 503
+    lib.save_images.save_images( samples , OUTPUT_PATH+'/samples_{}_gen.png'.format(it))
+      ^
+IndentationError: expected an indented block
+Uppercase local vars:
+	BATCH_SIZE: 32
+	CHECKPOINT_PATH: checkpoint/1
+	CRITIC_ITERS: 5
+	DATA_DIR: ~/asian-webface-align
+	DATA_TRAIN: data.train
+	DATA_VAL: data.val
+	DIM: 32
+	H: 28
+	ITERS: 200000
+	LAMBDA: 10
+	MODE: wgan-gp
+	NAME: 1
+	N_GPUS: 2
+	OUTPUT_DIM: 32256
+	OUTPUT_PATH: output/1
+	TENSORFLOW_READ: False
+	TEST_SPEED: False
+	W: 24
+2017-05-03 11:25:57.752234: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:25:57.752289: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:25:57.752297: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:25:57.752303: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:25:57.752310: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 11:25:58.444563: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:82:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-03 11:25:58.444728: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x42779c0
+2017-05-03 11:25:58.835135: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:83:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-03 11:25:58.836050: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 
+2017-05-03 11:25:58.836072: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y 
+2017-05-03 11:25:58.836081: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y 
+2017-05-03 11:25:58.836113: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:82:00.0)
+2017-05-03 11:25:58.836127: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX TITAN X, pci bus id: 0000:83:00.0)
+2017-05-03 11:26:20 iter 31299 train disc cost -0.597071766853 gen cost -218.911315918            val disc cost -0.570014357567 gen cost -219.038314819
+2017-05-03 11:26:30.841289: I tensorflow/core/common_runtime/gpu/pool_allocator.cc:247] PoolAllocator: After 5202 get requests, put_count=5202 evicted_count=1000 eviction_rate=0.192234 and unsatisfied allocation rate=0.211457
+2017-05-03 11:26:30.841330: I tensorflow/core/common_runtime/gpu/pool_allocator.cc:259] Raising pool_size_limit_ from 100 to 110
+2017-05-03 11:27:47 iter 31399 train disc cost -0.723683357239 gen cost -216.855789185            val disc cost -1.03981590271 gen cost -217.025115967
+2017-05-03 11:29:13 iter 31499 train disc cost -0.982809484005 gen cost -224.953094482            val disc cost -1.53324770927 gen cost -224.313873291
+2017-05-03 11:30:36 iter 31599 train disc cost -0.655072450638 gen cost -218.387145996            val disc cost -0.542222738266 gen cost -218.350219727
+2017-05-03 11:32:01 iter 31699 train disc cost -0.942693352699 gen cost -221.460372925            val disc cost -1.33511531353 gen cost -221.406967163
+2017-05-03 11:33:24 iter 31799 train disc cost -0.719837069511 gen cost -221.657104492            val disc cost -0.782958984375 gen cost -221.715881348
+2017-05-03 11:34:46 iter 31899 train disc cost -0.169175997376 gen cost -222.562988281            val disc cost -0.129533037543 gen cost -222.344177246
+2017-05-03 11:36:09 iter 31999 train disc cost -0.740451455116 gen cost -223.469696045            val disc cost -0.313700079918 gen cost -223.854614258
+2017-05-03 11:37:30 iter 32099 train disc cost -0.0113468766212 gen cost -224.344345093            val disc cost -0.148258820176 gen cost -224.251571655
+2017-05-03 11:38:52 iter 32199 train disc cost -1.15609574318 gen cost -224.496566772            val disc cost -0.563155293465 gen cost -224.716033936
+2017-05-03 11:40:13 iter 32299 train disc cost -0.347830712795 gen cost -224.583740234            val disc cost -0.272159844637 gen cost -224.810913086
+2017-05-03 11:41:35 iter 32399 train disc cost -0.633723735809 gen cost -226.25680542            val disc cost -0.576796472073 gen cost -226.759796143
+2017-05-03 11:42:56 iter 32499 train disc cost -0.41905811429 gen cost -229.965393066            val disc cost 0.139830261469 gen cost -230.199752808
+2017-05-03 11:44:17 iter 32599 train disc cost -0.539558231831 gen cost -229.145904541            val disc cost -0.511165380478 gen cost -229.030639648
+2017-05-03 11:45:37 iter 32699 train disc cost -0.518397331238 gen cost -231.329528809            val disc cost -0.452468544245 gen cost -231.581207275
+2017-05-03 11:46:58 iter 32799 train disc cost -0.80970454216 gen cost -230.718139648            val disc cost -0.895512878895 gen cost -230.723342896
+2017-05-03 11:48:22 iter 32899 train disc cost -0.554470956326 gen cost -235.504852295            val disc cost 0.81029945612 gen cost -235.33366394
+2017-05-03 11:49:43 iter 32999 train disc cost 2.34090185165 gen cost -229.510253906            val disc cost -0.150979176164 gen cost -229.362762451
+2017-05-03 11:51:05 iter 33099 train disc cost 0.801617860794 gen cost -231.051574707            val disc cost -0.0471860915422 gen cost -230.489532471
+2017-05-03 11:52:27 iter 33199 train disc cost -0.279663652182 gen cost -229.888946533            val disc cost -0.538149178028 gen cost -229.793792725
+2017-05-03 11:53:47 iter 33299 train disc cost -0.917569041252 gen cost -232.381774902            val disc cost -0.49165135622 gen cost -232.366317749
+2017-05-03 11:55:07 iter 33399 train disc cost -0.057950347662 gen cost -231.922180176            val disc cost -0.0319193452597 gen cost -232.125091553
+2017-05-03 11:56:27 iter 33499 train disc cost 0.06297275424 gen cost -233.820037842            val disc cost -0.598995506763 gen cost -234.385803223
+2017-05-03 11:57:47 iter 33599 train disc cost -0.678577959538 gen cost -233.32182312            val disc cost -0.514432549477 gen cost -233.368362427
+2017-05-03 11:59:05 iter 33699 train disc cost 0.598516106606 gen cost -233.025115967            val disc cost -0.938517689705 gen cost -233.409683228
+2017-05-03 12:00:24 iter 33799 train disc cost -0.415948271751 gen cost -241.059890747            val disc cost -0.262366712093 gen cost -241.206756592
+2017-05-03 12:01:45 iter 33899 train disc cost -0.270956218243 gen cost -238.943115234            val disc cost -1.21398580074 gen cost -239.127655029
+2017-05-03 12:03:05 iter 33999 train disc cost -1.30996489525 gen cost -238.646759033            val disc cost -1.21182990074 gen cost -238.574127197
+2017-05-03 12:04:25 iter 34099 train disc cost -0.808687448502 gen cost -239.293121338            val disc cost -0.555596590042 gen cost -239.184249878
+2017-05-03 12:05:47 iter 34199 train disc cost -0.691896259785 gen cost -238.444641113            val disc cost -0.682143568993 gen cost -238.164657593
+2017-05-03 12:07:08 iter 34299 train disc cost -0.658589839935 gen cost -236.947052002            val disc cost -0.730198860168 gen cost -237.103607178
+2017-05-03 12:08:27 iter 34399 train disc cost 0.620341539383 gen cost -236.811676025            val disc cost 0.522659778595 gen cost -237.038360596
+2017-05-03 12:09:46 iter 34499 train disc cost -0.563483834267 gen cost -239.457107544            val disc cost -0.562371551991 gen cost -239.431182861
+2017-05-03 12:11:04 iter 34599 train disc cost -0.624167144299 gen cost -245.929931641            val disc cost -0.42569103837 gen cost -245.75402832
+2017-05-03 12:12:23 iter 34699 train disc cost -0.140440136194 gen cost -241.058837891            val disc cost -0.46491715312 gen cost -241.496383667
+2017-05-03 12:13:41 iter 34799 train disc cost -0.641216278076 gen cost -240.418548584            val disc cost -0.564546525478 gen cost -240.591567993
+2017-05-03 12:15:01 iter 34899 train disc cost -0.844387173653 gen cost -241.274002075            val disc cost -0.735317289829 gen cost -241.446166992
+2017-05-03 12:16:18 iter 34999 train disc cost -1.23395431042 gen cost -239.971466064            val disc cost -0.31112959981 gen cost -239.779388428
+2017-05-03 12:17:36 iter 35099 train disc cost -0.359622716904 gen cost -239.974365234            val disc cost -0.0878908932209 gen cost -239.900878906
+2017-05-03 12:18:55 iter 35199 train disc cost -0.32026129961 gen cost -239.586791992            val disc cost -0.392071217299 gen cost -239.391052246
+2017-05-03 12:20:12 iter 35299 train disc cost 0.0409268140793 gen cost -239.478134155            val disc cost -0.886609077454 gen cost -239.134567261
+2017-05-03 12:21:30 iter 35399 train disc cost 0.144740134478 gen cost -239.249084473            val disc cost 0.115308701992 gen cost -239.576644897
+2017-05-03 12:22:47 iter 35499 train disc cost -0.171815469861 gen cost -239.00112915            val disc cost 0.570051133633 gen cost -238.34274292
+2017-05-03 12:24:04 iter 35599 train disc cost -0.385013371706 gen cost -242.683807373            val disc cost 0.740398406982 gen cost -242.893707275
+2017-05-03 12:25:21 iter 35699 train disc cost -0.691231131554 gen cost -243.114639282            val disc cost -0.411841481924 gen cost -243.484039307
+2017-05-03 12:26:37 iter 35799 train disc cost -0.633459746838 gen cost -247.409881592            val disc cost -0.62375921011 gen cost -247.524200439
+2017-05-03 12:27:56 iter 35899 train disc cost -0.789932847023 gen cost -245.365066528            val disc cost -0.307616114616 gen cost -245.320739746
+2017-05-03 12:29:13 iter 35999 train disc cost -1.80650162697 gen cost -242.751586914            val disc cost -1.41348147392 gen cost -242.538757324
+2017-05-03 12:30:31 iter 36099 train disc cost -1.13084733486 gen cost -243.641998291            val disc cost -1.0479722023 gen cost -244.365570068
+2017-05-03 12:31:49 iter 36199 train disc cost -0.777427315712 gen cost -243.215560913            val disc cost -0.300670087337 gen cost -242.928527832
+2017-05-03 12:33:07 iter 36299 train disc cost -0.607356846333 gen cost -244.477661133            val disc cost -0.585656285286 gen cost -244.31942749
+2017-05-03 12:34:23 iter 36399 train disc cost -0.03914681077 gen cost -244.863800049            val disc cost -2.39871025085 gen cost -244.057479858
+2017-05-03 12:35:39 iter 36499 train disc cost -0.6515635252 gen cost -243.308563232            val disc cost -1.24865543842 gen cost -243.401519775
+2017-05-03 12:36:57 iter 36599 train disc cost 1.35694897175 gen cost -242.209533691            val disc cost 1.00322008133 gen cost -242.753799438
+2017-05-03 12:38:14 iter 36699 train disc cost -0.434201210737 gen cost -243.004669189            val disc cost -0.365088224411 gen cost -242.137420654
+2017-05-03 12:39:30 iter 36799 train disc cost 0.0565532147884 gen cost -244.600860596            val disc cost 0.0326204299927 gen cost -244.78125
+2017-05-03 12:40:46 iter 36899 train disc cost -1.34831261635 gen cost -247.686096191            val disc cost -1.32997000217 gen cost -247.157730103
+2017-05-03 12:42:03 iter 36999 train disc cost 0.251933783293 gen cost -248.748413086            val disc cost -0.182811811566 gen cost -248.876464844
+2017-05-03 12:43:20 iter 37099 train disc cost -0.705575168133 gen cost -248.359893799            val disc cost 0.255603253841 gen cost -248.320831299
+2017-05-03 12:44:39 iter 37199 train disc cost -1.01137435436 gen cost -248.674804688            val disc cost -0.107650771737 gen cost -248.50177002
+2017-05-03 12:45:56 iter 37299 train disc cost -0.79776507616 gen cost -249.955703735            val disc cost -1.87124562263 gen cost -250.232055664
+2017-05-03 12:47:14 iter 37399 train disc cost 0.083593070507 gen cost -251.525817871            val disc cost -1.3276424408 gen cost -251.632476807
+2017-05-03 12:48:32 iter 37499 train disc cost -0.694966733456 gen cost -253.049987793            val disc cost -0.684315145016 gen cost -252.959472656
+2017-05-03 12:49:49 iter 37599 train disc cost -1.14803469181 gen cost -252.744750977            val disc cost -0.135853171349 gen cost -252.234008789
+2017-05-03 12:51:08 iter 37699 train disc cost -0.536526620388 gen cost -252.264907837            val disc cost -0.690036177635 gen cost -252.355255127
+2017-05-03 12:52:25 iter 37799 train disc cost 0.0777431428432 gen cost -251.735534668            val disc cost 0.545900225639 gen cost -251.484542847
+2017-05-03 12:53:43 iter 37899 train disc cost -0.89006125927 gen cost -253.102233887            val disc cost -0.350583255291 gen cost -252.515640259
+2017-05-03 12:55:00 iter 37999 train disc cost -0.141054496169 gen cost -253.449050903            val disc cost -0.0380887389183 gen cost -254.042617798
+2017-05-03 12:56:17 iter 38099 train disc cost -0.729148507118 gen cost -253.637878418            val disc cost -0.786973237991 gen cost -253.509048462
+2017-05-03 12:57:35 iter 38199 train disc cost -0.642747879028 gen cost -255.224594116            val disc cost -0.515574574471 gen cost -255.372741699
+2017-05-03 12:58:54 iter 38299 train disc cost 0.374820291996 gen cost -259.329803467            val disc cost -0.074299544096 gen cost -259.693695068
+Traceback (most recent call last):
+  File "gan_face.py", line 564, in <module>
+    train_batch = lib.read.get_batch( data_train , BATCH_SIZE)
+  File "/home/wtw/improved_wgan_training/tflib/read.py", line 17, in get_batch
+    images[ i ] = scipy.misc.imread(j)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/scipy/misc/pilutil.py", line 154, in imread
+    im = Image.open(name)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/PIL/Image.py", line 2319, in open
+    prefix = fp.read(16)
+KeyboardInterrupt
+Uppercase local vars:
+	BATCH_SIZE: 32
+	CHECKPOINT_PATH: checkpoint/1
+	CRITIC_ITERS: 5
+	DATA_DIR: ~/asian-webface-align
+	DATA_TRAIN: data.train
+	DATA_VAL: data.val
+	DIM: 32
+	H: 28
+	ITERS: 200000
+	LAMBDA: 10
+	MODE: wgan-gp
+	NAME: 1
+	N_GPUS: 2
+	OUTPUT_DIM: 32256
+	OUTPUT_PATH: output/1
+	TENSORFLOW_READ: False
+	TEST_SPEED: False
+	W: 24
+2017-05-03 13:00:31.416750: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 13:00:31.416809: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 13:00:31.416816: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 13:00:31.416821: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 13:00:31.416826: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 13:00:31.931609: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:82:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-03 13:00:31.931789: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x48e0140
+2017-05-03 13:00:32.477451: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:83:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-03 13:00:32.478480: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 
+2017-05-03 13:00:32.478506: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y 
+2017-05-03 13:00:32.478518: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y 
+2017-05-03 13:00:32.478575: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:82:00.0)
+2017-05-03 13:00:32.478595: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX TITAN X, pci bus id: 0000:83:00.0)
+2017-05-03 13:00:53 iter 38299 train disc cost -0.0319823622704 gen cost -259.195037842            val disc cost -0.691053628922 gen cost -259.416046143
+2017-05-03 13:01:03.826925: I tensorflow/core/common_runtime/gpu/pool_allocator.cc:247] PoolAllocator: After 5177 get requests, put_count=5169 evicted_count=1000 eviction_rate=0.193461 and unsatisfied allocation rate=0.214024
+2017-05-03 13:01:03.826959: I tensorflow/core/common_runtime/gpu/pool_allocator.cc:259] Raising pool_size_limit_ from 100 to 110
+2017-05-03 13:02:14 iter 38399 train disc cost -0.47434258461 gen cost -254.766464233            val disc cost 0.0433299057186 gen cost -255.027069092
+2017-05-03 13:03:34 iter 38499 train disc cost -0.338256657124 gen cost -255.325866699            val disc cost -0.140494167805 gen cost -255.399108887
+2017-05-03 13:04:53 iter 38599 train disc cost -0.885451436043 gen cost -256.84866333            val disc cost -0.777544915676 gen cost -257.217102051
+2017-05-03 13:06:13 iter 38699 train disc cost -0.48299691081 gen cost -258.195495605            val disc cost -0.444961994886 gen cost -258.01763916
+2017-05-03 13:07:32 iter 38799 train disc cost -0.732920527458 gen cost -256.444519043            val disc cost -0.681104898453 gen cost -256.334655762
+2017-05-03 13:08:52 iter 38899 train disc cost -0.163671091199 gen cost -259.33694458            val disc cost 0.850509285927 gen cost -259.24319458
+2017-05-03 13:10:11 iter 38999 train disc cost -0.286747008562 gen cost -258.582458496            val disc cost -0.162809506059 gen cost -258.207183838
+2017-05-03 13:11:30 iter 39099 train disc cost -0.735209941864 gen cost -259.589263916            val disc cost -0.89086163044 gen cost -259.562774658
+2017-05-03 13:12:49 iter 39199 train disc cost -0.00796990655363 gen cost -260.309692383            val disc cost 0.197417587042 gen cost -260.397399902
+2017-05-03 13:14:08 iter 39299 train disc cost -1.29738402367 gen cost -257.236633301            val disc cost -2.18825387955 gen cost -257.180603027
+2017-05-03 13:15:26 iter 39399 train disc cost -0.573573350906 gen cost -260.592590332            val disc cost -0.866730451584 gen cost -260.653198242
+2017-05-03 13:16:44 iter 39499 train disc cost -0.840736508369 gen cost -261.16796875            val disc cost -0.592570722103 gen cost -260.897644043
+2017-05-03 13:18:02 iter 39599 train disc cost -0.921856641769 gen cost -259.86932373            val disc cost -0.931175231934 gen cost -259.670776367
+2017-05-03 13:19:17 iter 39699 train disc cost -0.669817268848 gen cost -260.916931152            val disc cost -0.558265089989 gen cost -260.941070557
+2017-05-03 13:20:34 iter 39799 train disc cost -0.808251559734 gen cost -262.486968994            val disc cost -0.652022242546 gen cost -262.693786621
+2017-05-03 13:21:51 iter 39899 train disc cost -0.525537252426 gen cost -259.743652344            val disc cost -0.0393729880452 gen cost -259.534362793
+2017-05-03 13:23:08 iter 39999 train disc cost -0.528640151024 gen cost -264.779846191            val disc cost -0.664951086044 gen cost -264.764556885
+2017-05-03 13:24:25 iter 40099 train disc cost -0.0484265834093 gen cost -259.64453125            val disc cost -0.0777118057013 gen cost -259.787811279
+2017-05-03 13:25:41 iter 40199 train disc cost -0.360522121191 gen cost -263.186401367            val disc cost -0.293296128511 gen cost -264.27935791
+2017-05-03 13:26:57 iter 40299 train disc cost 0.429660916328 gen cost -258.250549316            val disc cost -0.121051222086 gen cost -258.148620605
+2017-05-03 13:28:13 iter 40399 train disc cost -0.601596772671 gen cost -260.213500977            val disc cost -0.410144209862 gen cost -260.247924805
+2017-05-03 13:29:30 iter 40499 train disc cost -0.252641618252 gen cost -260.492492676            val disc cost -0.598149657249 gen cost -260.836669922
+2017-05-03 13:30:47 iter 40599 train disc cost -0.626572430134 gen cost -262.048797607            val disc cost -0.510936379433 gen cost -261.850646973
+2017-05-03 13:32:05 iter 40699 train disc cost 0.605052232742 gen cost -262.135375977            val disc cost 0.271625101566 gen cost -262.157409668
+2017-05-03 13:33:22 iter 40799 train disc cost -1.44411754608 gen cost -262.5625            val disc cost -1.51499557495 gen cost -262.973876953
+2017-05-03 13:34:38 iter 40899 train disc cost 0.103012785316 gen cost -262.949768066            val disc cost -0.409388184547 gen cost -263.060699463
+2017-05-03 13:35:54 iter 40999 train disc cost -0.872488737106 gen cost -264.523742676            val disc cost -0.626242876053 gen cost -264.492126465
+2017-05-03 13:37:10 iter 41099 train disc cost 0.530940532684 gen cost -266.017700195            val disc cost -0.372294396162 gen cost -266.278442383
+2017-05-03 13:38:26 iter 41199 train disc cost -1.6131966114 gen cost -268.408111572            val disc cost -1.04150664806 gen cost -267.846130371
+2017-05-03 13:39:43 iter 41299 train disc cost -0.97201448679 gen cost -266.614807129            val disc cost -0.470274925232 gen cost -266.487182617
+2017-05-03 13:40:58 iter 41399 train disc cost -0.704821586609 gen cost -263.311035156            val disc cost -1.15114617348 gen cost -263.38192749
+2017-05-03 13:42:13 iter 41499 train disc cost -0.245106488466 gen cost -265.717651367            val disc cost -0.37113493681 gen cost -265.63659668
+2017-05-03 13:43:28 iter 41599 train disc cost -0.174054652452 gen cost -266.402404785            val disc cost -0.884737491608 gen cost -267.057006836
+2017-05-03 13:44:43 iter 41699 train disc cost -0.612483084202 gen cost -268.064941406            val disc cost -0.451339364052 gen cost -267.62109375
+2017-05-03 13:45:58 iter 41799 train disc cost -0.119758412242 gen cost -267.508270264            val disc cost 0.88551235199 gen cost -267.798858643
+2017-05-03 13:47:12 iter 41899 train disc cost -0.284139454365 gen cost -269.260894775            val disc cost -0.641738831997 gen cost -269.298034668
+2017-05-03 13:48:28 iter 41999 train disc cost -1.19540262222 gen cost -270.375946045            val disc cost -2.14972114563 gen cost -270.020446777
+2017-05-03 13:49:42 iter 42099 train disc cost -1.6717505455 gen cost -270.158935547            val disc cost -1.00175499916 gen cost -270.075866699
+2017-05-03 13:50:56 iter 42199 train disc cost -0.517218708992 gen cost -269.551605225            val disc cost -0.608868539333 gen cost -269.621856689
+2017-05-03 13:52:09 iter 42299 train disc cost -0.901420474052 gen cost -268.573547363            val disc cost -0.663264095783 gen cost -268.802856445
+2017-05-03 13:53:24 iter 42399 train disc cost -1.78061306477 gen cost -266.158294678            val disc cost -1.12258732319 gen cost -266.124084473
+2017-05-03 13:54:37 iter 42499 train disc cost -0.455919861794 gen cost -271.63104248            val disc cost -0.00369548983872 gen cost -271.725280762
+2017-05-03 13:55:49 iter 42599 train disc cost -1.06030166149 gen cost -268.024658203            val disc cost -1.10317134857 gen cost -267.67401123
+2017-05-03 13:57:02 iter 42699 train disc cost -0.780701339245 gen cost -268.17364502            val disc cost -1.12942647934 gen cost -268.046691895
+2017-05-03 13:58:17 iter 42799 train disc cost -0.217119991779 gen cost -272.330871582            val disc cost -0.363391339779 gen cost -272.324584961
+2017-05-03 13:59:32 iter 42899 train disc cost -0.68843215704 gen cost -267.871276855            val disc cost -0.481170713902 gen cost -268.501220703
+2017-05-03 14:00:46 iter 42999 train disc cost 0.64122992754 gen cost -270.606994629            val disc cost 0.762092530727 gen cost -271.237304688
+2017-05-03 14:02:02 iter 43099 train disc cost -1.5589132309 gen cost -271.308380127            val disc cost -0.801446080208 gen cost -271.244750977
+2017-05-03 14:03:16 iter 43199 train disc cost -0.858078122139 gen cost -272.38494873            val disc cost -0.887400388718 gen cost -272.034484863
+2017-05-03 14:04:31 iter 43299 train disc cost -0.316236376762 gen cost -269.679138184            val disc cost -1.23200714588 gen cost -269.826904297
+2017-05-03 14:05:47 iter 43399 train disc cost -1.67849600315 gen cost -272.736724854            val disc cost -0.426774501801 gen cost -272.05456543
+2017-05-03 14:07:01 iter 43499 train disc cost -0.4113920331 gen cost -272.136962891            val disc cost -0.348289549351 gen cost -272.093566895
+2017-05-03 14:08:17 iter 43599 train disc cost 0.237612813711 gen cost -273.346832275            val disc cost 0.236003741622 gen cost -273.836456299
+2017-05-03 14:09:32 iter 43699 train disc cost 0.725599527359 gen cost -273.428710938            val disc cost -0.164497166872 gen cost -273.325439453
+2017-05-03 14:10:47 iter 43799 train disc cost -0.246364951134 gen cost -272.142974854            val disc cost -0.42885529995 gen cost -272.173706055
+2017-05-03 14:12:01 iter 43899 train disc cost -0.549611747265 gen cost -272.318725586            val disc cost -0.874634385109 gen cost -272.039978027
+2017-05-03 14:13:17 iter 43999 train disc cost -0.00545531511307 gen cost -272.65814209            val disc cost -0.247141182423 gen cost -272.715515137
+2017-05-03 14:14:33 iter 44099 train disc cost -0.54550164938 gen cost -275.284606934            val disc cost -0.0969275906682 gen cost -275.813964844
+2017-05-03 14:15:47 iter 44199 train disc cost -0.373857438564 gen cost -270.785125732            val disc cost -0.153928339481 gen cost -270.861846924
+2017-05-03 14:17:03 iter 44299 train disc cost -0.827875256538 gen cost -273.559631348            val disc cost -0.877238929272 gen cost -273.319885254
+2017-05-03 14:18:16 iter 44399 train disc cost -0.32814887166 gen cost -277.79776001            val disc cost 0.289113879204 gen cost -277.864318848
+2017-05-03 14:19:32 iter 44499 train disc cost -0.398766905069 gen cost -276.719085693            val disc cost -0.431734681129 gen cost -276.788085938
+2017-05-03 14:20:54 iter 44599 train disc cost 0.124426215887 gen cost -274.125854492            val disc cost -0.315870672464 gen cost -273.670166016
+2017-05-03 14:22:18 iter 44699 train disc cost -0.68977367878 gen cost -277.099578857            val disc cost -0.507112562656 gen cost -276.84197998
+2017-05-03 14:24:06 iter 44799 train disc cost -0.959226846695 gen cost -275.241119385            val disc cost -0.432837069035 gen cost -275.15524292
+2017-05-03 14:25:56 iter 44899 train disc cost -0.174478858709 gen cost -275.749023438            val disc cost 0.502680540085 gen cost -275.641784668
+2017-05-03 14:27:41 iter 44999 train disc cost 0.642787992954 gen cost -276.804992676            val disc cost -0.660579800606 gen cost -276.934082031
+2017-05-03 14:29:34 iter 45099 train disc cost -1.61136829853 gen cost -277.214172363            val disc cost -0.680299341679 gen cost -277.440673828
+Traceback (most recent call last):
+  File "gan_face.py", line 564, in <module>
+    train_batch = lib.read.get_batch( data_train , BATCH_SIZE)
+  File "/home/wtw/improved_wgan_training/tflib/read.py", line 17, in get_batch
+    images[ i ] = scipy.misc.imread(j)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/scipy/misc/pilutil.py", line 154, in imread
+    im = Image.open(name)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/PIL/Image.py", line 2319, in open
+    prefix = fp.read(16)
+KeyboardInterrupt
+Uppercase local vars:
+	BATCH_SIZE: 32
+	CHECKPOINT_PATH: checkpoint/gan_res
+	CRITIC_ITERS: 5
+	DATA_DIR: ~/asian-webface-align
+	DATA_TRAIN: data.train
+	DATA_VAL: data.val
+	DIM: 64
+	H: 28
+	ITERS: 200000
+	LAMBDA: 10
+	MODE: wgan-gp
+	NAME: gan_res
+	N_GPUS: 2
+	OUTPUT_DIM: 32256
+	OUTPUT_PATH: output/gan_res
+	TENSORFLOW_READ: False
+	TEST_SPEED: False
+	W: 24
+2017-05-03 14:31:17.895140: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 14:31:17.895181: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 14:31:17.895187: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 14:31:17.895193: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 14:31:17.895199: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-03 14:31:18.338259: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:82:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2017-05-03 14:31:18.338381: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x45940b0
+2017-05-03 14:31:18.779315: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:83:00.0
+Total memory: 11.92GiB
+Free memory: 10.53GiB
+2017-05-03 14:31:18.780145: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 
+2017-05-03 14:31:18.780164: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y 
+2017-05-03 14:31:18.780172: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y 
+2017-05-03 14:31:18.780203: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:82:00.0)
+2017-05-03 14:31:18.780216: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX TITAN X, pci bus id: 0000:83:00.0)
+Traceback (most recent call last):
+  File "gan_res_face.py", line 304, in <module>
+    var_list=lib.params_with_name('Discriminator.'), colocate_gradients_with_ops=True)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/training/optimizer.py", line 315, in minimize
+    grad_loss=grad_loss)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/training/optimizer.py", line 386, in compute_gradients
+    colocate_gradients_with_ops=colocate_gradients_with_ops)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/ops/gradients_impl.py", line 570, in gradients
+    in_grads = control_flow_ops.tuple(in_grads)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2811, in tuple
+    gate = group(*gating_ops)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2734, in group
+    with ops.name_scope(name, "group_deps", inputs) as name:
+  File "/home/wtw/anaconda2/lib/python2.7/contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/framework/ops.py", line 4168, in name_scope
+    with g.as_default(), g.name_scope(n) as scope:
+  File "/home/wtw/anaconda2/lib/python2.7/contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/framework/ops.py", line 2844, in name_scope
+    if not _VALID_SCOPE_NAME_REGEX.match(name):
+KeyboardInterrupt
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcublas.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcudnn.so.5 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcufft.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcurand.so.8.0 locally
+Uppercase local vars:
+	BATCH_SIZE: 32
+	CHECKPOINT_PATH: checkpoint/gan_res_s
+	CRITIC_ITERS: 5
+	DATA_DIR: ~/asian-webface-align
+	DATA_TRAIN: data.train
+	DATA_VAL: data.val
+	DIM: 32
+	H: 28
+	ITERS: 200000
+	LAMBDA: 10
+	MODE: wgan-gp
+	NAME: gan_res_s
+	N_GPUS: 2
+	OUTPUT_DIM: 32256
+	OUTPUT_PATH: output/gan_res_s
+	TENSORFLOW_READ: False
+	TEST_SPEED: False
+	W: 24
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE3 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:885] Found device 0 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:04:00.0
+Total memory: 11.90GiB
+Free memory: 11.76GiB
+W tensorflow/stream_executor/cuda/cuda_driver.cc:590] creating context when one is currently active; existing: 0x32568f0
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:885] Found device 1 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:05:00.0
+Total memory: 11.90GiB
+Free memory: 11.76GiB
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:906] DMA: 0 1 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:916] 0:   Y Y 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:916] 1:   Y Y 
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:975] Creating TensorFlow device (/gpu:0) -> (device: 0, name: TITAN X (Pascal), pci bus id: 0000:04:00.0)
+I tensorflow/core/common_runtime/gpu/gpu_device.cc:975] Creating TensorFlow device (/gpu:1) -> (device: 1, name: TITAN X (Pascal), pci bus id: 0000:05:00.0)
+Traceback (most recent call last):
+  File "gan_res_s.py", line 267, in <module>
+    disc_real = Discriminator(real_data)
+  File "gan_res_s.py", line 218, in ResnetDiscriminator
+    output = lib.ops.linear.Linear('Discriminator.Output', 7*6* 8*dim, 512, output)
+  File "/home/wtw/improved_wgan_training/tflib/ops/linear.py", line 59, in Linear
+    (input_dim, output_dim)
+  File "/home/wtw/improved_wgan_training/tflib/ops/linear.py", line 45, in uniform
+    size=size
+KeyboardInterrupt
