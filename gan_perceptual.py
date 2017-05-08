@@ -237,14 +237,17 @@ with tf.Session(config=config) as session:
         minibatch = tf.placeholder( tf.uint8 , shape =(BATCH_SIZE , H*4 , W * 4 , 3 )  )
 
 
-    gen_costs  , disc_costs , fake_datas , real_datas = []  , [] , [] , []
+    gen_costs  , disc_costs , fake_datas , real_datas , bicubic_datas = []  , [] , [] , [] , []
     split_minibatch  = tf.split( minibatch , len(DEVICES) , axis = 0  )
     for device_index , device in enumerate(DEVICES):
         with tf.device(device):
             minibatch_idx = split_minibatch[device_index]
             minibatch_lr = tf.image.resize_bicubic( minibatch_idx , [ H,W ]  )
+            minibatch_bicubic = tf.image.resize_bicubic( minibatch_lr, [H*4 , W*4] )
+            minibatch_bicubic = tf.clip_by_value( minibatch_bicubic , 0 ,255 )
             x_lr = tf.transpose( minibatch_lr , [0,3,1,2] )
             x = tf.transpose( minibatch_idx , [0,3,1,2])
+            x_bicubic = tf.transpose( minibatch_bicubic , [0,3,1,2] )
 
 
             real_data = tf.reshape(2*((tf.cast( x , tf.float32)/255.)-.5), [BATCH_SIZE/len(DEVICES), OUTPUT_DIM])
@@ -275,11 +278,13 @@ with tf.Session(config=config) as session:
             disc_costs.append(disc_cost)
             real_datas.append(real_data) 
             fake_datas.append(fake_data)
+            bicubic_datas.append(x_bicubic)
 
     gen_cost = tf.add_n(gen_costs)/len(DEVICES)  
     disc_cost = tf.add_n(disc_costs)/len(DEVICES)  
     real_data = tf.concat( real_datas , axis = 0  )
     fake_data = tf.concat( fake_datas , axis = 0  ) 
+    bicubic_data = tf.concat( bicubic_datas , axis = 0  )
 
 
 
@@ -293,16 +298,19 @@ with tf.Session(config=config) as session:
     def generate_image(it):
 
         _get_batch = lib.read.get_batch( data_train , BATCH_SIZE )
-        real_samples , samples = session.run( [real_data , fake_data ] , feed_dict = { minibatch:_get_batch }) 
+        real_samples , samples  , bicubic_samples = session.run( [real_data , fake_data ,  bicubic_data ] , feed_dict = { minibatch:_get_batch }) 
 
         samples = ((samples+1.)*(255.99/2)).astype('uint8')
         samples = samples.reshape((BATCH_SIZE, 3, H*4, W*4))
         real_samples = ((real_samples+1.)*(255.99/2)).astype('uint8')
         real_samples = real_samples.reshape((BATCH_SIZE, 3, H*4, W*4))
+        bicubic_samples = bicubic_samples.astype('uint8')
+        bicubic_samples = bicubic_samples.reshape((BATCH_SIZE , 3 , H*4 , W*4))
         
         with tf.device('/cpu:0'):
             lib.save_images.save_images( samples , OUTPUT_PATH+'/samples_{}_gen.png'.format(it))
             lib.save_images.save_images( real_samples , OUTPUT_PATH+'/samples_{}_real.png'.format(it))
+            lib.save_images.save_images( bicubic_samples , OUTPUT_PATH+'/samples_{}_bicubic.png'.format(it)  )
 
 
 
