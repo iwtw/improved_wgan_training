@@ -16,6 +16,7 @@ import tflib.plot
 H = 28
 W = 24
 DIM = 32
+OUTPUT_DIM = 112*96*3
 #OUTPUT_DIM = H*4*W*4*3
 def GeneratorAndDiscriminator():
     """
@@ -139,14 +140,15 @@ def ResnetGenerator(n_samples, inputs, dim=DIM):
  # somebody use tanh while others not ??
     output = tf.tanh(output )
 
-    #return tf.reshape(output, [-1, OUTPUT_DIM])
+    return tf.reshape(output, [-1, OUTPUT_DIM])
     return output
 
 
 # ! Discriminators
 
 def ResnetDiscriminator(inputs, dim=DIM):
-    #output = tf.reshape(inputs, [-1, 3, 112, 96])
+    output = tf.reshape(inputs, [-1, 3, 112, 96])
+    #output = inputs
     output = lib.ops.conv2d.Conv2D('Discriminator.In', 3, dim/2, 1, output, he_init=False)
 
     for i in xrange(2):
