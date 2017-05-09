@@ -10,4 +10,5 @@ checkpoint/
 output/
 data*
 LICENSE
-info*
+info.*
+test_output/

@@ -19,6 +19,7 @@ import tflib.ops.layernorm
 import tflib.plot
 import os
 import sys
+from model import *
 
 TEST_SPEED = False
 TENSORFLOW_READ = False
@@ -29,9 +30,9 @@ if not os.path.exists("output"):
     os.mkdir("output")
 
 P = float(sys.argv[2])
-DIM = 32 
 CRITIC_ITERS = 5 # How many its to train the critic for
 N_GPUS = 2 # Number of GPUs
+DEVICES = ['/gpu:{}'.format(i) for i in xrange(N_GPUS)]
 BATCH_SIZE = N_GPUS * 64 # Batch size. Must be a multiple of N_GPUS
 ITERS = 200000 # How many its to train for
 LAMBDA = 10 # Gradient penalty lambda hyperparameter
@@ -61,154 +62,6 @@ if not os.path.exists(CHECKPOINT_PATH):
 
 lib.print_model_settings(locals().copy())
 
-def GeneratorAndDiscriminator():
-    """
-    Choose which generator and discriminator architecture to use by
-    uncommenting one of these lines.
-    """
-
-    # Baseline (G: DCGAN, D: DCGAN)
-    return ResnetGenerator, ResnetDiscriminator
-
-    raise Exception('You must choose an architecture!')
-
-DEVICES = ['/gpu:{}'.format(i) for i in xrange(N_GPUS)]
-
-def LeakyReLU(x, alpha=0.2):
-    return tf.maximum(alpha*x, x)
-
-def ReLULayer(name, n_in, n_out, inputs):
-    output = lib.ops.linear.Linear(name+'.Linear', n_in, n_out, inputs, initialization='he')
-    return tf.nn.relu(output)
-
-def LeakyReLULayer(name, n_in, n_out, inputs):
-    output = lib.ops.linear.Linear(name+'.Linear', n_in, n_out, inputs, initialization='he')
-    return LeakyReLU(output)
-
-def Batchnorm(name, axes, inputs):
-    #if ('Discriminator' in name) and (MODE == 'wgan-gp'):
-    if 'Discriminator' in name :
-        if axes != [0,2,3]:
-            raise Exception('Layernorm over non-standard axes is unsupported')
-        return lib.ops.layernorm.Layernorm(name,[1,2,3],inputs)
-    else:
-        return lib.ops.batchnorm.Batchnorm(name,axes,inputs,fused=True)
-
-def pixcnn_gated_nonlinearity(a, b):
-    return tf.sigmoid(a) * tf.tanh(b)
-
-def SubpixelConv2D(*args, **kwargs):
-    kwargs['output_dim'] = 4*kwargs['output_dim']
-    output = lib.ops.conv2d.Conv2D(*args, **kwargs)
-    output = tf.transpose(output, [0,2,3,1])
-    output = tf.depth_to_space(output, 2)
-    output = tf.transpose(output, [0,3,1,2])
-    return output
-
-def ResidualBlock(name, input_dim, output_dim, filter_size, inputs, resample=None, he_init=True , mode="old"):
-    """
-    resample: None, 'down', or 'up'
-    """
-    if resample=='down':
-        conv_shortcut = functools.partial(lib.ops.conv2d.Conv2D, stride=2)
-        conv_1        = functools.partial(lib.ops.conv2d.Conv2D, input_dim=input_dim, output_dim=input_dim/2)
-        conv_1b       = functools.partial(lib.ops.conv2d.Conv2D, input_dim=input_dim/2, output_dim=output_dim/2, stride=2)
-        conv_2        = functools.partial(lib.ops.conv2d.Conv2D, input_dim=output_dim/2, output_dim=output_dim)
-    elif resample=='up':
-        conv_shortcut = SubpixelConv2D
-        conv_1        = functools.partial(lib.ops.conv2d.Conv2D, input_dim=input_dim, output_dim=input_dim/2)
-        #conv_1b       = functools.partial(lib.ops.deconv2d.Deconv2D, input_dim=input_dim/2, output_dim=output_dim/2)
-        conv_1b       = functools.partial( SubpixelConv2D , input_dim=input_dim/2 , output_dim=output_dim/2 )
-        conv_2        = functools.partial(lib.ops.conv2d.Conv2D, input_dim=output_dim/2, output_dim=output_dim)
-    elif resample==None:
-        conv_shortcut = lib.ops.conv2d.Conv2D
-        conv_1        = functools.partial(lib.ops.conv2d.Conv2D, input_dim=input_dim,  output_dim=input_dim)
-        conv_1b       = functools.partial(lib.ops.conv2d.Conv2D, input_dim=input_dim,  output_dim=output_dim)
-        conv_2        = functools.partial(lib.ops.conv2d.Conv2D, input_dim=input_dim, output_dim=output_dim)
-
-    else:
-        raise Exception('invalid resample value')
-
-    if output_dim==input_dim and resample==None:
-        shortcut = inputs # Identity skip-connection
-    else:
-        shortcut = conv_shortcut(name+'.Shortcut', input_dim=input_dim, output_dim=output_dim, filter_size=1,
-                                 he_init=False, biases=True, inputs=inputs)
-
-    output = inputs
-    if mode =="old":
-        output = tf.nn.relu(output)
-        output = conv_1(name+'.Conv1', filter_size=1, inputs=output, he_init=he_init, weightnorm=False)
-        output = tf.nn.relu(output)
-        output = conv_1b(name+'.Conv1B', filter_size=filter_size, inputs=output, he_init=he_init, weightnorm=False)
-        output = tf.nn.relu(output)
-        output = conv_2(name+'.Conv2', filter_size=1, inputs=output, he_init=he_init, weightnorm=False, biases=False)
-        output = Batchnorm(name+'.BN2', [0,2,3], output)
-        output = shortcut + (0.3*output)
-    else:
-        dim = input_dim
-        output = lib.ops.conv2d.Conv2D(name+".Conv2" , input_dim , dim , filter_size, output , stride = 1 )
-        output = Batchnorm( name+".BN1" , [0,2,3] , output  )
-        output = tf.nn.relu( output )
-        output = lib.ops.conv2d.Conv2D(name+".Conv3" ,  dim , dim , filter_size , output ,stride =1  )
-        output = Batchnorm( name+".BN2" , [0,2,3] , output)
-        output = shortcut + output
-
-    return  output
-
-# ! Generators
-def ResnetGenerator(n_samples, inputs, dim=DIM):
-
-   # output = lib.ops.linear.Linear('Generator.Input', 128, 2*H*W*dim, inputs)
-    #output = lib.ops.linear.Linear('Generator.Input' , 3 , 2*H*W*dim , inputs )
-    output = lib.ops.conv2d.Conv2D('Generator.Conv1' , 3 , dim ,9, inputs , stride  = 1   )
-    output = tf.nn.relu(output)
-    shortcut1 = output
-
-
-    for i in xrange(16):
-        output = ResidualBlock('Generator.{}x{}_{}'.format(H,W,i), dim, dim, 3, output, resample=None , mode="new")
-
-    output = lib.ops.conv2d.Conv2D('Generator.Out', dim, dim , 3 , output, he_init=False)
-    output = Batchnorm( "Generator.BN3" , [0,2,3] , output)
-    output = shortcut1 + output
-
-    output = SubpixelConv2D(name = "Generator.Subpixel1" , input_dim = dim , output_dim = dim , filter_size = 3 , inputs = output , stride = 1 )
-    output = tf.nn.relu(output)
-
-    output = SubpixelConv2D(name = "Generator.Subpixel2" , input_dim = dim , output_dim = dim , filter_size = 3 , inputs = output , stride = 1 )
-    output = tf.nn.relu(output)
-
-    output = lib.ops.conv2d.Conv2D("Generator.Conv2" , dim , 3 , 9 , output , stride =1  )
-
- # somebody use tanh while others not ??
-    output = tf.tanh(output )
-
-    return tf.reshape(output, [-1, OUTPUT_DIM])
-
-# ! Discriminators
-
-def ResnetDiscriminator(inputs, dim=DIM):
-    output = tf.reshape(inputs, [-1, 3, 112, 96])
-    output = lib.ops.conv2d.Conv2D('Discriminator.In', 3, dim/2, 1, output, he_init=False)
-
-    for i in xrange(2):
-        output = ResidualBlock('Discriminator.112x96_{}'.format(i), dim/2, dim/2, 3, output, resample=None)
-    output = ResidualBlock('Discriminator.Down1', dim/2, dim*1, 3, output, resample='down')
-    for i in xrange(2):
-        output = ResidualBlock('Discriminator.56x48_{}'.format(i), dim*1, dim*1, 3, output, resample=None)
-    output = ResidualBlock('Discriminator.Down2', dim*1, dim*2, 3, output, resample='down')
-    for i in xrange(2):
-        output = ResidualBlock('Discriminator.28x24_{}'.format(i), dim*2, dim*2, 3, output, resample=None)
-    output = ResidualBlock('Discriminator.Down3', dim*2, dim*4, 3, output, resample='down')
-    for i in xrange(2):
-        output = ResidualBlock('Discriminator.14x12_{}'.format(i), dim*4, dim*4, 3, output, resample=None)
-    output = ResidualBlock('Discriminator.Down4', dim*4, dim*8, 3, output, resample='down')
-
-    output = tf.reshape(output, [-1, 7*6*8*dim])
-    output = lib.ops.linear.Linear('Discriminator.Output', 7*6* 8*dim, 1, output)
-
-    return tf.reshape(output/5. , [-1])
 
 
 Generator, Discriminator = GeneratorAndDiscriminator()
@@ -296,7 +149,6 @@ with tf.Session(config=config) as session:
     
     # For generating samples
     def generate_image(it):
-
         _get_batch = lib.read.get_batch( data_train , BATCH_SIZE )
         real_samples , samples  , bicubic_samples = session.run( [real_data , fake_data ,  bicubic_data ] , feed_dict = { minibatch:_get_batch }) 
 
@@ -314,8 +166,8 @@ with tf.Session(config=config) as session:
 
 
 
-    session.run(tf.global_variables_initializer())
-    session.run(tf.local_variables_initializer())
+    #session.run(tf.global_variables_initializer())
+    #session.run(tf.local_variables_initializer())
     #tf.train.start_queue_runners()
     # Train loop
     #gen = inf_train_gen()
