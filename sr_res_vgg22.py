@@ -221,7 +221,7 @@ with tf.Session(config=config) as session:
             fake_data = Generator(BATCH_SIZE/len(DEVICES) , inputs = x_lr )
 
             
-            vgg_inputs = tf.transpose ( tf.concat( tf.reshape( [real_data , fake_data*2.0-1.0] , [-1,3,112,96] ), axis = 0 ) , [0,2,3,1 ] )
+            vgg_inputs = tf.transpose ( tf.concat( tf.reshape( [real_data , fake_data] , [-1,3,112,96] ), axis = 0 ) , [0,2,3,1 ] )
             vgg=vgg19.Vgg19()
             vgg.build( vgg_inputs )
             fmap=tf.split(vgg.conv2_2,2)
