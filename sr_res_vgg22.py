@@ -30,6 +30,7 @@ if not os.path.exists("output"):
     os.mkdir("output")
 
 LEARNING_RATE=1e-3
+LOG_STEP=1000
 P =float( sys.argv[2] )
 DIM = 32 
 CRITIC_ITERS = 5 # How many its to train the critic for
@@ -249,7 +250,7 @@ with tf.Session(config=config) as session:
 
     global_step = tf.Variable( initial_value = 0 , dtype = tf.int32 , trainable=0 ,name = 'global_step')
     gen_train_op = tf.train.AdamOptimizer(learning_rate=LEARNING_RATE, beta1=0.5, beta2=0.9).minimize(gen_cost,
-                                      var_list=lib.params_with_name('Generator'), colocate_gradients_with_ops=True , global_step = global_step)
+                                      var_list=tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES), colocate_gradients_with_ops=True , global_step = global_step)
 
     
     # For generating samples
@@ -289,7 +290,7 @@ with tf.Session(config=config) as session:
     while it() < ITERS :
         train_batch = lib.read.get_batch( data_train , BATCH_SIZE)
 
-        if (it() < 50) or it() % 100 == 99  :
+        if (it() < 50) or it() % LOG_STEP == LOG_STEP-1  :
             val_batch = lib.read.get_batch( data_val , BATCH_SIZE )
             train_gen_cost  = session.run( gen_cost  , feed_dict = { minibatch:train_batch } ) 
             val_gen_cost  = session.run( gen_cost , feed_dict = { minibatch:val_batch } ) 
