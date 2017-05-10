@@ -249,7 +249,7 @@ with tf.Session(config=config) as session:
 
 
     global_step = tf.Variable( initial_value = 0 , dtype = tf.int32 , trainable=0 ,name = 'global_step')
-    gen_train_op = tf.train.AdamOptimizer(learning_rate=LEARNING_RATE, beta1=0.5, beta2=0.9).minimize(gen_cost,
+    gen_train_op = tf.train.RMSPropOptimizer(learning_rate=LEARNING_RATE).minimize(gen_cost,
                                       var_list=tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES), colocate_gradients_with_ops=True , global_step = global_step)
 
     
