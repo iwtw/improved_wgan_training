@@ -43,6 +43,7 @@ for device_index , device in enumerate(DEVICES):
 
 
 fake_data = tf.concat( fake_datas , axis = 0  ) 
+fake_data = tf.reshape( fake_data , [BATCH_SIZE , 3 , 112,96 ] )
 fake_data = tf.transpose( fake_data,   [0,2,3,1] )
 
 config = tf.ConfigProto(allow_soft_placement=True , log_device_placement=False)
