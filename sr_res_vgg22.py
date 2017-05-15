@@ -29,14 +29,14 @@ if not os.path.exists("checkpoint"):
 if not os.path.exists("output"):
     os.mkdir("output")
 
-LEARNING_RATE=1e-3
+LEARNING_RATE=5e-5
 LOG_STEP=1000
 P =float( sys.argv[2] )
 DIM = 32 
 CRITIC_ITERS = 5 # How many its to train the critic for
 N_GPUS = 2 # Number of GPUs
 BATCH_SIZE = N_GPUS * 64 # Batch size. Must be a multiple of N_GPUS
-ITERS = 100000 # How many its to train for
+ITERS = 200000 # How many its to train for
 LAMBDA = 10 # Gradient penalty lambda hyperparameter
 OUTPUT_DIM = 112*96*3 # Number of pixels in each iamge
 DATA_TRAIN = "data.train"
