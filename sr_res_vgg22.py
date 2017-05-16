@@ -256,7 +256,7 @@ with tf.Session(config=config) as session:
     boundaries = [ 6 * EPOCH_SIZE ,  11 * EPOCH_SIZE , 15 * EPOCH_SIZE ]
     lrs = [ 1e-3 , 1e-4 , 5e-5 , 1e-5 ]
     lr = tf.train.piecewise_constant( global_step , boundaries , lrs  )
-    gen_train_op = tf.train.RMSPropOptimizer(learning_rate=lr).minimize(gen_cost,
+    gen_train_op = tf.train.AdamOptimizer(learning_rate=lr).minimize(gen_cost,
                                       var_list=tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES), colocate_gradients_with_ops=True , global_step = global_step)
 
     
