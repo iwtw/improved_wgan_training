@@ -29,16 +29,16 @@ if not os.path.exists("checkpoint"):
 if not os.path.exists("output"):
     os.mkdir("output")
 
-LEARNING_RATE=5e-5
+#LEARNING_RATE=tf.Variable( 5e-5 )
 LOG_STEP=1000
 P =float( sys.argv[2] )
 DIM = 32 
-CRITIC_ITERS = 5 # How many its to train the critic for
-N_GPUS = 2 # Number of GPUs
-BATCH_SIZE = N_GPUS * 64 # Batch size. Must be a multiple of N_GPUS
-ITERS = 200000 # How many its to train for
-LAMBDA = 10 # Gradient penalty lambda hyperparameter
-OUTPUT_DIM = 112*96*3 # Number of pixels in each iamge
+CRITIC_ITERS = 5 
+N_GPUS = 2 
+BATCH_SIZE = N_GPUS * 64 
+NUM_EPOCHS = 20
+LAMBDA = 10 
+OUTPUT_DIM = 112*96*3 
 DATA_TRAIN = "data.train"
 DATA_VAL = "data.val"
 data_train = open(DATA_TRAIN ).read().split('\n')
@@ -47,6 +47,7 @@ data_train = np.array( data_train )
 data_val = open(DATA_VAL).read().split('\n')
 data_val.pop(len(data_val)-1)
 data_val = np.array( data_val )
+
 H = 28
 W = 24
 NAME = ""
@@ -62,6 +63,8 @@ if not os.path.exists(OUTPUT_PATH):
 if not os.path.exists(CHECKPOINT_PATH):
     os.mkdir(CHECKPOINT_PATH)
 
+DATA_SIZE = len(data_train)
+EPOCH_SIZE = DATA_SIZE / BATCH_SIZE 
 lib.print_model_settings(locals().copy())
 
 def GeneratorAndDiscriminator():
@@ -248,8 +251,12 @@ with tf.Session(config=config) as session:
 
 
 
-    global_step = tf.Variable( initial_value = 0 , dtype = tf.int32 , trainable=0 ,name = 'global_step')
-    gen_train_op = tf.train.RMSPropOptimizer(learning_rate=LEARNING_RATE).minimize(gen_cost,
+    global_step = tf.Variable( initial_value = 0 , dtype = tf.int32 , trainable = 0 ,name = 'global_step')
+    #boundaries = [ epoch_size * 6 , epoch_size * 11 , epoch_size * 16 ]
+    boundaries = [ 6 * EPOCH_SIZE ,  11 * EPOCH_SIZE , 15 * EPOCH_SIZE ]
+    lrs = [ 1e-3 , 1e-4 , 5e-5 , 1e-5 ]
+    lr = tf.train.piecewise_constant( global_step , boundaries , lrs  )
+    gen_train_op = tf.train.RMSPropOptimizer(learning_rate=lr).minimize(gen_cost,
                                       var_list=tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES), colocate_gradients_with_ops=True , global_step = global_step)
 
     
@@ -287,10 +294,11 @@ with tf.Session(config=config) as session:
         
     it = global_step.eval
     
-    while it() < ITERS :
+    while it() < EPOCH_SIZE * NUM_EPOCHS :
         train_batch = lib.read.get_batch( data_train , BATCH_SIZE)
 
         if (it() < 50) or it() % LOG_STEP == LOG_STEP-1  :
+            print("learning_rate = {}".format( lr.eval()  ))
             val_batch = lib.read.get_batch( data_val , BATCH_SIZE )
             train_gen_cost  = session.run( gen_cost  , feed_dict = { minibatch:train_batch } ) 
             val_gen_cost  = session.run( gen_cost , feed_dict = { minibatch:val_batch } ) 
