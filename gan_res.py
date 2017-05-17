@@ -23,13 +23,14 @@ from model import *
 
 TEST_SPEED = False
 TENSORFLOW_READ = False
-LEARNING_RATE=1e-3
 
 if not os.path.exists("checkpoint"):
     os.mkdir("checkpoint")
 if not os.path.exists("output"):
     os.mkdir("output")
 
+LOG_STEP = 1000
+P = float( sys.argv[2] )
 CRITIC_ITERS = 5 # How many its to train the critic for
 N_GPUS = 2 # Number of GPUs
 DEVICES = ['/gpu:{}'.format(i) for i in xrange(N_GPUS)]
@@ -47,14 +48,9 @@ data_val.pop(len(data_val)-1)
 data_val = np.array( data_val )
 H = 28
 W = 24
-NAME = ""
-if ( len(sys.argv) > 1  ):
-    NAME  = sys.argv[1]
-    OUTPUT_PATH = "output/" + NAME 
-    CHECKPOINT_PATH = "checkpoint/" + NAME
-else:
-    OUTPUT_PATH = "output/default"
-    CHECKPOINT_PATH= "checkpoint/default"
+NAME  = sys.argv[1]
+OUTPUT_PATH = "output/" + NAME 
+CHECKPOINT_PATH = "checkpoint/" + NAME
 if not os.path.exists(OUTPUT_PATH):
     os.mkdir(OUTPUT_PATH)
 if not os.path.exists(CHECKPOINT_PATH):
@@ -73,25 +69,8 @@ DEVICES = ['/gpu:{}'.format(i) for i in xrange(N_GPUS)]
 config = tf.ConfigProto(allow_soft_placement=True , log_device_placement=False )
 config.gpu_options.allow_growth=True
 with tf.Session(config=config) as session:
+    minibatch = tf.placeholder( tf.uint8 , shape =(BATCH_SIZE , H*4 , W * 4 , 3 )  )
     
-
-    if TENSORFLOW_READ:
-        with tf.device('/cpu:0'):
-            file_names=open(DATA_TRAIN,'r').read().split('\n')
-            file_names.pop( len(file_names) -1 )
-            steps_per_epoch = len(file_names) / BATCH_SIZE
-            #random.shuffle(file_names)
-            filename_queue=tf.train.string_input_producer(file_names)
-            reader=tf.WholeFileReader()
-            _,value=reader.read(filename_queue)
-            image=tf.image.decode_jpeg(value)
-            cropped=tf.random_crop(image,[ H *4, W*4,3])
-            flipped = tf.image.random_flip_left_right( cropped )
-            minibatch =   tf.train.batch([flipped] , BATCH_SIZE  , capacity = BATCH_SIZE * 30  ) 
-    else:
-        minibatch = tf.placeholder( tf.uint8 , shape =(BATCH_SIZE , H*4 , W * 4 , 3 )  )
-
-
     gen_costs  , disc_costs , fake_datas , real_datas , bicubic_datas = []  , [] , [] , [] , []
     split_minibatch  = tf.split( minibatch , len(DEVICES) , axis = 0  )
     for device_index , device in enumerate(DEVICES):
@@ -112,8 +91,9 @@ with tf.Session(config=config) as session:
             disc_real = Discriminator(real_data)
             disc_fake = Discriminator(fake_data)
 
+            gen_content_cost = tf.losses.mean_squared_error( fake_data , real_data )
             gen_adv_cost = -tf.reduce_mean(disc_fake)
-            gen_cost = gen_adv_cost
+            gen_cost = P * gen_adv_cost + ( 1 - P ) * gen_adv_cost
             disc_cost = tf.reduce_mean(disc_fake) - tf.reduce_mean(disc_real)
 
             alpha = tf.random_uniform(
@@ -182,24 +162,22 @@ with tf.Session(config=config) as session:
     best_cost = 1e10
     while it() < EPOCH_SIZE * NUM_EPOCHS :
         train_batch = lib.read.get_batch( data_train , BATCH_SIZE)
+        for i in xrange(disc_iters):
+            _ = session.run( disc_train_op,feed_dict={minibatch:train_batch})
+        _ = session.run(gen_train_op,feed_dict={minibatch:train_batch})
 
-        if (it() < 50) or it() % 100 == 99  :
+        if (it() < 50) or it() % LOG_STEP == LOG_STEP -1    :
             val_batch = lib.read.get_batch( data_val , BATCH_SIZE )
             train_gen_cost ,train_disc_cost = session.run( [gen_cost , disc_cost] , feed_dict = { minibatch:train_batch } ) 
             val_gen_cost , val_disc_cost = session.run( [gen_cost , disc_cost ] , feed_dict = { minibatch:val_batch } ) 
+          #  if best_cost < val_disc_cost:
+          #      best_cost = val_disc_cost
+          #      saver.save( session , CHECKPOINT_PATH+'/bestsrwgan' )
             s = time.strftime("%Y-%m-%d %H:%M:%S ",time.localtime(time.time())) + "iter "+str(it()) + ' train disc cost {} gen cost {}'.format( train_disc_cost, train_gen_cost)
             s += "            val disc cost {} gen cost {}".format( val_disc_cost , val_gen_cost )  
             print(s)
             saver.save( session , CHECKPOINT_PATH+'/srwgan')
             generate_image(it())
-
-            
-       # if train_disc_cost > 0 :
-       #     disc_iters += 1 
-        for i in xrange(disc_iters):
-            _ = session.run( disc_train_op,feed_dict={minibatch:train_batch})
-        _ = session.run(gen_train_op,feed_dict={minibatch:train_batch})
-
 
 
       #  lib.plot.tick()
