@@ -126,9 +126,9 @@ with tf.Session(config=config) as session:
     boundaries = [ 6 * EPOCH_SIZE ,  11 * EPOCH_SIZE , 16 * EPOCH_SIZE , 21 * EPOCH_SIZE]
     lrs = [ 1e-3 , 1e-4 , 5e-5 , 1e-5 , 1e-6 ]
     lr = tf.train.piecewise_constant( global_step , boundaries , lrs  )
-    gen_train_op = tf.train.AdamOptimizer(learning_rate=LEARNING_RATE, beta1=0.5, beta2=0.9).minimize(gen_cost,
+    gen_train_op = tf.train.AdamOptimizer(learning_rate=lr, beta1=0.5, beta2=0.9).minimize(gen_cost,
                                       var_list=lib.params_with_name('Generator'), colocate_gradients_with_ops=True , global_step = global_step)
-    disc_train_op = tf.train.AdamOptimizer(learning_rate=LEARNING_RATE, beta1=0.5, beta2=0.9).minimize(disc_cost,                                                                  var_list=lib.params_with_name('Discriminator.'), colocate_gradients_with_ops=True)
+    disc_train_op = tf.train.AdamOptimizer(learning_rate=lr, beta1=0.5, beta2=0.9).minimize(disc_cost,                                                                  var_list=lib.params_with_name('Discriminator.'), colocate_gradients_with_ops=True)
 
     
     # For generating samples
