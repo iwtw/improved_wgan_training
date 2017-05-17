@@ -36,7 +36,7 @@ DIM = 32
 CRITIC_ITERS = 5 
 N_GPUS = 2 
 BATCH_SIZE = N_GPUS * 64 
-NUM_EPOCHS = 20
+NUM_EPOCHS = 25
 LAMBDA = 10 
 OUTPUT_DIM = 112*96*3 
 DATA_TRAIN = "data.train"
@@ -253,8 +253,8 @@ with tf.Session(config=config) as session:
 
     global_step = tf.Variable( initial_value = 0 , dtype = tf.int32 , trainable = 0 ,name = 'global_step')
     #boundaries = [ epoch_size * 6 , epoch_size * 11 , epoch_size * 16 ]
-    boundaries = [ 6 * EPOCH_SIZE ,  11 * EPOCH_SIZE , 15 * EPOCH_SIZE ]
-    lrs = [ 1e-3 , 1e-4 , 5e-5 , 1e-5 ]
+    boundaries = [ 6 * EPOCH_SIZE ,  11 * EPOCH_SIZE , 16 * EPOCH_SIZE , 21 * EPOCH_SIZE]
+    lrs = [ 1e-3 , 1e-4 , 5e-5 , 1e-5 , 1e-6 ]
     lr = tf.train.piecewise_constant( global_step , boundaries , lrs  )
     gen_train_op = tf.train.AdamOptimizer(learning_rate=lr).minimize(gen_cost,
                                       var_list=tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES), colocate_gradients_with_ops=True , global_step = global_step)
@@ -294,6 +294,7 @@ with tf.Session(config=config) as session:
         
     it = global_step.eval
     
+    best_cost = 1e10
     while it() < EPOCH_SIZE * NUM_EPOCHS :
         train_batch = lib.read.get_batch( data_train , BATCH_SIZE)
 
@@ -302,6 +303,8 @@ with tf.Session(config=config) as session:
             val_batch = lib.read.get_batch( data_val , BATCH_SIZE )
             train_gen_cost  = session.run( gen_cost  , feed_dict = { minibatch:train_batch } ) 
             val_gen_cost  = session.run( gen_cost , feed_dict = { minibatch:val_batch } ) 
+            if best_cost < val_gen_cost :
+                saver.save( session , CHECKPOINT_PATH+'/bestsrwgan' )
             s = time.strftime("%Y-%m-%d %H:%M:%S ",time.localtime(time.time())) + "iter "+str(it()) + ' train  gen cost {}'.format(  train_gen_cost)
             s += "            val gen cost {}".format(  val_gen_cost )  
             print(s)
