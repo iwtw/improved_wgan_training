@@ -33,7 +33,6 @@ if not os.path.exists("output"):
 LOG_STEP=1000
 P =float( sys.argv[2] )
 DIM = 32 
-CRITIC_ITERS = 5 
 N_GPUS = 2 
 BATCH_SIZE = N_GPUS * 64 
 NUM_EPOCHS = 25
@@ -304,6 +303,7 @@ with tf.Session(config=config) as session:
             train_gen_cost  = session.run( gen_cost  , feed_dict = { minibatch:train_batch } ) 
             val_gen_cost  = session.run( gen_cost , feed_dict = { minibatch:val_batch } ) 
             if best_cost < val_gen_cost :
+                best_cost = val_gen_cost
                 saver.save( session , CHECKPOINT_PATH+'/bestsrwgan' )
             s = time.strftime("%Y-%m-%d %H:%M:%S ",time.localtime(time.time())) + "iter "+str(it()) + ' train  gen cost {}'.format(  train_gen_cost)
             s += "            val gen cost {}".format(  val_gen_cost )  

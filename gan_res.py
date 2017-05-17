@@ -34,7 +34,7 @@ CRITIC_ITERS = 5 # How many its to train the critic for
 N_GPUS = 2 # Number of GPUs
 DEVICES = ['/gpu:{}'.format(i) for i in xrange(N_GPUS)]
 BATCH_SIZE = N_GPUS * 64 # Batch size. Must be a multiple of N_GPUS
-ITERS = 200000 # How many its to train for
+NUM_EPOCHS = 25
 LAMBDA = 10 # Gradient penalty lambda hyperparameter
 OUTPUT_DIM = 112*96*3 # Number of pixels in each iamge
 DATA_TRAIN = "data.train"
@@ -60,6 +60,8 @@ if not os.path.exists(OUTPUT_PATH):
 if not os.path.exists(CHECKPOINT_PATH):
     os.mkdir(CHECKPOINT_PATH)
 
+DATA_SIZE = len(data_train)
+EPOCH_SIZE = DATA_SIZE / BATCH_SIZE 
 lib.print_model_settings(locals().copy())
 
 
@@ -111,7 +113,7 @@ with tf.Session(config=config) as session:
             disc_fake = Discriminator(fake_data)
 
             gen_adv_cost = -tf.reduce_mean(disc_fake)
-            gen_cost =  gen_adv_cost
+            gen_cost = gen_adv_cost
             disc_cost = tf.reduce_mean(disc_fake) - tf.reduce_mean(disc_real)
 
             alpha = tf.random_uniform(
@@ -140,7 +142,10 @@ with tf.Session(config=config) as session:
 
 
 
-    global_step = tf.Variable( initial_value = 0 , dtype = tf.int32 , trainable=0 ,name = 'global_step')
+    global_step = tf.Variable( initial_value = 0 , dtype = tf.int32 , trainable = 0 ,name = 'global_step')
+    boundaries = [ 6 * EPOCH_SIZE ,  11 * EPOCH_SIZE , 16 * EPOCH_SIZE , 21 * EPOCH_SIZE]
+    lrs = [ 1e-3 , 1e-4 , 5e-5 , 1e-5 , 1e-6 ]
+    lr = tf.train.piecewise_constant( global_step , boundaries , lrs  )
     gen_train_op = tf.train.AdamOptimizer(learning_rate=LEARNING_RATE, beta1=0.5, beta2=0.9).minimize(gen_cost,
                                       var_list=lib.params_with_name('Generator'), colocate_gradients_with_ops=True , global_step = global_step)
     disc_train_op = tf.train.AdamOptimizer(learning_rate=LEARNING_RATE, beta1=0.5, beta2=0.9).minimize(disc_cost,                                                                  var_list=lib.params_with_name('Discriminator.'), colocate_gradients_with_ops=True)
@@ -165,11 +170,6 @@ with tf.Session(config=config) as session:
 
 
 
-    #session.run(tf.global_variables_initializer())
-    #session.run(tf.local_variables_initializer())
-    #tf.train.start_queue_runners()
-    # Train loop
-    #gen = inf_train_gen()
     saver = tf.train.Saver(var_list= tf.get_collection( tf.GraphKeys.GLOBAL_VARIABLES) )
     if os.path.exists( CHECKPOINT_PATH+"/srwgan.meta" ):
         saver.restore( session , CHECKPOINT_PATH+"/srwgan" )
@@ -178,7 +178,9 @@ with tf.Session(config=config) as session:
         
     it = global_step.eval
     
-    while it() < ITERS :
+    disc_iters = CRITIC_ITERS
+    best_cost = 1e10
+    while it() < EPOCH_SIZE * NUM_EPOCHS :
         train_batch = lib.read.get_batch( data_train , BATCH_SIZE)
 
         if (it() < 50) or it() % 100 == 99  :
@@ -190,8 +192,10 @@ with tf.Session(config=config) as session:
             print(s)
             saver.save( session , CHECKPOINT_PATH+'/srwgan')
             generate_image(it())
+
             
-        disc_iters = CRITIC_ITERS
+       # if train_disc_cost > 0 :
+       #     disc_iters += 1 
         for i in xrange(disc_iters):
             _ = session.run( disc_train_op,feed_dict={minibatch:train_batch})
         _ = session.run(gen_train_op,feed_dict={minibatch:train_batch})
