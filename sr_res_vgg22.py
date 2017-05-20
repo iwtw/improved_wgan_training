@@ -302,7 +302,7 @@ with tf.Session(config=config) as session:
             val_batch = lib.read.get_batch( data_val , BATCH_SIZE )
             train_gen_cost  = session.run( gen_cost  , feed_dict = { minibatch:train_batch } ) 
             val_gen_cost  = session.run( gen_cost , feed_dict = { minibatch:val_batch } ) 
-            if best_cost < val_gen_cost :
+            if best_cost > val_gen_cost :
                 best_cost = val_gen_cost
                 saver.save( session , CHECKPOINT_PATH+'/bestsrwgan' )
             s = time.strftime("%Y-%m-%d %H:%M:%S ",time.localtime(time.time())) + "iter "+str(it()) + ' train  gen cost {}'.format(  train_gen_cost)
