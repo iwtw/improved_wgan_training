@@ -22,7 +22,11 @@ DATA_PATH = 'data.test'
 data_path = open( DATA_PATH ).read().split('\n')
 data_path.pop(len(data_path)-1)
 data_path = np.array( data_path )
-CHECKPOINT_PATH = 'checkpoint/'+NAME+'/srwgan'
+CHECKPOINT_PATH = 'checkpoint/'+NAME
+if os.path.exists( CHECKPOINT_PATH +'/bestsrwgan.meta' ):
+    CHECKPOINT_PATH += '/bestsrwgan'
+else:
+    CHECKPOINT_PATH += '/srwgan'
 
 gen_costs  , disc_costs , fake_datas , real_datas , bicubic_datas = []  , [] , [] , [] , []
 split_minibatch  = tf.split( minibatch , len(DEVICES) , axis = 0  )
