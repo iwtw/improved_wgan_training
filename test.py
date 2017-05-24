@@ -12,13 +12,16 @@ N_GPUS = 2
 DEVICES = ['/gpu:{}'.format(i) for i in xrange(N_GPUS)]
 OUTPUT_DIM = 112*96*3
 
-BATCH_SIZE = 994
+BATCH_SIZE = 64
+SAMPLE_TIMES = 100
+#BATCH_SIZE = 994
 
 Generator = ResnetGenerator
 
 
 minibatch = tf.placeholder( tf.uint8 , shape =(BATCH_SIZE , H*4 , W * 4 , 3 )  )
-DATA_PATH = 'data.test'
+#DATA_PATH = "dfk_data.test"
+DATA_PATH = 'data.val'
 data_path = open( DATA_PATH ).read().split('\n')
 data_path.pop(len(data_path)-1)
 data_path = np.array( data_path )
@@ -56,9 +59,10 @@ config.gpu_options.allow_growth=True
 with tf.Session(config=config) as sess:
     loader = tf.train.Saver(var_list = tf.get_collection( tf.GraphKeys.GLOBAL_VARIABLES ))
     loader.restore( sess , CHECKPOINT_PATH)
-    _get_batch = lib.read.get_batch( data_path , BATCH_SIZE , random=False )
-    samples = sess.run(  fake_data , feed_dict = { minibatch:_get_batch }) 
-    samples = ((samples+1.)*(255.99/2)).astype('uint8')
-    with tf.device('/cpu:0'):
-        for i in xrange(BATCH_SIZE):
-            imsave(OUTPUT_PATH + '/' + data_path[i].split('/')[-1] , samples[i])
+    for i in xrange(SAMPLE_TIMES):
+        _get_batch = lib.read.get_batch( data_path[i*BATCH_SIZE:] , BATCH_SIZE , random=False )
+        samples = sess.run(  fake_data , feed_dict = { minibatch:_get_batch }) 
+        samples = ((samples+1.)*(255.99/2)).astype('uint8')
+        with tf.device('/cpu:0'):
+            for j in xrange(BATCH_SIZE):
+                imsave(OUTPUT_PATH + '/' + data_path[i*BATCH_SIZE+j].split('/')[-1] , samples[j])
