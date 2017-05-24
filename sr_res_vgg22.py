@@ -298,14 +298,14 @@ with tf.Session(config=config) as session:
         train_batch = lib.read.get_batch( data_train , BATCH_SIZE)
 
         if (it() < 50) or it() % LOG_STEP == LOG_STEP-1  :
-            print("learning_rate = {}".format( lr.eval()  ))
+            #print("learning_rate = {}".format( lr.eval()  ))
             val_batch = lib.read.get_batch( data_val , BATCH_SIZE )
             train_gen_cost  = session.run( gen_cost  , feed_dict = { minibatch:train_batch } ) 
             val_gen_cost  = session.run( gen_cost , feed_dict = { minibatch:val_batch } ) 
             if best_cost > val_gen_cost :
                 best_cost = val_gen_cost
                 saver.save( session , CHECKPOINT_PATH+'/bestsrwgan' )
-            s = time.strftime("%Y-%m-%d %H:%M:%S ",time.localtime(time.time())) + "iter "+str(it()) + ' train  gen cost {}'.format(  train_gen_cost)
+            s = time.strftime("%Y-%m-%d %H:%M:%S ",time.localtime(time.time())) +"epoch "+it()/EPOCH_SIZE+ "iter "+str(it()) + ' train  gen cost {}'.format(  train_gen_cost)
             s += "            val gen cost {}".format(  val_gen_cost )  
             print(s)
             saver.save( session , CHECKPOINT_PATH+'/srwgan')
