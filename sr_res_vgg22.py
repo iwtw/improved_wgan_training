@@ -33,7 +33,7 @@ if not os.path.exists("output"):
 LOG_STEP=1000
 P =float( sys.argv[2] )
 DIM = 32 
-N_GPUS = 2 
+N_GPUS = 1 
 BATCH_SIZE = N_GPUS * 64 
 NUM_EPOCHS = 25
 LAMBDA = 10 
