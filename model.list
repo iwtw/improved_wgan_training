@@ -1,0 +1,8 @@
+sr_res_vgg_p=0.3_webface
+sr_res_vgg_p=0.4_webface
+sr_res_vgg_p=0.5_webface
+sr_res_vgg_p=0.8_webface
+sr_res_vgg_p=0_webface
+sr_res_vgg_p=1.0_webface
+sr_res_vgg_deconv_p=0_webface
+sr_res_vgg_deconv_p=0.5_webface

@@ -21,7 +21,7 @@ Generator = ResnetGenerator
 
 minibatch = tf.placeholder( tf.uint8 , shape =(BATCH_SIZE , H*4 , W * 4 , 3 )  )
 #DATA_PATH = "dfk_data.test"
-DATA_PATH = 'data.val'
+DATA_PATH = 'data.test'
 data_path = open( DATA_PATH ).read().split('\n')
 data_path.pop(len(data_path)-1)
 data_path = np.array( data_path )
@@ -65,4 +65,7 @@ with tf.Session(config=config) as sess:
         samples = ((samples+1.)*(255.99/2)).astype('uint8')
         with tf.device('/cpu:0'):
             for j in xrange(BATCH_SIZE):
-                imsave(OUTPUT_PATH + '/' + data_path[i*BATCH_SIZE+j].split('/')[-1] , samples[j])
+                dir_name = OUTPUT_PATH + '/' + data_path[i*BATCH_SIZE+j].split('/')[-2]
+                if not os.path.exists( dir_name ):
+                    os.mkdir( dir_name )
+                imsave(OUTPUT_PATH + '/' + data_path[i*BATCH_SIZE+j].split('/')[-2] + '/'+data_path[i*BATCH_SIZE+j].split('/')[-1] , samples[j])

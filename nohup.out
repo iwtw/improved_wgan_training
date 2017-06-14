@@ -1,0 +1,177 @@
+Traceback (most recent call last):
+  File "test.py", line 9, in <module>
+    NAME = sys.argv[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "test.py", line 9, in <module>
+    NAME = sys.argv[1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "test.py", line 9, in <module>
+    NAME = sys.argv[1]
+IndexError: list index out of range
+2017-05-25 21:02:06.633257: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:02:06.633303: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:02:06.633310: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:02:06.633314: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:02:06.633319: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:02:07.201245: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:82:00.0
+Total memory: 11.90GiB
+Free memory: 7.49GiB
+2017-05-25 21:02:07.201316: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-05-25 21:02:07.201333: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-05-25 21:02:07.201360: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: TITAN X (Pascal), pci bus id: 0000:82:00.0)
+Traceback (most recent call last):
+  File "test.py", line 64, in <module>
+    samples = sess.run(  fake_data , feed_dict = { minibatch:_get_batch }) 
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 778, in run
+    run_metadata_ptr)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 982, in _run
+    feed_dict_string, options, run_metadata)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1032, in _do_run
+    target_list, options, run_metadata)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1039, in _do_call
+    return fn(*args)
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1021, in _run_fn
+    status, run_metadata)
+KeyboardInterrupt
+2017-05-25 21:02:34.040281: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:02:34.040327: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:02:34.040333: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:02:34.040338: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:02:34.040343: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:02:34.585796: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:82:00.0
+Total memory: 11.90GiB
+Free memory: 7.49GiB
+2017-05-25 21:02:34.585859: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-05-25 21:02:34.585869: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-05-25 21:02:34.585895: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: TITAN X (Pascal), pci bus id: 0000:82:00.0)
+2017-05-25 21:03:17.005233: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.005282: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.005289: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.005294: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.005300: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.148228: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.148295: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.148302: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.148308: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.148314: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.175888: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.175928: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.175935: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.175940: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.175946: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.210607: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.210664: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.210672: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.210677: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.210683: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.219196: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.219253: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.219261: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.219267: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.219274: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.249408: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.249451: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.249458: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.249463: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:17.249469: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-05-25 21:03:18.245779: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:82:00.0
+Total memory: 11.90GiB
+Free memory: 7.47GiB
+2017-05-25 21:03:18.245903: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-05-25 21:03:18.245919: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-05-25 21:03:18.245948: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: TITAN X (Pascal), pci bus id: 0000:82:00.0)
+2017-05-25 21:03:19.427235: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:82:00.0
+Total memory: 11.90GiB
+Free memory: 7.31GiB
+2017-05-25 21:03:19.427350: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-05-25 21:03:19.427374: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-05-25 21:03:19.427410: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: TITAN X (Pascal), pci bus id: 0000:82:00.0)
+2017-05-25 21:03:20.250396: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:82:00.0
+Total memory: 11.90GiB
+Free memory: 7.16GiB
+2017-05-25 21:03:20.250470: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-05-25 21:03:20.250487: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-05-25 21:03:20.250515: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: TITAN X (Pascal), pci bus id: 0000:82:00.0)
+2017-05-25 21:03:20.622770: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:82:00.0
+Total memory: 11.90GiB
+Free memory: 6.99GiB
+2017-05-25 21:03:20.622833: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-05-25 21:03:20.622842: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-05-25 21:03:20.622861: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: TITAN X (Pascal), pci bus id: 0000:82:00.0)
+2017-05-25 21:03:20.966157: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:82:00.0
+Total memory: 11.90GiB
+Free memory: 6.75GiB
+2017-05-25 21:03:20.966242: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-05-25 21:03:20.966251: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-05-25 21:03:20.966275: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: TITAN X (Pascal), pci bus id: 0000:82:00.0)
+2017-05-25 21:03:20.967699: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:82:00.0
+Total memory: 11.90GiB
+Free memory: 6.75GiB
+2017-05-25 21:03:20.967781: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-05-25 21:03:20.967798: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-05-25 21:03:20.967833: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: TITAN X (Pascal), pci bus id: 0000:82:00.0)
+2017-05-25 21:03:28.332545: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 4.00G (4294967296 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:28.333892: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 3.60G (3865470464 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:28.333918: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.32GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-05-25 21:03:28.537893: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 4.00G (4294967296 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:28.539933: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 3.60G (3865470464 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:28.539983: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.32GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-05-25 21:03:29.694830: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 4.00G (4294967296 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:29.696104: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 3.60G (3865470464 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:29.696126: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.32GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-05-25 21:03:29.879527: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 64.00M (67108864 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:29.880811: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 57.60M (60398080 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:29.882076: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 51.84M (54358272 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:29.883468: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 46.66M (48922624 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:29.884865: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 41.99M (44030464 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:29.886327: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 37.79M (39627520 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:29.887748: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 34.01M (35664896 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:29.887767: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 33.09MiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-05-25 21:03:29.943478: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 64.00M (67108864 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:29.943529: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 33.09MiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-05-25 21:03:30.023889: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 64.00M (67108864 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:30.023936: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 23.62MiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-05-25 21:03:30.025201: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 64.00M (67108864 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:30.025216: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 42.64MiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-05-25 21:03:30.026472: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 64.00M (67108864 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:30.026491: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 38.41MiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-05-25 21:03:30.037923: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 64.00M (67108864 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:30.040362: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 64.00M (67108864 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:30.042848: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 64.00M (67108864 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:30.046509: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 64.00M (67108864 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:30.048665: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 64.00M (67108864 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:30.459253: E tensorflow/stream_executor/cuda/cuda_dnn.cc:359] could not create cudnn handle: CUDNN_STATUS_NOT_INITIALIZED
+2017-05-25 21:03:30.459401: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:369] driver version file contents: """NVRM version: NVIDIA UNIX x86_64 Kernel Module  367.57  Mon Oct  3 20:37:01 PDT 2016
+GCC version:  gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3) 
+"""
+2017-05-25 21:03:30.459441: I tensorflow/stream_executor/cuda/cuda_dnn.cc:370] running driver version: 367.57.0
+2017-05-25 21:03:30.459455: E tensorflow/stream_executor/cuda/cuda_dnn.cc:326] could not destroy cudnn handle: CUDNN_STATUS_BAD_PARAM
+2017-05-25 21:03:30.459469: F tensorflow/core/kernels/conv_ops.cc:659] Check failed: stream->parent()->GetConvolveAlgorithms(&algorithms) 
+2017-05-25 21:03:32.829665: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 4.00G (4294967296 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2017-05-25 21:03:32.829720: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 142.56MiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.

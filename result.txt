@@ -1,0 +1,9 @@
+name sr_res_vgg_p=0_webface : mse 123.5142 , psnr 28.2665 , ssim 0.9781 
+name sr_res_vgg_p=0.3_webface : mse 193.6201 , psnr 26.1369 , ssim 0.9680 
+name sr_res_vgg_p=0.4_webface : mse 165.2690 , psnr 26.8445 , ssim 0.9721 
+name sr_res_vgg_p=0.5_webface : mse 163.8205 , psnr 26.9375 , ssim 0.9716 
+name sr_res_vgg_p=0.8_webface : mse 177.5792 , psnr 26.5434 , ssim 0.9687 
+name sr_res_vgg_p=1.0_webface : mse 426.4214 , psnr 22.1087 , ssim 0.9212 
+name sr_res_vgg_deconv_p=0_webface : mse 122.6702 , psnr 28.2977 , ssim 0.9781 
+name sr_res_vgg_deconv_p=0.5_webface : mse 171.5467 , psnr 26.6858 , ssim 0.9714 
+name bicubic : mse 170.3259 , psnr 26.9528 , ssim 0.9695 
