@@ -19,6 +19,7 @@ import tflib.ops.layernorm
 import tflib.plot
 import os
 import sys
+import vgg19
 
 TEST_SPEED = False
 TENSORFLOW_READ = False

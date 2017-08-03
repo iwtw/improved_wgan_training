@@ -13,3 +13,4 @@ data*
 LICENSE
 info.*
 test_output/
+nohup.out

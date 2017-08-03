@@ -175,3 +175,29 @@ GCC version:  gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3)
 2017-05-25 21:03:30.459469: F tensorflow/core/kernels/conv_ops.cc:659] Check failed: stream->parent()->GetConvolveAlgorithms(&algorithms) 
 2017-05-25 21:03:32.829665: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 4.00G (4294967296 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
 2017-05-25 21:03:32.829720: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 142.56MiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+Traceback (most recent call last):
+  File "sr_res_vgg22.py", line 7, in <module>
+    import numpy as np
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/numpy/__init__.py", line 146, in <module>
+    from . import add_newdocs
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/numpy/add_newdocs.py", line 13, in <module>
+    from numpy.lib import add_newdoc
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/numpy/lib/__init__.py", line 8, in <module>
+    from .type_check import *
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/numpy/lib/type_check.py", line 11, in <module>
+    import numpy.core.numeric as _nx
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/numpy/core/__init__.py", line 58, in <module>
+    from numpy.testing.nosetester import _numpy_tester
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/numpy/testing/__init__.py", line 12, in <module>
+    from . import decorators as dec
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/numpy/testing/decorators.py", line 21, in <module>
+    from .utils import SkipTest
+  File "/home/wtw/anaconda2/lib/python2.7/site-packages/numpy/testing/utils.py", line 15, in <module>
+    from tempfile import mkdtemp, mkstemp
+  File "/home/wtw/anaconda2/lib/python2.7/tempfile.py", line 35, in <module>
+    from random import Random as _Random
+  File "/home/wtw/anaconda2/lib/python2.7/random.py", line 49, in <module>
+    import hashlib as _hashlib
+  File "/home/wtw/anaconda2/lib/python2.7/hashlib.py", line 134, in <module>
+    import _hashlib
+KeyboardInterrupt

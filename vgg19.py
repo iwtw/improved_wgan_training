@@ -5,7 +5,8 @@ import numpy as np
 import time
 import inspect
 
-VGG_MEAN = [103.939, 116.779, 123.68]
+VGG_MEAN = np.array ( [103.939, 116.779, 123.68] )
+#VGG_MEAN = VGG_MEAN/127.5 - 1.0
 
 
 class Vgg19:
