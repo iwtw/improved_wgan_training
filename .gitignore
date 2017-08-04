@@ -9,7 +9,7 @@ push
 *.npy
 checkpoint/
 output/
-data*
+data.*
 LICENSE
 info.*
 test_output/
