@@ -26,9 +26,7 @@ import utils
 
 TEST_SPEED = False
 TENSORFLOW_READ = False
-
-if not os.path.exists("checkpoint"):
-    os.mkdir("checkpoint")
+if not os.path.exists("checkpoint"): os.mkdir("checkpoint")
 if not os.path.exists("output"):
     os.mkdir("output")
 
@@ -36,8 +34,8 @@ if not os.path.exists("output"):
 LOG_STEP=1000
 P =float( sys.argv[2] )
 DIM = 32 
-N_GPUS = 2 
-BATCH_SIZE = N_GPUS * 64 
+N_GPUS = 1
+BATCH_SIZE = N_GPUS * 108 
 N_EPOCHS = 25
 EPOCH_SIZE = int( 690223 / BATCH_SIZE )
 LAMBDA = 10 
@@ -235,17 +233,24 @@ with tf.Session(config=config) as session:
     #image_batch = tf.placeholder( tf.uint8 , shape =(BATCH_SIZE , H*4 , W * 4 , 3 )  )
     file_queue = tf.train.string_input_producer( DATA_TRAIN )
     image_batch , label_batch  = data_input.get_batch( file_queue , (112,96) , BATCH_SIZE , n_threads = 4 , min_after_dequeue = 0 , flip_flag = True )
-    # image_batch ranges [-1,1]
+    # image_batch ranges [0,255] , dtype = tf.uint8
     
 
-    gen_losses   , x_gens  , x_bicubics = [] ,  [] , [] 
-    content_losses , vgg_losses = [] , []
-    split_image_batch  = tf.split( image_batch , len(DEVICES) , axis = 0  )
+    #preprocessing
+    with tf.device("/gpu:0"):
+       # image_batch_pre = tf.image.random_flip_left_right(image_batch)
+        image_batch_pre = tf.cast( image_batch, tf.float32 )
+        image_batch_pre =  image_batch_pre /127.5 -1.
+
+        gen_losses   , x_gens  , x_bicubics = [] ,  [] , [] 
+        content_losses , vgg_losses = [] , []
+        split_image_batch_pre  = tf.split( image_batch_pre , len(DEVICES) , axis = 0  )
     for device_index , device in enumerate(DEVICES):
         with tf.device(device):
-            x = split_image_batch[device_index]
+            x = split_image_batch_pre[device_index]
             x_lr = tf.image.resize_bicubic( x , [ H,W ]  )
             x_bicubic =  tf.image.resize_bicubic ( x_lr , [H*4,W*4] ) 
+            
            
             
     #        x_lr = tf.transpose( image_batch_lr , [0,3,1,2] )
@@ -277,15 +282,31 @@ with tf.Session(config=config) as session:
             x_gens.append(x_gen)
             content_losses.append(gen_content_loss)
 
-    gen_loss = tf.add_n(gen_losses) * ( 1.0 / len(DEVICES) ) * (1.0 / BATCH_SIZE)
-    vgg_loss = tf.add_n(vgg_losses ) * ( 1.0 / len(DEVICES)) * (1.0 / BATCH_SIZE)
-    content_loss = tf.add_n(content_losses)  * (1.0 / len(DEVICES)) * (1.0 / BATCH_SIZE)
-    x_gens = tf.concat( xgens , axis = 0 ) 
-    x_bicubic = tf.concat( x_bicubics , axis = 0 )
+    with tf.device("/gpu:0"):
+        gen_loss = tf.add_n(gen_losses) * ( 1.0 / len(DEVICES) ) * (1.0 / BATCH_SIZE)
+        vgg_loss = tf.add_n(vgg_losses ) * ( 1.0 / len(DEVICES)) * (1.0 / BATCH_SIZE)
+        content_loss = tf.add_n(content_losses)  * (1.0 / len(DEVICES)) * (1.0 / BATCH_SIZE)
+        x_gen = tf.concat( x_gens , axis = 0 ) 
+        x_bicubic = tf.concat( x_bicubics , axis = 0 )
 
     tf.summary.scalar("gen_loss" , gen_loss)
     tf.summary.scalar("vgg_loss" , vgg_loss)
     tf.summary.scalar("content_loss" , content_loss )
+
+
+    def convert(x):
+        # x ranges[-1,1] , dtype = tf.float32 
+        # returns: ranges [0,255] , dtype = tf.uint8 
+        x = tf.clip_by_value( x_bicubic , -1,1 )
+        x = (x+1.0) *(255.99/2)
+        x = tf.cast(x , tf.uint8)
+        return x
+        
+    with tf.device("/gpu:0"):
+        x_gen_outputs = convert(x_gen) 
+        x_bicubic_outputs = convert(x_bicubic)
+        outputs = tf.concat( [image_batch , x_gen_outputs , x_bicubic_outputs] , axis = 0  )
+
 
 
     global_step = tf.Variable( initial_value = 0 , dtype = tf.int32 , trainable = 0 ,name = 'global_step')
@@ -300,18 +321,8 @@ with tf.Session(config=config) as session:
     # For generating samples
     def generate_image(sess,it):
 
-        x_ , x_gen_ , x_bicubic_  = sess.run( [  image_batch , x_gen  , x_bicubic ] ) 
-
-
-        x_gen_ = np.clip( x_gen_ , -1 , 1 )
-        x_bicubic_ = np.clip( x_bicubic_ , -1 , 1 )
-
-        x_gen_ = ((x_gen_+1.)*(255.99/2)).astype('uint8')
-        x_ = ((x_+1.)*(255.99/2)).astype('uint8')
-        x_bicubic_ = ((x_bicubic_+1.)*(255.99/2)).astype('uint8')
-        
-        with tf.device('/cpu:0'):
-            lib.save_images.save_images( np.concatenate( [ x_ , x_gen_ , x_bicubic_ ] ,   axis = 0 ) , 5 ,   OUTPUT_PATH+'/samples_{}.png'.format(it))
+        outputs_ = sess.run( outputs )
+        lib.save_images.save_images( outputs_ ,  5 ,   OUTPUT_PATH+'/samples_{}.png'.format(it))
 
 
 

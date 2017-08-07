@@ -1,0 +1,66 @@
+2017-08-04 15:59:46.302207: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:09:00.0
+Total memory: 11.90GiB
+Free memory: 11.76GiB
+2017-08-04 15:59:46.302262: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-08-04 15:59:46.302271: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-08-04 15:59:46.302282: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: TITAN X (Pascal), pci bus id: 0000:09:00.0)
+2017-08-04 15:59:48.180069: I tensorflow/compiler/xla/service/platform_util.cc:58] platform CUDA present with 1 visible devices
+2017-08-04 15:59:48.180141: I tensorflow/compiler/xla/service/platform_util.cc:58] platform Host present with 48 visible devices
+2017-08-04 15:59:48.193430: I tensorflow/compiler/xla/service/service.cc:183] XLA service 0x1cb26700 executing computations on platform Host. Devices:
+2017-08-04 15:59:48.193496: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (0): <undefined>, <undefined>
+2017-08-04 15:59:48.193824: I tensorflow/compiler/xla/service/platform_util.cc:58] platform CUDA present with 1 visible devices
+2017-08-04 15:59:48.193841: I tensorflow/compiler/xla/service/platform_util.cc:58] platform Host present with 48 visible devices
+2017-08-04 15:59:48.204568: I tensorflow/compiler/xla/service/service.cc:183] XLA service 0x1ca1a570 executing computations on platform CUDA. Devices:
+2017-08-04 15:59:48.204608: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (0): TITAN X (Pascal), Compute Capability 6.1
+2017-08-05 15:02:54.468510: W tensorflow/core/kernels/queue_base.cc:294] _0_input_producer: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 15:02:54.478531: W tensorflow/core/kernels/queue_base.cc:294] _5_data_1/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 15:02:54.478836: W tensorflow/core/kernels/queue_base.cc:294] _5_data_1/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 15:02:54.478861: W tensorflow/core/kernels/queue_base.cc:294] _5_data_1/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 15:02:54.478968: W tensorflow/core/kernels/queue_base.cc:294] _5_data_1/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 15:02:54.479186: W tensorflow/core/kernels/queue_base.cc:294] _1_data/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 15:02:54.479296: W tensorflow/core/kernels/queue_base.cc:294] _1_data/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 15:02:54.479313: W tensorflow/core/kernels/queue_base.cc:294] _1_data/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 15:02:54.479394: W tensorflow/core/kernels/queue_base.cc:294] _3_input_producer_1: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 15:02:54.479492: W tensorflow/core/kernels/queue_base.cc:294] _1_data/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+Traceback (most recent call last):
+  File "srres.py", line 222, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "srres.py", line 219, in main
+    train()
+  File "srres.py", line 215, in train
+    coord.join(threads)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/coordinator.py", line 397, in join
+    " ".join(stragglers))
+RuntimeError: Coordinator stopped with threads still running: Thread-4 Thread-9 Thread-5 Thread-10 Thread-6 Thread-7 Thread-2 Thread-3 Thread-8 Thread-1
+2017-08-07 16:16:47.237000: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:08:00.0
+Total memory: 11.90GiB
+Free memory: 11.76GiB
+2017-08-07 16:16:47.237146: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x111cea70
+2017-08-07 16:16:47.713581: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:09:00.0
+Total memory: 11.90GiB
+Free memory: 11.76GiB
+2017-08-07 16:16:47.715563: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 
+2017-08-07 16:16:47.715590: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y 
+2017-08-07 16:16:47.715599: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y 
+2017-08-07 16:16:47.715699: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: TITAN X (Pascal), pci bus id: 0000:08:00.0)
+2017-08-07 16:16:47.715762: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: TITAN X (Pascal), pci bus id: 0000:09:00.0)
+2017-08-07 16:16:50.094482: I tensorflow/compiler/xla/service/platform_util.cc:58] platform CUDA present with 2 visible devices
+2017-08-07 16:16:50.094552: I tensorflow/compiler/xla/service/platform_util.cc:58] platform Host present with 48 visible devices
+2017-08-07 16:16:50.107466: I tensorflow/compiler/xla/service/service.cc:183] XLA service 0x1e325ad0 executing computations on platform Host. Devices:
+2017-08-07 16:16:50.107513: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (0): <undefined>, <undefined>
+2017-08-07 16:16:50.107831: I tensorflow/compiler/xla/service/platform_util.cc:58] platform CUDA present with 2 visible devices
+2017-08-07 16:16:50.107848: I tensorflow/compiler/xla/service/platform_util.cc:58] platform Host present with 48 visible devices
+2017-08-07 16:16:50.116650: I tensorflow/compiler/xla/service/service.cc:183] XLA service 0x1e321f20 executing computations on platform CUDA. Devices:
+2017-08-07 16:16:50.116676: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (0): TITAN X (Pascal), Compute Capability 6.1
+2017-08-07 16:16:50.116686: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (1): TITAN X (Pascal), Compute Capability 6.1

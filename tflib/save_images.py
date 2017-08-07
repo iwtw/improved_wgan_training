@@ -11,7 +11,7 @@ def save_images( X , nh ,  save_path):
     if isinstance(X.flatten()[0], np.floating):
         X = (255.99*X).astype('uint8')
 
-    n_samples = X.shape[0]/3
+    n_samples = int ( X.shape[0]/3 )
 
     if X.ndim == 2:
         X = np.reshape(X, (X.shape[0], int(np.sqrt(X.shape[1])), int(np.sqrt(X.shape[1]))))
@@ -24,8 +24,9 @@ def save_images( X , nh ,  save_path):
         img = np.zeros((h*nh, w*3))
 
     for idx in range(nh*3):
-        i = idx / 3
-        j = idx % 3 
-        img[i*h:i*h+h, j*w:j*w+w] = X[j*n_samples +i]
+        i = int(idx / 3 )
+        j = int(idx % 3 )
+    #    print("i {} , j {} , h {} , w {} , n_samples {}".format(i,j,h,w,n_samples))
+        img[i*h:i*h+h, j*w:j*w+w] = X[j*n_samples + i ]
 
     imsave(save_path, img)

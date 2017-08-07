@@ -1,0 +1,711 @@
+2017-08-04 15:59:29.874372: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:04:00.0
+Total memory: 11.90GiB
+Free memory: 11.76GiB
+2017-08-04 15:59:29.874434: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-08-04 15:59:29.874447: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-08-04 15:59:29.874462: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: TITAN X (Pascal), pci bus id: 0000:04:00.0)
+2017-08-04 15:59:31.977098: I tensorflow/compiler/xla/service/platform_util.cc:58] platform CUDA present with 1 visible devices
+2017-08-04 15:59:31.977152: I tensorflow/compiler/xla/service/platform_util.cc:58] platform Host present with 48 visible devices
+2017-08-04 15:59:31.989517: I tensorflow/compiler/xla/service/service.cc:183] XLA service 0x1b08c960 executing computations on platform Host. Devices:
+2017-08-04 15:59:31.989561: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (0): <undefined>, <undefined>
+2017-08-04 15:59:31.989759: I tensorflow/compiler/xla/service/platform_util.cc:58] platform CUDA present with 1 visible devices
+2017-08-04 15:59:31.989769: I tensorflow/compiler/xla/service/platform_util.cc:58] platform Host present with 48 visible devices
+2017-08-04 15:59:32.001576: I tensorflow/compiler/xla/service/service.cc:183] XLA service 0x1afc9030 executing computations on platform CUDA. Devices:
+2017-08-04 15:59:32.001622: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (0): TITAN X (Pascal), Compute Capability 6.1
+2017-08-05 14:20:04.026557: W tensorflow/core/kernels/queue_base.cc:294] _0_input_producer: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 14:20:04.038160: W tensorflow/core/kernels/queue_base.cc:294] _3_input_producer_1: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 14:20:04.038730: W tensorflow/core/kernels/queue_base.cc:294] _6_data_1/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 14:20:04.038773: W tensorflow/core/kernels/queue_base.cc:294] _6_data_1/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 14:20:04.038796: W tensorflow/core/kernels/queue_base.cc:294] _6_data_1/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 14:20:04.038812: W tensorflow/core/kernels/queue_base.cc:294] _6_data_1/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 14:20:04.038933: W tensorflow/core/kernels/queue_base.cc:294] _2_data/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 14:20:04.038962: W tensorflow/core/kernels/queue_base.cc:294] _2_data/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 14:20:04.039091: W tensorflow/core/kernels/queue_base.cc:294] _2_data/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-05 14:20:04.039108: W tensorflow/core/kernels/queue_base.cc:294] _2_data/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+Traceback (most recent call last):
+  File "srres.py", line 222, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "srres.py", line 219, in main
+    train()
+  File "srres.py", line 215, in train
+    coord.join(threads)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/coordinator.py", line 397, in join
+    " ".join(stragglers))
+RuntimeError: Coordinator stopped with threads still running: Thread-4 Thread-9 Thread-5 Thread-10 Thread-6 Thread-7 Thread-2 Thread-3 Thread-8 Thread-1
+  File "srres.py", line 146
+    tf.summary.scalar("vgg_loss" , vgg_loss)
+    ^
+IndentationError: unexpected indent
+Traceback (most recent call last):
+  File "srres.py", line 222, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "srres.py", line 218, in main
+    build_graph()
+TypeError: build_graph() missing 1 required positional argument: 'data_input'
+Traceback (most recent call last):
+  File "srres.py", line 221, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "srres.py", line 217, in main
+    outputs , gen_loss = build_graph(DATA_TRAIN)
+  File "srres.py", line 103, in build_graph
+    image_batch , label_batch  = data_input.get_batch( file_queue , (112,96) , BATCH_SIZE , n_threads = 4 , min_after_dequeue = 0 , flip_flag = True )
+AttributeError: 'list' object has no attribute 'get_batch'
+2017-08-07 15:40:33.927645: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:04:00.0
+Total memory: 11.90GiB
+Free memory: 11.76GiB
+2017-08-07 15:40:33.927743: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0xbd0f090
+2017-08-07 15:40:34.276846: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:05:00.0
+Total memory: 11.90GiB
+Free memory: 11.76GiB
+2017-08-07 15:40:34.276963: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0xbd12ea0
+2017-08-07 15:40:34.643155: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 2 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:08:00.0
+Total memory: 11.90GiB
+Free memory: 11.76GiB
+2017-08-07 15:40:34.643305: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0xbd16cb0
+2017-08-07 15:40:35.032936: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 3 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:09:00.0
+Total memory: 11.90GiB
+Free memory: 11.76GiB
+2017-08-07 15:40:35.040731: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 2 3 
+2017-08-07 15:40:35.040752: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y Y Y 
+2017-08-07 15:40:35.040759: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y Y Y 
+2017-08-07 15:40:35.040765: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 2:   Y Y Y Y 
+2017-08-07 15:40:35.040771: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 3:   Y Y Y Y 
+2017-08-07 15:40:35.040800: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: TITAN X (Pascal), pci bus id: 0000:04:00.0)
+2017-08-07 15:40:35.040809: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: TITAN X (Pascal), pci bus id: 0000:05:00.0)
+2017-08-07 15:40:35.040815: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:2) -> (device: 2, name: TITAN X (Pascal), pci bus id: 0000:08:00.0)
+2017-08-07 15:40:35.040821: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:3) -> (device: 3, name: TITAN X (Pascal), pci bus id: 0000:09:00.0)
+2017-08-07 15:40:36.229469: I tensorflow/compiler/xla/service/platform_util.cc:58] platform CUDA present with 4 visible devices
+2017-08-07 15:40:36.229524: I tensorflow/compiler/xla/service/platform_util.cc:58] platform Host present with 48 visible devices
+2017-08-07 15:40:36.240913: I tensorflow/compiler/xla/service/service.cc:183] XLA service 0x6900200 executing computations on platform Host. Devices:
+2017-08-07 15:40:36.240946: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (0): <undefined>, <undefined>
+2017-08-07 15:40:36.241152: I tensorflow/compiler/xla/service/platform_util.cc:58] platform CUDA present with 4 visible devices
+2017-08-07 15:40:36.241162: I tensorflow/compiler/xla/service/platform_util.cc:58] platform Host present with 48 visible devices
+2017-08-07 15:40:36.249244: I tensorflow/compiler/xla/service/service.cc:183] XLA service 0x68fede0 executing computations on platform CUDA. Devices:
+2017-08-07 15:40:36.249262: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (0): TITAN X (Pascal), Compute Capability 6.1
+2017-08-07 15:40:36.249267: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (1): TITAN X (Pascal), Compute Capability 6.1
+2017-08-07 15:40:36.249271: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (2): TITAN X (Pascal), Compute Capability 6.1
+2017-08-07 15:40:36.249275: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (3): TITAN X (Pascal), Compute Capability 6.1
+2017-08-07 15:40:36.371973: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.387045: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.387045: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.387048: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.387050: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.387049: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_27/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.389169: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.389172: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.389173: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.390168: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.394201: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_25/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.395580: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_31/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.402797: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.402824: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.405824: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.408353: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.408450: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.411747: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_3/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.413410: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.413546: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.413712: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_31/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.416769: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.417099: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_3/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.417147: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.419744: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.419832: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.419923: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_27/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.420046: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_32/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.420174: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.420493: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_5/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.423396: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.423410: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.423399: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.423645: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.424017: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.424018: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.426189: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.427647: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.427724: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.431453: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.431763: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.431991: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.432966: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_10/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.433441: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.433534: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.433906: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_5/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.433958: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.434812: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.437125: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.437757: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.437794: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.437820: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.438114: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.438199: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_32/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.439174: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_7/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.442003: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.444961: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.445087: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.445275: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.445473: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.445988: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_7/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.446515: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.447084: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_9/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.447273: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.447434: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.450017: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.450180: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.451447: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.453355: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.453770: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_14/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.456870: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.458058: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_10/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.460078: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_16/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.460203: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_9/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.461149: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.461383: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.462703: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.463012: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_12/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.463977: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.464118: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_12/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.464181: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_12/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.465245: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_16/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.465864: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_12/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.465985: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_10/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.466803: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.467014: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_10/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.467614: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.468182: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_14/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.469057: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.469059: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.469063: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.469267: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.469425: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_14/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.469970: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.470273: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_14/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.471375: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.472056: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_16/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.474674: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.475395: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.475531: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.475847: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.476094: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.476198: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_18/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.477430: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.477467: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_18/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.477620: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_21/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.477923: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.477973: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.479316: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.481205: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.481279: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.481370: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_18/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.481577: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.481644: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_18/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.482143: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.482953: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.483256: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_1/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.483492: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_23/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.488317: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.488704: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.488776: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.489483: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.490429: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.490616: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_25/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.491308: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.492261: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.492514: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.493707: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.494027: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.494159: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_15/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.494239: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_23/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.494733: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.495181: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_13/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.495297: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_16/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.496112: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.496136: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.497097: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.497279: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.497730: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.498405: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.498480: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_21/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.499723: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.500040: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.500294: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.500407: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_1/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.501751: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.502960: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_11/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.503466: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.504021: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.504227: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.504734: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.505264: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.506415: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_15/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.509554: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.511753: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_19/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.512557: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.513311: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.513447: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.514163: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.514623: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.515021: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.515123: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.515607: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.515682: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_13/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.516058: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.516366: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_11/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.519867: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_17/beta/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.520188: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_22/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.522103: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.522201: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_17/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.522643: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.523339: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.524047: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.524678: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_20/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.525210: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_2/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.526307: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.526322: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.527530: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.528330: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.530529: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.530800: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.530930: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_19/beta/Adam not found in checkpoint
+2017-08-07 15:40:36.531573: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.531905: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_22/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.532905: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.533570: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.534160: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.534310: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_20/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.535824: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_2/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.536583: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_26/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.538663: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.539367: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_26/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.539531: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_20/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.540676: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_20/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.541772: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.542166: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.542457: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.543751: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.545547: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.545636: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_2/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.547539: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_28/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.547897: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_26/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.548310: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.548444: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.549099: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.549361: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.550384: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.550519: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_24/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.551162: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_22/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.551238: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.551825: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.552666: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_24/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.552681: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.553042: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.553070: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_30/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.553234: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_26/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.556248: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_24/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.556346: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_22/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.557016: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_28/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.559813: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_2/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.562151: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_24/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.562327: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.565821: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.565891: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.565907: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.566121: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_30/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.569215: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.572619: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.572686: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_33/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.573202: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.576931: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.577057: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_28/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.577629: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_33/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.579194: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.581061: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.581076: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.581198: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_28/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.584108: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.584782: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.584810: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_34/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.588964: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.589057: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_30/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.589272: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.589329: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_34/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.589380: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_35/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.589904: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.592896: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_8/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.593045: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_32/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.593362: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_34/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.598375: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.598807: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_30/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.598918: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.599816: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.599937: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_32/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.601009: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.601285: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_36/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.601623: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.601753: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_36/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.602747: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.602809: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_35/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.603029: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_4/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.603239: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_33/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.603461: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_33/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.603822: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_34/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.604350: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.604435: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_36/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.604866: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.605325: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_32/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.605721: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_4/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.606794: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.607713: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.607790: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_36/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.608120: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_35/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.608951: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_6/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.608976: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.609158: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_6/weights/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.609249: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.610154: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.610242: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.610412: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_35/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.610518: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_4/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.610999: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_6/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.611049: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.611274: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.611323: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_32/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.611614: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.611645: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_6/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.612113: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_8/weights/Adam not found in checkpoint
+2017-08-07 15:40:36.612467: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.612554: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_8/biases/Adam_1 not found in checkpoint
+2017-08-07 15:40:36.612577: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.612815: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+2017-08-07 15:40:36.613299: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_8/biases/Adam not found in checkpoint
+2017-08-07 15:40:36.613467: W tensorflow/core/framework/op_kernel.cc:1152] Not found: Key Conv_4/biases/Adam_1 not found in checkpoint
+Traceback (most recent call last):
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1039, in _do_call
+    return fn(*args)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1021, in _run_fn
+    status, run_metadata)
+  File "/home/wtw/anaconda3/lib/python3.6/contextlib.py", line 89, in __exit__
+    next(self.gen)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/errors_impl.py", line 466, in raise_exception_on_not_ok_status
+    pywrap_tensorflow.TF_GetCode(status))
+tensorflow.python.framework.errors_impl.NotFoundError: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+	 [[Node: save/RestoreV2_136/_589 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/gpu:0", send_device="/job:localhost/replica:0/task:0/cpu:0", send_device_incarnation=1, tensor_name="edge_964_save/RestoreV2_136", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/gpu:0"]()]]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "srres.py", line 221, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "srres.py", line 218, in main
+    train(outputs,gen_loss)
+  File "srres.py", line 179, in train
+    saver.restore( sess , CHECKPOINT_PATH+"/srresnet" )
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 1457, in restore
+    {self.saver_def.filename_tensor_name: save_path})
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 778, in run
+    run_metadata_ptr)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 982, in _run
+    feed_dict_string, options, run_metadata)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1032, in _do_run
+    target_list, options, run_metadata)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1052, in _do_call
+    raise type(e)(node_def, op, message)
+tensorflow.python.framework.errors_impl.NotFoundError: Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+	 [[Node: save/RestoreV2_136/_589 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/gpu:0", send_device="/job:localhost/replica:0/task:0/cpu:0", send_device_incarnation=1, tensor_name="edge_964_save/RestoreV2_136", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/gpu:0"]()]]
+
+Caused by op 'save/RestoreV2_88', defined at:
+  File "srres.py", line 221, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "srres.py", line 218, in main
+    train(outputs,gen_loss)
+  File "srres.py", line 177, in train
+    saver = tf.train.Saver(var_list= tf.get_collection( tf.GraphKeys.GLOBAL_VARIABLES) )
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 1056, in __init__
+    self.build()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 1086, in build
+    restore_sequentially=self._restore_sequentially)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 691, in build
+    restore_sequentially, reshape)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 407, in _AddRestoreOps
+    tensors = self.restore_op(filename_tensor, saveable, preferred_shard)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 247, in restore_op
+    [spec.tensor.dtype])[0])
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/gen_io_ops.py", line 669, in restore_v2
+    dtypes=dtypes, name=name)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 768, in apply_op
+    op_def=op_def)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2336, in create_op
+    original_op=self._default_original_op, op_def=op_def)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1228, in __init__
+    self._traceback = _extract_stack()
+
+NotFoundError (see above for traceback): Key BatchNorm_29/beta/Adam_1 not found in checkpoint
+	 [[Node: save/RestoreV2_88 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_88/tensor_names, save/RestoreV2_88/shape_and_slices)]]
+	 [[Node: save/RestoreV2_136/_589 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/gpu:0", send_device="/job:localhost/replica:0/task:0/cpu:0", send_device_incarnation=1, tensor_name="edge_964_save/RestoreV2_136", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/gpu:0"]()]]
+
+2017-08-07 15:44:51.030232: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:04:00.0
+Total memory: 11.90GiB
+Free memory: 11.76GiB
+2017-08-07 15:44:51.030327: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x66244c0
+2017-08-07 15:44:51.361977: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:05:00.0
+Total memory: 11.90GiB
+Free memory: 11.76GiB
+2017-08-07 15:44:51.362067: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x66282a0
+2017-08-07 15:44:51.695595: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 2 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:08:00.0
+Total memory: 11.90GiB
+Free memory: 11.76GiB
+2017-08-07 15:44:51.695689: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x662c080
+2017-08-07 15:44:52.054763: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 3 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:09:00.0
+Total memory: 11.90GiB
+Free memory: 11.76GiB
+2017-08-07 15:44:52.066030: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 2 3 
+2017-08-07 15:44:52.066060: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y Y Y 
+2017-08-07 15:44:52.066071: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y Y Y 
+2017-08-07 15:44:52.066080: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 2:   Y Y Y Y 
+2017-08-07 15:44:52.066089: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 3:   Y Y Y Y 
+2017-08-07 15:44:52.066111: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: TITAN X (Pascal), pci bus id: 0000:04:00.0)
+2017-08-07 15:44:52.066124: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: TITAN X (Pascal), pci bus id: 0000:05:00.0)
+2017-08-07 15:44:52.066134: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:2) -> (device: 2, name: TITAN X (Pascal), pci bus id: 0000:08:00.0)
+2017-08-07 15:44:52.066143: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:3) -> (device: 3, name: TITAN X (Pascal), pci bus id: 0000:09:00.0)
+2017-08-07 15:45:42.934344: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:04:00.0
+Total memory: 11.90GiB
+Free memory: 11.76GiB
+2017-08-07 15:45:42.934469: W tensorflow/stream_executor/cuda/cuda_driver.cc:485] creating context when one is currently active; existing: 0x53b1b90
+2017-08-07 15:45:43.329772: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 1 with properties: 
+name: TITAN X (Pascal)
+major: 6 minor: 1 memoryClockRate (GHz) 1.531
+pciBusID 0000:05:00.0
+Total memory: 11.90GiB
+Free memory: 11.76GiB
+2017-08-07 15:45:43.530247: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 1 
+2017-08-07 15:45:43.530268: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y Y 
+2017-08-07 15:45:43.530274: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 1:   Y Y 
+2017-08-07 15:45:43.530401: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: TITAN X (Pascal), pci bus id: 0000:04:00.0)
+2017-08-07 15:45:43.530451: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:1) -> (device: 1, name: TITAN X (Pascal), pci bus id: 0000:05:00.0)
+2017-08-07 15:45:46.331820: I tensorflow/compiler/xla/service/platform_util.cc:58] platform CUDA present with 2 visible devices
+2017-08-07 15:45:46.331874: I tensorflow/compiler/xla/service/platform_util.cc:58] platform Host present with 48 visible devices
+2017-08-07 15:45:46.368221: I tensorflow/compiler/xla/service/service.cc:183] XLA service 0x1db0cee0 executing computations on platform Host. Devices:
+2017-08-07 15:45:46.368238: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (0): <undefined>, <undefined>
+2017-08-07 15:45:46.368428: I tensorflow/compiler/xla/service/platform_util.cc:58] platform CUDA present with 2 visible devices
+2017-08-07 15:45:46.368438: I tensorflow/compiler/xla/service/platform_util.cc:58] platform Host present with 48 visible devices
+2017-08-07 15:45:46.395094: I tensorflow/compiler/xla/service/service.cc:183] XLA service 0x1da597a0 executing computations on platform CUDA. Devices:
+2017-08-07 15:45:46.395108: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (0): TITAN X (Pascal), Compute Capability 6.1
+2017-08-07 15:45:46.395114: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (1): TITAN X (Pascal), Compute Capability 6.1
