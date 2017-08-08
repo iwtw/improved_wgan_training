@@ -22,7 +22,7 @@ BATCH_SIZE = 64
 Generator = generator
 
 
-DATA_PATH = "dfk_data.test"
+DATA_PATH = "dfk_994.list"
 #DATA_PATH = 'data.test'
 data_path = open( DATA_PATH ).read().split('\n')
 data_path.pop(len(data_path)-1)
@@ -54,7 +54,7 @@ for device_index , device in enumerate(DEVICES):
 
 
 fake_data = tf.concat( fake_datas , axis = 0  ) 
-#fake_data = tf.clip_by_value( fake_data , -1 , 1  )
+fake_data = tf.clip_by_value( fake_data , -1 , 1  )
 fake_data  = tf.cast( (fake_data+1.0)*(255.99/2) , tf.uint8)
 
 config = tf.ConfigProto(allow_soft_placement=True , log_device_placement=False)
