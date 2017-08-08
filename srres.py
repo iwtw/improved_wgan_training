@@ -169,7 +169,9 @@ def train(outputs,gen_loss):
     boundaries = [ 5 * EPOCH_SIZE ,  10 * EPOCH_SIZE , 15 * EPOCH_SIZE , 20 * EPOCH_SIZE]
     lrs = [ 1e-3 , 1e-4 , 5e-5 , 1e-5 , 1e-6 ]
     lr = tf.train.piecewise_constant( global_step , boundaries , lrs  )
-    gen_train_op = tf.train.AdamOptimizer(learning_rate=lr).minimize(gen_loss,var_list=tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES), colocate_gradients_with_ops=True , global_step = global_step)
+    update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)
+        with tf.control_dependencies(update_ops):
+            gen_train_op = tf.train.AdamOptimizer(learning_rate=lr).minimize(gen_loss,var_list=tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES), colocate_gradients_with_ops=True , global_step = global_step)
     config = tf.ConfigProto(allow_soft_placement=True )
     config.gpu_options.allow_growth=True
     with tf.Session(config=config) as sess:
