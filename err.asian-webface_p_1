@@ -64,3 +64,20 @@ Free memory: 11.76GiB
 2017-08-07 16:16:50.116650: I tensorflow/compiler/xla/service/service.cc:183] XLA service 0x1e321f20 executing computations on platform CUDA. Devices:
 2017-08-07 16:16:50.116676: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (0): TITAN X (Pascal), Compute Capability 6.1
 2017-08-07 16:16:50.116686: I tensorflow/compiler/xla/service/service.cc:191]   StreamExecutor device (1): TITAN X (Pascal), Compute Capability 6.1
+2017-08-08 05:28:42.383125: W tensorflow/core/kernels/queue_base.cc:294] _1_data/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-08 05:28:42.383531: W tensorflow/core/kernels/queue_base.cc:294] _1_data/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-08 05:28:42.383590: W tensorflow/core/kernels/queue_base.cc:294] _1_data/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-08 05:28:42.383614: W tensorflow/core/kernels/queue_base.cc:294] _1_data/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-08-08 05:28:42.383732: W tensorflow/core/kernels/queue_base.cc:294] _0_input_producer: Skipping cancelled enqueue attempt with queue not closed
+Traceback (most recent call last):
+  File "srres.py", line 221, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "srres.py", line 218, in main
+    train(outputs,gen_loss)
+  File "srres.py", line 214, in train
+    coord.join(threads)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/coordinator.py", line 397, in join
+    " ".join(stragglers))
+RuntimeError: Coordinator stopped with threads still running: Thread-3 Thread-4 Thread-1 Thread-2 Thread-5

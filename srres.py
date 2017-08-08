@@ -27,9 +27,9 @@ if not os.path.exists("output"):
 #LEARNING_RATE=tf.Variable( 5e-5 )
 LOG_STEP=1000
 P =float( sys.argv[2] )
-DIM = 32 
+DIM = 64 
 N_GPUS = 2
-BATCH_SIZE = N_GPUS * 128 
+BATCH_SIZE = N_GPUS * 150 
 N_EPOCHS = 25
 EPOCH_SIZE = int( 917719 / BATCH_SIZE )
 LAMBDA = 10 
@@ -51,7 +51,6 @@ if not os.path.exists(OUTPUT_PATH):
     os.mkdir(OUTPUT_PATH)
 if not os.path.exists(CHECKPOINT_PATH):
     os.mkdir(CHECKPOINT_PATH)
-
 lib.print_model_settings(locals().copy())
 
 DEVICES = ['/gpu:{}'.format(i) for i in range(N_GPUS)]
